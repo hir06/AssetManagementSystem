@@ -1,8 +1,9 @@
-.logo img {
-        margin-top: 10px;
-        width: 96px;
-    }
+
 .header {
         border-bottom: 4px solid rgb(11,77,138);
         background-color: #fff;
+        .logo img {
+                margin-top: 10px;
+                width: 96px;
+            }
     }
