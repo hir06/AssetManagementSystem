@@ -50,11 +50,11 @@
         </ul> -->
   </div>
   <div class="col-lg-4 col-sm-12 text-center">
-    <h3 class="welcome">Welcome {{loggedInUser.firstName}} {{loggedInUser.lastName==null?"":loggedInUser.lastName}}</h3>
+    <h3 class="welcome">Welcome {{loggedInUser?.firstName}} {{loggedInUser?.lastName==null?"":loggedInUser?.lastName}}</h3>
   </div>
   <div class="col-lg-4 col-sm-12">
     <div class="text-right">
-        <i class="fa fa-user" aria-hidden="true"></i> Logged in as <a href="" id="user">{{loggedInUser.roles[0]}}</a> | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a>
+        <i class="fa fa-user" aria-hidden="true"></i> Logged in as <a href="" id="user">{{loggedInUser?.roles[0]}}</a> | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a>
     </div>
     <!-- <div class="user-details">
         <span class="user-circle">
