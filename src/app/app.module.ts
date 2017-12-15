@@ -1,22 +1,28 @@
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './modules/router.module';
 import { UserService } from './services/userService';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,APP_INITIALIZER  } from '@angular/core';
-
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    SideNavComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule 
   ],
   providers: [
     UserService,

@@ -1,6 +1,7 @@
+@import './../../../_common';
 
 .header {
-        border-bottom: 4px solid rgb(11,77,138);
+        border-bottom: 4px solid $amsColor;
         background-color: #fff;
         .logo img {
                 margin-top: 10px;

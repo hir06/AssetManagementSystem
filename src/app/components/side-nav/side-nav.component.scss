@@ -1,0 +1,6 @@
+@import './../../../_common';
+ul{
+        list-style: none;
+        @extend .zero-margin;
+        @extend .zero-padding;
+}
