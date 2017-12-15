@@ -32,7 +32,7 @@ export class UserService {
                                         resolve(this.decryptToken(amsAuthToken));
                                 }
                                
-                        }, 5000);
+                        }, 1000);
                 });
         }
 }

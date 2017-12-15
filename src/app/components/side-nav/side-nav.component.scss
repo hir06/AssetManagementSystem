@@ -1,6 +1,32 @@
 @import './../../../_common';
-ul{
-        list-style: none;
-        @extend .zero-margin;
-        @extend .zero-padding;
-}
+
+.navbar {
+        background-color: #2e2e2e;
+        padding-right: 0;
+        padding-left: 5px;
+        height: 100%;
+        position: relative;
+        align-items: initial;
+        ul{
+                list-style: none;
+                @extend .zero-margin;
+                @extend .zero-padding;
+                li{
+                        &.active{
+                                a{
+                                        background-color: $amsColor;
+                                        color: #fff;   
+                                }
+                        }
+
+                        a{
+                                display: block;
+                                padding: 10px;
+                                font-size: 1.1em;
+                                color: #d2d2d2;   
+                        }
+                        
+                }
+        }
+
+    }

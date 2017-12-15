@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import './_common';
 html,body{
         height: 100%;
         width: 100%;
         background-color: #efd1d4;
 }
 
+.container-fluid{
+        @extend .zero-padding;
+        height: 100%;
+}

@@ -1,12 +1,14 @@
+import { DashboardComponent } from './../components/dashboard/dashboard.component';
 import { HeaderComponent } from './../components/header/header.component';
 import { LoginComponent } from './../components/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 const appRoutes: Routes = [
       { path: '', component: LoginComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'dashboard', component: HeaderComponent }
+      { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({
