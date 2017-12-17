@@ -1,24 +1,29 @@
 <div class="navbar">
     <ul>
-        <li ng-class="{active:thisView=='dashboard'}" ng-if="isAdminRole">
+        <li [ngClass]="{active:thisView=='dashboard'}" ng-if="isAdminRole">
             <a [routerLink]="dashboard" title="">
                         <i class="glyphicon glyphicon-dashboard menu-icon"></i> Dashboard
                     </a>
         </li>
-        <li ng-class="{active:thisView=='incidents'}">
-            <a [routerLink]="incidents" title="">
-                        <i class="glyphicon glyphicon-time menu-icon"></i> Incidents
+        <li [ngClass]="{active:thisView=='incidents'}">
+            <a [routerLink]="building" title="">
+                        <i class="glyphicon glyphicon-time menu-icon"></i> Building
                     </a>
         </li>
-        <li ng-class="{active:thisView=='claims'}">
-            <a [routerLink]="claims" title="">
-                        <i class="glyphicon glyphicon-gift menu-icon"></i> Claims
+        <li [ngClass]="{active:thisView=='claims'}">
+            <a [routerLink]="vehicle" title="">
+                        <i class="glyphicon glyphicon-gift menu-icon"></i> Equipment
                     </a>
         </li>
-        <li ng-class="{active:thisView=='investigations'}">
-            <a [routerLink]="investigations" title="">
-                        <i class="glyphicon glyphicon-search menu-icon"></i> Investigations
+        <li [ngClass]="{active:thisView=='investigations'}">
+            <a [routerLink]="vehicle" title="">
+                        <i class="glyphicon glyphicon-search menu-icon"></i> Vehicle
                     </a>
         </li>
+        <li [ngClass]="{active:thisView=='investigations'}">
+                <a [routerLink]="other" title="">
+                            <i class="glyphicon glyphicon-search menu-icon"></i> Other
+                        </a>
+            </li>
     </ul>
 </div>

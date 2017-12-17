@@ -10,3 +10,8 @@ html,body{
         @extend .zero-padding;
         height: 100%;
 }
+
+.content{
+        padding-top:15px;
+        overflow: auto;
+}
