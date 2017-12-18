@@ -2,27 +2,27 @@
     <ul>
         <li [ngClass]="{active:thisView=='dashboard'}" ng-if="isAdminRole">
             <a [routerLink]="dashboard" title="">
-                        <i class="glyphicon glyphicon-dashboard menu-icon"></i> Dashboard
+                        <i class="fa fa-tasks"></i> Dashboard
                     </a>
         </li>
         <li [ngClass]="{active:thisView=='incidents'}">
             <a [routerLink]="building" title="">
-                        <i class="glyphicon glyphicon-time menu-icon"></i> Building
+                        <i class="fa fa-building"></i> Building
                     </a>
         </li>
         <li [ngClass]="{active:thisView=='claims'}">
             <a [routerLink]="vehicle" title="">
-                        <i class="glyphicon glyphicon-gift menu-icon"></i> Equipment
+                        <i class="fa fa-print"></i> Equipment
                     </a>
         </li>
         <li [ngClass]="{active:thisView=='investigations'}">
             <a [routerLink]="vehicle" title="">
-                        <i class="glyphicon glyphicon-search menu-icon"></i> Vehicle
+                        <i class="fa fa-bus"></i> Vehicle
                     </a>
         </li>
         <li [ngClass]="{active:thisView=='investigations'}">
                 <a [routerLink]="other" title="">
-                            <i class="glyphicon glyphicon-search menu-icon"></i> Other
+                            <i class="fa fa-folder-open"></i> Other
                         </a>
             </li>
     </ul>
