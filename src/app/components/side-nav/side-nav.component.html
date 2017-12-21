@@ -1,27 +1,27 @@
 <div class="navbar">
     <ul>
         <li [ngClass]="{active:thisView=='dashboard'}" ng-if="isAdminRole">
-            <a [routerLink]="dashboard" title="">
+            <a [routerLink]="['/dashboard']" title="">
                         <i class="fa fa-tasks"></i> Dashboard
                     </a>
         </li>
         <li [ngClass]="{active:thisView=='incidents'}">
-            <a [routerLink]="building" title="">
+            <a [routerLink]="['/buildings']" title="">
                         <i class="fa fa-building"></i> Building
                     </a>
         </li>
         <li [ngClass]="{active:thisView=='claims'}">
-            <a [routerLink]="vehicle" title="">
+            <a [routerLink]="['/equipment']" title="">
                         <i class="fa fa-print"></i> Equipment
                     </a>
         </li>
         <li [ngClass]="{active:thisView=='investigations'}">
-            <a [routerLink]="vehicle" title="">
+            <a [routerLink]="['/vehicle']" title="">
                         <i class="fa fa-bus"></i> Vehicle
                     </a>
         </li>
         <li [ngClass]="{active:thisView=='investigations'}">
-                <a [routerLink]="other" title="">
+                <a [routerLink]="['/other']" title="">
                             <i class="fa fa-folder-open"></i> Other
                         </a>
             </li>
