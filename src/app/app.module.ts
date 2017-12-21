@@ -11,6 +11,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BuildingComponent } from './components/building/building.component';
 import { BuildingListComponent } from './components/building/building-list/building-list.component';
+import { AddBuildingComponent } from './components/building/add-building/add-building.component';
 
 
 
@@ -22,7 +23,8 @@ import { BuildingListComponent } from './components/building/building-list/build
     SideNavComponent,
     DashboardComponent,
     BuildingComponent,
-    BuildingListComponent
+    BuildingListComponent,
+    AddBuildingComponent
   ],
   imports: [
     BrowserModule,

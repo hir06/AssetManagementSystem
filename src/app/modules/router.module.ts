@@ -1,3 +1,4 @@
+import { AddBuildingComponent } from './../components/building/add-building/add-building.component';
 import { BuildingListComponent } from './../components/building/building-list/building-list.component';
 import { BuildingComponent } from './../components/building/building.component';
 import { DashboardComponent } from './../components/dashboard/dashboard.component';
@@ -9,13 +10,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 
+
 const appRoutes: Routes = [
       { path: '', component: LoginComponent },
       { path: 'login', component: LoginComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'buildings', component: BuildingComponent,
             children:[
-                  {path: '',component: BuildingListComponent , pathMatch: 'full'}
+                  {path: '',component: BuildingListComponent , pathMatch: 'full'},
+                  {path: 'add-building',component: AddBuildingComponent , pathMatch: 'full'}
             ]
       }
 ];
