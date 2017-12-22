@@ -12,6 +12,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BuildingComponent } from './components/building/building.component';
 import { BuildingListComponent } from './components/building/building-list/building-list.component';
 import { AddBuildingComponent } from './components/building/add-building/add-building.component';
+import { VehicleComponent } from './components/vehicle/vehicle.component';
+import { OtherComponent } from './components/other/other.component';
+import { EquipmentComponent } from './components/equipment/equipment.component';
+import { AddEquipmentComponent } from './components/equipment/add-equipment/add-equipment.component';
+import { EquipmentListComponent } from './components/equipment/equipment-list/equipment-list.component';
+import { AddVehicleComponent } from './components/vehicle/add-vehicle/add-vehicle.component';
+import { VehicleListComponent } from './components/vehicle/vehicle-list/vehicle-list.component';
+import { AddOtherAssetsComponent } from './components/other/add-other-assets/add-other-assets.component';
+import { OtherAssetsListComponent } from './components/other/other-assets-list/other-assets-list.component';
 
 
 
@@ -24,7 +33,16 @@ import { AddBuildingComponent } from './components/building/add-building/add-bui
     DashboardComponent,
     BuildingComponent,
     BuildingListComponent,
-    AddBuildingComponent
+    AddBuildingComponent,
+    VehicleComponent,
+    OtherComponent,
+    EquipmentComponent,
+    AddEquipmentComponent,
+    EquipmentListComponent,
+    AddVehicleComponent,
+    VehicleListComponent,
+    AddOtherAssetsComponent,
+    OtherAssetsListComponent
   ],
   imports: [
     BrowserModule,
