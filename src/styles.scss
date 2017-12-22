@@ -18,3 +18,8 @@ html,body{
 .table{
         background: white;
 }
+
+.row.view{
+        @extend .zero-margin;
+        height: calc(100% - 100px);
+}
