@@ -12,6 +12,7 @@
                 @extend .zero-padding;
                 width: 100%;
                 li{
+                        cursor: pointer;
                         &.active{
                                 a{
                                         background-color: $amsColor;

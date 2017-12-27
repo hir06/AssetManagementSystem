@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-building.component.scss']
 })
 export class AddBuildingComponent implements OnInit {
-
+building: any = {};
   constructor() { }
 
   ngOnInit() {

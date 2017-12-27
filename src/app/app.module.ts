@@ -1,3 +1,4 @@
+import { SharedService } from './services/shared.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './modules/router.module';
 import { UserService } from './services/userService';
@@ -21,6 +22,7 @@ import { AddVehicleComponent } from './components/vehicle/add-vehicle/add-vehicl
 import { VehicleListComponent } from './components/vehicle/vehicle-list/vehicle-list.component';
 import { AddOtherAssetsComponent } from './components/other/add-other-assets/add-other-assets.component';
 import { OtherAssetsListComponent } from './components/other/other-assets-list/other-assets-list.component';
+
 
 
 
@@ -51,6 +53,7 @@ import { OtherAssetsListComponent } from './components/other/other-assets-list/o
     AppRoutingModule
   ],
   providers: [
+    SharedService,
     UserService,
     {
       provide: APP_INITIALIZER,

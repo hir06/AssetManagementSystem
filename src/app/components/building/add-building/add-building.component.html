@@ -1,3 +1,44 @@
-<p>
-  add-building works!
-</p>
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h3>
+      <span class="fa fa-building"></span> Add Building</h3>
+  </div>
+</div>
+<h5>Building Details</h5>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-4">
+    <label>Building ID</label>
+    <input class="form-control" [(ngModel)]="building.buildingId" name="buildingid" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Building Name</label>
+    <input class="form-control" [(ngModel)]="building.name" name="buildingname" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Description</label>
+    <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-4">
+    <label>Floor</label>
+    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Building Name</label>
+    <input class="form-control" [(ngModel)]="building.address" name="address" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Description</label>
+    <input class="form-control" [(ngModel)]="building.departmentName" name="departmentName" />
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-6">
+    <button class="btn btn-primary" type="button">Add</button>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <button class="btn btn-primary float-right" type="button">Lookup</button>
+  </div>
+
+</div>
