@@ -34,12 +34,18 @@ export class UserService implements CanActivate {
             }, 1000);
         });
     }
+    logOut(){
+            localStorage.removeItem("amsAuthToken");
+            this.userDetails = null;
+            let router = this.injector.get(Router);
+             router.navigate(["login"]);
+    }
     canActivate() {
         if (this.userDetails) {
             return true;
         } else {
             let router = this.injector.get(Router);
-            router.navigate(["/login"]);
+             router.navigate(["login"]);
             return false;
         }
     }

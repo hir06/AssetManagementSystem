@@ -23,6 +23,7 @@ import { VehicleListComponent } from './components/vehicle/vehicle-list/vehicle-
 import { AddOtherAssetsComponent } from './components/other/add-other-assets/add-other-assets.component';
 import { OtherAssetsListComponent } from './components/other/other-assets-list/other-assets-list.component';
 import { Router } from '@angular/router';
+import { ApiService } from './services/api.services';
 
 
 
@@ -55,6 +56,7 @@ import { Router } from '@angular/router';
   ],
   providers: [
     SharedService,
+    ApiService,
     UserService,
     {
       provide: APP_INITIALIZER,
