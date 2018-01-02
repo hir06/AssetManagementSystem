@@ -12,3 +12,9 @@ $amsColor : rgb(11,77,138)!global;
     display: block;
     margin: auto;
 }
+
+.text-overflow{
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+}

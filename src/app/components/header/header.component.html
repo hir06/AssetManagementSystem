@@ -53,10 +53,10 @@
     <h3 class="welcome">Welcome {{loggedInUser?.firstName}} {{loggedInUser?.lastName==null?"":loggedInUser?.lastName}}</h3>
   </div>
   <div class="col-lg-4 col-sm-12">
-    <div class="text-right">
-        <img src="../../assets/images/logo@1x.png" alt="gotorisk.co.uk" style="width:30px;"/>  
+    <div class="text-right pt-2">
         <div class="nav-item dropdown" >
-            <a class="nav-link dropdown-toggle zero-padding" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{loggedInUser?.roles[0] || 'UserRole'}}</a>
+            <a class="nav-link dropdown-toggle zero-padding" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">
+                <img src="../../assets/images/logo@1x.png" alt="gotorisk.co.uk" /> {{loggedInUser?.roles[0] || 'UserRole'}}</a>
             <div class="dropdown-menu" style="width:125px;">
               <a class="dropdown-item" href="#">Profile</a>
               <div class="dropdown-divider"></div>

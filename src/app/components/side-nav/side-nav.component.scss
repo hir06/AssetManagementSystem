@@ -41,3 +41,8 @@
 .user-image{
         width: 50px;
 }
+
+.user-role{
+min-width: 100px;
+@extend .text-overflow;
+}
