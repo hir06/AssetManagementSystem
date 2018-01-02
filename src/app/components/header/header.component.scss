@@ -8,3 +8,11 @@
                 width: 96px;
             }
     }
+    .dropdown{
+            float: right;
+            left: 0px;
+            min-width: 125px;
+            .dropdown-menu{
+                min-width: 125px;
+            }
+    }
