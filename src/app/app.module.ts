@@ -22,6 +22,7 @@ import { AddVehicleComponent } from './components/vehicle/add-vehicle/add-vehicl
 import { VehicleListComponent } from './components/vehicle/vehicle-list/vehicle-list.component';
 import { AddOtherAssetsComponent } from './components/other/add-other-assets/add-other-assets.component';
 import { OtherAssetsListComponent } from './components/other/other-assets-list/other-assets-list.component';
+import { Router } from '@angular/router';
 
 
 
@@ -69,6 +70,8 @@ export class AppModule { }
 export function getUserDetails(userService: UserService) {
   //return () => initializerService.getUserDetails().then(() => {});
   return () => userService.getUserDetails().then((data)=>{
-    console.log(data);
+    if(!data){
+      return false;
+    }
   });
 }

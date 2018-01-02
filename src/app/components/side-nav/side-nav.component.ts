@@ -1,5 +1,6 @@
 import { SharedService } from './../../services/shared.service';
 import { Component, OnInit,Input } from '@angular/core';
+import { UserService } from '../../services/userService';
 
 
 @Component({
@@ -9,7 +10,10 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
   @Input() thisView: string;
-  constructor(private _sharedService: SharedService) { }
+  userDetails: any;
+  constructor(private userService: UserService,private _sharedService: SharedService) { 
+    this.userDetails = this.userService.userDetails;
+  }
 
   ngOnInit() {
     //this.thisView = this._sharedService.activeView;

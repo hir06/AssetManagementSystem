@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/userService';
+
 
 @Component({
   selector: 'app-header',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  userDetails:any;
+  constructor(private userService: UserService) { 
+    this.userDetails = this.userService.userDetails;
+  }
 
   ngOnInit() {
   }
