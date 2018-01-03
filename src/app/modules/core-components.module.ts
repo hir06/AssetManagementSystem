@@ -1,5 +1,4 @@
 
-import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
@@ -41,11 +40,10 @@ import { RouterModule } from '@angular/router';
         AddOtherAssetsComponent,
         OtherAssetsListComponent
     ],
-    imports: [FormsModule, CommonModule, BrowserModule,RouterModule],
+    imports: [FormsModule, CommonModule,RouterModule],
     providers: [],
     exports: [
         FormsModule,
-        BrowserModule,
         CommonModule,
         HeaderComponent,
         LoginComponent,

@@ -1,4 +1,5 @@
-import { CoreModule } from './modules/core.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from './modules/core-components.module';
 import { SharedService } from './services/shared.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './modules/router.module';
@@ -11,15 +12,16 @@ import { ApiService } from './services/api.services';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     HttpClientModule,
+    BrowserModule,
     AppRoutingModule,
     CoreModule
-
   ],
   providers: [
     SharedService,
