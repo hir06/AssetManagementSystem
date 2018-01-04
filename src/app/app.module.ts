@@ -45,3 +45,5 @@ export function getUserDetails(userService: UserService) {
     }
   });
 }
+
+//license and insurance,inspection information can be different components 

@@ -1,3 +1,372 @@
-<p>
-  add-equipment works!
-</p>
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h3>
+      <span class="fa fa-equipment"></span> Add Equipment</h3>
+  </div>
+</div>
+<h5>equipment Details</h5>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-4">
+    <label>Equipment ID</label>
+    <input class="form-control" [(ngModel)]="equipment.equipmentId" name="equipmentid" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Equipment Name</label>
+    <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Equipment Tag</label>
+    <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-4">
+    <label>Equipment Type</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Equipment Cost</label>
+    <input class="form-control" [(ngModel)]="equipment.address" name="address" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Manufacturer</label>
+    <input class="form-control" [(ngModel)]="equipment.departmentName" name="departmentName" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Model</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Serial number</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Equipment Status</label>
+    <select class="form-control" [(ngModel)]="equipment.address" name="address">
+      <option>Fully Operational</option>
+      <option>Non Operational</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Department</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Organization Name</label>
+    <select class="form-control" [(ngModel)]="equipment.address" name="address">
+      <option>New</option>
+      <option>Old</option>
+    </select>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Office Address</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Purchase Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Order Number</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Condition</label>
+    <select class="form-control" [(ngModel)]="equipment.condition" name="address">
+      <option>New</option>
+      <option>Old</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Refund Cost</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Quantiity</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Description</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-3">
+    <label>Fire Exits</label>
+    <select class="form-control" [(ngModel)]="equipment.address" name="address">
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Fire Extinguisher</label>
+    <select class="form-control" [(ngModel)]="equipment.address" name="address">
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Fire Extinguisher Locations</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Fire Extinguisher Type</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+<h5>Warranty Details</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Warranty Provided By</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Warranty Start Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Warranty End Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+<h5>License Details</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>License Provided By</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>License Provide Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>License Expiry Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+<h5>Inspection Details</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Last Inspection Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Last Inspection Done By</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Next inspection date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Damage If Any</label>
+    <select class="form-control" [(ngModel)]="equipment.address" name="address">
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+  <div class="col-sm-12 col-md-8">
+    <label>Damage Description</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+
+<h5>Insurance Information</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Policy No</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Policy Type</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Name</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Description</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Start Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>End Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Policy Amount</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Policy Provider Name</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Policy Provider Description</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <label>Supporting Documents</label>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>
+            Description
+          </th>
+          <th>
+            Delete/Download
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Document 1
+          </td>
+          <td>
+            Documnet description 1
+          </td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary">
+              <span class="fa fa-trash"></span> Delete</button>
+            <button class="btn btn-sm btn-outline-primary">
+              <span class="fa fa-download"></span> Download</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<h5>Current Asset Assigned Details</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Assigned Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Assigned To</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label></label>
+    <div class="pt-2">
+      <button class="btn btn-primary">Add</button>
+      <button class="btn btn-primary">Lookup</button>
+    </div>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Name</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Phone</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Email</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+<h5>Loan Details</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Loan</label>
+    <select class="form-control" [(ngModel)]="equipment.address" name="address">
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Loan Provided By</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Loan Provider Email</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <label>Loan Provided Phone</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <label>Loan Provider Alt. Phone</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Loan Start Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Loan End Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>EMI Amount</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <label>Equipment Returned</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <label>Actual Returned Date</label>
+    <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row pb-2 pt-2">
+  <div class="col-sm-12 col-md-6">
+    <button class="btn btn-primary" type="button">Add</button>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <button class="btn btn-primary float-right" type="button">Lookup</button>
+  </div>
+</div>
