@@ -1,3 +1,293 @@
-<p>
-  add-vehicle works!
-</p>
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h3>
+      <span class="fa fa-vehicle"></span> Add Vehicle</h3>
+  </div>
+</div>
+<h5>Vehicle Details</h5>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-4">
+    <label>Vehicle Registration Number</label>
+    <input class="form-control" [(ngModel)]="vehicle.vehicleId" name="vehicleid" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Engine Number</label>
+    <input class="form-control" [(ngModel)]="vehicle.name" name="vehiclename" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Chasis Number</label>
+    <input class="form-control" [(ngModel)]="vehicle.vehicleId" name="description" />
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-4">
+    <label>Make</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Model</label>
+    <input class="form-control" [(ngModel)]="vehicle.address" name="address" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Vehicle Damange</label>
+    <select class="form-control" [(ngModel)]="vehicle.address" name="address">
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <label>notes</label>
+    <textarea class="form-control" [(ngModel)]="vehicle.address" name="address"></textarea>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-3">
+    <label>Vehicle Type</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Vehicle Condition</label>
+    <select class="form-control" [(ngModel)]="vehicle.address" name="address">
+      <option>New</option>
+      <option>Old</option>
+    </select>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Vehicle Status</label>
+    <select class="form-control" [(ngModel)]="vehicle.address" name="address">
+      <option>Fully Operational</option>
+      <option>Non Operational</option>
+    </select>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Year of Manufacturing</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>MOT</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Office Address</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Vehicle Ownership</label>
+    <select class="form-control" [(ngModel)]="vehicle.address" name="address">
+      <option>Own</option>
+      <option>Rental</option>
+    </select>
+  </div>
+</div>
+
+
+<h5>Rent Details</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <label>Company Name</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <label>Annual Rent</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <label>Start Date</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <label>End Date</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+
+<h5>Insurance Information</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Policy No</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Policy Type</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Name</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Description</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Start Date</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>End Date</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Policy Amount</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Policy Provider Name</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Policy Provider Description</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <label>Supporting Documents</label>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>
+            Description
+          </th>
+          <th>
+            Delete/Download
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Document 1
+          </td>
+          <td>
+            Documnet description 1
+          </td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary">
+              <span class="fa fa-trash"></span> Delete</button>
+            <button class="btn btn-sm btn-outline-primary">
+              <span class="fa fa-download"></span> Download</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<h5>Current Asset Assigned Details</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Assigned Date</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Assigned To</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label></label>
+    <div class="pt-2">
+      <button class="btn btn-primary">Add</button>
+      <button class="btn btn-primary">Lookup</button>
+    </div>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Name</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Phone</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Email</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+<h5>Loan Details</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Loan</label>
+    <select class="form-control" [(ngModel)]="vehicle.address" name="address">
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Loan Provided By</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Loan Provider Email</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <label>Loan Provided Phone</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <label>Loan Provider Alt. Phone</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Loan Start Date</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Loan End Date</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>EMI Amount</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+
+<h5>Tax Details</h5>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <label>Start Date</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>End Date</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Amount</label>
+    <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+  </div>
+</div>
+
+<div class="row pb-2 pt-2">
+  <div class="col-sm-12 col-md-6">
+    <button class="btn btn-primary" type="button">Add</button>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <button class="btn btn-primary float-right" type="button">Lookup</button>
+  </div>
+</div>

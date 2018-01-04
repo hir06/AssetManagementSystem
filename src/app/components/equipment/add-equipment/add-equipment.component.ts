@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-equipment.component.scss']
 })
 export class AddEquipmentComponent implements OnInit {
-
+  equipment: any = {};
   constructor() { }
 
   ngOnInit() {
