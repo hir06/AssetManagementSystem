@@ -12,4 +12,7 @@ export class VehicleListComponent implements OnInit {
   ngOnInit() {
   }
 
+  getPageData($event:any){
+    console.log($event);
+  }
 }

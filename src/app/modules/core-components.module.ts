@@ -19,6 +19,7 @@ import { VehicleListComponent } from "../components/vehicle/vehicle-list/vehicle
 import { AddOtherAssetsComponent } from "../components/other/add-other-assets/add-other-assets.component";
 import { OtherAssetsListComponent } from "../components/other/other-assets-list/other-assets-list.component";
 import { RouterModule } from '@angular/router';
+import { PaginationModule } from 'ngx-pagination-bootstrap'
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { RouterModule } from '@angular/router';
         AddOtherAssetsComponent,
         OtherAssetsListComponent
     ],
-    imports: [FormsModule, CommonModule,RouterModule],
+    imports: [FormsModule, CommonModule,RouterModule,PaginationModule],
     providers: [],
     exports: [
         FormsModule,
