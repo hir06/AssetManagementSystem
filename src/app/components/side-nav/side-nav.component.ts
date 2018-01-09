@@ -18,6 +18,9 @@ export class SideNavComponent implements OnInit {
   ngOnInit() {
     //this.thisView = this._sharedService.activeView;
   }
+  logout(){
+    this.userService.logOut();
+  }
 
   // navigateToView(view){
   //   this.thisView = view;

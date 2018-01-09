@@ -4,8 +4,8 @@
     <h2 class="logo">
         <a href="#"><img src="../../assets/images/logo@1x.png" alt="gotorisk.co.uk" /></a>
     </h2>
-    <div class="sm-navbar-container hidden-lg" ng-init="showMenu = false" >
-         <span style="font-size:20px" data-elem ="smallMenu" class="glyphicon glyphicon-menu-hamburger" (click)="showMenu = true"></span>
+    <div class="sm-navbar-container hidden-lg" >
+         <span style="font-size:20px" data-elem ="smallMenu" class="glyphicon glyphicon-menu-hamburger"></span>
     </div>
     <!-- <ul class="hidden-lg navbar sm-navbar" ng-show="showMenu">
             <li ng-class="{active:thisView=='dashboard'}" data-elem ="smallMenu" ng-if="isAdminRole">
@@ -60,7 +60,7 @@
             <div class="dropdown-menu" style="width:125px;">
               <a class="dropdown-item" href="#">Profile</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="userService.logOut()">Logout</a>
+              <a class="dropdown-item" (click)="logOut()">Logout</a>
             </div>
         </div>
         <!-- | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a> -->

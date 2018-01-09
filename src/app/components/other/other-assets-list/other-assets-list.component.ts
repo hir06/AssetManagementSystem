@@ -12,4 +12,7 @@ export class OtherAssetsListComponent implements OnInit {
   ngOnInit() {
   }
 
+  getPageData($event:any){
+    console.log($event);
+  }
 }

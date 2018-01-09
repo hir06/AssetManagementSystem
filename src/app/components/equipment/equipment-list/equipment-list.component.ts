@@ -11,5 +11,7 @@ export class EquipmentListComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  getPageData($event:any){
+    console.log($event);
+  }
 }
