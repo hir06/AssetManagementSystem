@@ -61,3 +61,20 @@ a:hover {
         border-radius: 0 20px 20px 0;
     }
 }
+
+
+.nav-tabs {
+    border-bottom: 1px solid $amsColor;
+    .nav-link {
+        border-color: $amsColor;
+        color:  $amsColor;
+        &:hover, &.active{
+            color:white !important;
+            background-color: $amsColor;
+            border-color: $amsColor;
+        }
+       
+       
+    }
+}
+

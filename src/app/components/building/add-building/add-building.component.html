@@ -4,319 +4,101 @@
       <span class="fa fa-building"></span> Add Building</h3>
   </div>
 </div>
-<h5>Building Details</h5>
-<div class="row pb-2">
-  <div class="col-sm-12 col-md-4">
-    <label>Building ID</label>
-    <input class="form-control" [(ngModel)]="building.buildingId" name="buildingid" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Building Name</label>
-    <input class="form-control" [(ngModel)]="building.name" name="buildingname" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Description</label>
-    <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
-  </div>
-</div>
-<div class="row pb-2">
-  <div class="col-sm-12 col-md-4">
-    <label>Floor</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Building Address</label>
-    <input class="form-control" [(ngModel)]="building.address" name="address" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Department Name</label>
-    <input class="form-control" [(ngModel)]="building.departmentName" name="departmentName" />
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>Size/Area (sq.ft)</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Asset Condition</label>
-    <select class="form-control" [(ngModel)]="building.address" name="address">
-      <option>New</option>
-      <option>Old</option>
-    </select>
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Asset type</label>
-    <select class="form-control" [(ngModel)]="building.address" name="address">
-      <option>Own</option>
-      <option>Rental</option>
-      <option>Lease</option>
-    </select>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12 col-md-6">
-    <label>Asset Status</label>
-    <select class="form-control" [(ngModel)]="building.address" name="address">
-      <option>Fully Operational</option>
-      <option>Non Operational</option>
-    </select>
-  </div>
-  <div class="col-sm-12 col-md-6">
-    <label>Asset Condition</label>
-    <select class="form-control" [(ngModel)]="building.address" name="address">
-      <option>New</option>
-      <option>Old</option>
-    </select>
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>Regulatory Compliance</label>
-    <select class="form-control" [(ngModel)]="building.address" name="address">
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Regulatory Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Regulatory Authority</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12 col-md-3">
-    <label>Fire Exits</label>
-    <select class="form-control" [(ngModel)]="building.address" name="address">
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-  </div>
-  <div class="col-sm-12 col-md-3">
-    <label>Fire Extinguisher</label>
-    <select class="form-control" [(ngModel)]="building.address" name="address">
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-  </div>
-  <div class="col-sm-12 col-md-3">
-    <label>Fire Extinguisher Locations</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-3">
-    <label>Fire Extinguisher Type</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-
-<h5>Lease/Rent Details</h5>
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>Company Name</label>
-    <select class="form-control" [(ngModel)]="building.address" name="address">
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Start Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>End Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12 col-md-6">
-    <label>Annual Rent</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-6">
-    <label>Lease Amount</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-
-<h5>Maintenance Details</h5>
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>Asset Maintenance Contract</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Maintenance Company Name</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Annual Maintenance Amount</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12 col-md-6">
-    <label>Maintenance Start Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-6">
-    <label>Maintenance End Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-<h5>License Details</h5>
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>License Provide Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>License Expiry Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>License Provided By</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-
-<h5>Inspection Details</h5>
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>Last Inspection Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Last Inspection Done By</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Next inspection date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-
-<h5>Current Asset Holder Details</h5>
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>Assigned Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Assigned To</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label></label>
-    <div class="pt-2">
-      <button class="btn btn-primary">Add</button>
-      <button class="btn btn-primary">Lookup</button>
+<ul class="nav nav-tabs mb-2">
+  <li class="nav-item">
+    <a class="nav-link active" >Building Details</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" >Maintenance</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" >Inspection</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " >License</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " >Loan</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " >Policy</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " >Rent or Lease</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " >Service</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " >Warranty</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " >Supporting Documents</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link ">Summary</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <h5>Building Details</h5>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Building ID</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="buildingid" />
     </div>
-
+    <div class="col-sm-12 col-md-3">
+      <label>Building Name</label>
+      <input class="form-control" [(ngModel)]="building.name" name="buildingname" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>No. Of Floor</label>
+      <input class="form-control" [(ngModel)]="building.floor" name="floor" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Building Size</label>
+      <input class="form-control" [(ngModel)]="building.floor" name="floor" />
+    </div>
   </div>
-</div>
-<h5>Insurance Information</h5>
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>Policy No</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
+  
+  
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Asset Category</label>
+      <input class="form-control" [(ngModel)]="building.address" name="address" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Organization</label>
+      <input class="form-control" [(ngModel)]="building.departmentName" name="departmentName" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Department</label>
+      <input class="form-control" [(ngModel)]="building.departmentName" name="departmentName" />
+    </div>
   </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Policy Type</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Name</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>Description</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Start Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>End Date</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12 col-md-4">
-    <label>Policy Amount</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Policy Provider Name</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-  <div class="col-sm-12 col-md-4">
-    <label>Policy Provider Description</label>
-    <input class="form-control" [(ngModel)]="building.floor" name="floor" />
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <label>Supporting Documents</label>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>
-            Description
-          </th>
-          <th>
-            Delete/Download
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            Document 1
-          </td>
-          <td>
-            Documnet description 1
-          </td>
-          <td>
-            <button class="btn btn-sm btn-outline-primary">
-              <span class="fa fa-trash"></span> Delete</button>
-            <button class="btn btn-sm btn-outline-primary">
-              <span class="fa fa-download"></span> Download</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Regulatory Compliance</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Regulatory Authority</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Compliance Obtained Date</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+    </div>
   </div>
 
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <label>Notes</label>
-    <textarea class="form-control"></textarea>
-  </div>
-
-</div>
-
-<div class="row pb-2 pt-2">
-  <div class="col-sm-12 col-md-6">
-    <button class="btn btn-primary" type="button">Add</button>
-  </div>
-  <div class="col-sm-12 col-md-6">
-    <button class="btn btn-primary float-right" type="button">Lookup</button>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Building Description</label>
+      <textarea class="form-control" [(ngModel)]="building.buildingId" name="description"></textarea>
+    </div>
   </div>
 </div>
