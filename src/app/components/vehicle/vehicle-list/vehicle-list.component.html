@@ -1,9 +1,16 @@
 <div class="row">
   <div class="col-md-6">
-    <h3>Vehicles | <button class="btn btn-info btn-sm" [routerLink]="'add-vehicle'"><span class="fa fa-plus"></span> Add Vehicle</button></h3>
+    <h3>Vehicles | <button class="btn btn-info btn-sm" [routerLink]="'add-vehicle'"><span class="fa fa-plus"></span> Add Vehicle</button>
+      <button class="btn btn-danger btn-sm">
+          <span class="fa fa-trash"></span> Delete</button>
+    </h3>
   </div>
   <div class="col-md-6">
-    <button class="btn btn-info btn-sm float-right"><span class="fa fa-search"></span> Advance Search</button>
+    <button class="btn btn-info btn-sm float-right ml-2"><span class="fa fa-search"></span> Advance Search</button>
+    <div class="input-group search float-right">
+        <input class="form-control form-control-sm " placeholder="Search"/>
+        <span class="input-group-addon"><span class="fa fa-search"></span></span>
+      </div>
   </div>
 </div>
 <table class="table table-bordered">

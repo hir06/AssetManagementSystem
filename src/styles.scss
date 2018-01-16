@@ -1,45 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
-@import './_common';
-html,body{
-        height: 100%;
-        width: 100%;
-        background-color: #ecedf0;
-        overflow: hidden;
+@import "./_common";
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #ecedf0;
+    overflow: hidden;
 }
 
-.container-fluid{
-        @extend .zero-padding;
-        height: 100%;
+.container-fluid {
+    @extend .zero-padding;
+    height: 100%;
 }
 
-.content{
-        padding-top:15px;
-        overflow: auto;
-        border-top: 15px solid $amsColor;
+.content {
+    padding-top: 15px;
+    overflow: auto;
+    border-top: 15px solid $amsColor;
 }
-.table{
-        background: white;
-}
-
-.row.view{
-        @extend .zero-margin;
-        height: calc(100% - 100px);
+.table {
+    background: white;
 }
 
-h5{
-        border-bottom: 2px dotted #2e2e2e;
+.row.view {
+    @extend .zero-margin;
+    height: calc(100% - 100px);
 }
-thead{
+
+h5 {
+    border-bottom: 2px dotted #2e2e2e;
+}
+thead {
+    background-color: $amsColor;
+    color: white;
+}
+
+.btn {
+    &:hover {
         background-color: $amsColor;
-        color: white;
-}
-
-.btn{
-        &:hover{
-                background-color: $amsColor;
-        }
+    }
 }
 
 a:hover {
-        text-decoration: none;
+    text-decoration: none;
+}
+
+.btn-sm {
+    min-height: 30px;
+}
+
+.input-group.search {
+    input {
+        border-right: 0;
+        border-radius: 20px 0 0 20px;
     }
+    width: 300px;
+    max-height: 30px;
+    span {
+        background-color: white;
+        border-radius: 0 20px 20px 0;
+    }
+}
