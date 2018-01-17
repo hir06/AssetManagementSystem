@@ -1,5 +1,8 @@
+import { WarrantyComponent } from './../components/warranty/warranty.component';
+import { RentOrLeaseComponent } from './../components/rent-or-lease/rent-or-lease.component';
+import { LoanComponent } from './../components/loan/loan.component';
+import { LicenseComponent } from './../components/license/license.component';
 import { MaintenanceComponent } from './../components/maintenance/maintenance.component';
-
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
@@ -21,6 +24,11 @@ import { AddOtherAssetsComponent } from "../components/other/add-other-assets/ad
 import { OtherAssetsListComponent } from "../components/other/other-assets-list/other-assets-list.component";
 import { RouterModule } from '@angular/router';
 import { PaginationModule } from 'ngx-pagination-bootstrap';
+import { InspectionComponent } from '../components/inspection/inspection.component';
+import { PolicyComponent } from '../components/policy/policy.component';
+import { ServiceComponent } from '../components/service/service.component';
+import { SupportingDocumentsComponent } from '../components/supporting-documents/supporting-documents.component';
+
 
 
 
@@ -42,7 +50,15 @@ import { PaginationModule } from 'ngx-pagination-bootstrap';
         VehicleListComponent,
         AddOtherAssetsComponent,
         OtherAssetsListComponent,
-        MaintenanceComponent
+        MaintenanceComponent,
+        InspectionComponent,
+        LicenseComponent,
+        LoanComponent,
+        PolicyComponent,
+        RentOrLeaseComponent,
+        ServiceComponent,
+        WarrantyComponent,
+        SupportingDocumentsComponent
     ],
     imports: [FormsModule, CommonModule,RouterModule,PaginationModule],
     providers: [],
