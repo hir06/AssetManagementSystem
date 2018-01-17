@@ -5,38 +5,8 @@
   </div>
 </div>
 <ul class="nav nav-tabs mb-2">
-  <li class="nav-item">
-    <a class="nav-link active" >Asset Details</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" >Maintenance</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" >Inspection</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >License</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Loan</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Policy</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Rent or Lease</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Service</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Warranty</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Supporting Documents</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link ">Summary</a>
+  <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
+    <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}</a>
   </li>
 </ul>
 <div class="tab-content">

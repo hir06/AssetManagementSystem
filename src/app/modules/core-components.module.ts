@@ -1,3 +1,4 @@
+import { MaintenanceComponent } from './../components/maintenance/maintenance.component';
 
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
@@ -19,7 +20,8 @@ import { VehicleListComponent } from "../components/vehicle/vehicle-list/vehicle
 import { AddOtherAssetsComponent } from "../components/other/add-other-assets/add-other-assets.component";
 import { OtherAssetsListComponent } from "../components/other/other-assets-list/other-assets-list.component";
 import { RouterModule } from '@angular/router';
-import { PaginationModule } from 'ngx-pagination-bootstrap'
+import { PaginationModule } from 'ngx-pagination-bootstrap';
+
 
 
 @NgModule({
@@ -39,29 +41,14 @@ import { PaginationModule } from 'ngx-pagination-bootstrap'
         AddVehicleComponent,
         VehicleListComponent,
         AddOtherAssetsComponent,
-        OtherAssetsListComponent
+        OtherAssetsListComponent,
+        MaintenanceComponent
     ],
     imports: [FormsModule, CommonModule,RouterModule,PaginationModule],
     providers: [],
     exports: [
         FormsModule,
-        CommonModule,
-        HeaderComponent,
-        LoginComponent,
-        SideNavComponent,
-        DashboardComponent,
-        BuildingComponent,
-        BuildingListComponent,
-        AddBuildingComponent,
-        VehicleComponent,
-        OtherComponent,
-        EquipmentComponent,
-        AddEquipmentComponent,
-        EquipmentListComponent,
-        AddVehicleComponent,
-        VehicleListComponent,
-        AddOtherAssetsComponent,
-        OtherAssetsListComponent
+        CommonModule
     ],
     entryComponents: [ DashboardComponent ]
 })

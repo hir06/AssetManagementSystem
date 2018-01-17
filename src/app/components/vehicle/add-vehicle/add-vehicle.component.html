@@ -5,38 +5,8 @@
   </div>
 </div>
 <ul class="nav nav-tabs mb-2">
-  <li class="nav-item">
-    <a class="nav-link active" >Vehicle Details</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" >Maintenance</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" >Inspection</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >License</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Loan</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Policy</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Rent or Lease</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Service</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Warranty</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Supporting Documents</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link ">Summary</a>
+  <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
+    <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}</a>
   </li>
 </ul>
 <div class="tab-content">
@@ -44,19 +14,19 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Building ID</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="equipmentid" />
+      <input class="form-control" [(ngModel)]="vehicle.vehicleId" name="vehicleid" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Building Name</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="vehicle.name" name="vehiclename" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>No. Of Floor</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Building Size</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
     </div>
   </div>
   
@@ -64,15 +34,15 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Asset Category</label>
-      <input class="form-control" [(ngModel)]="equipment.address" name="address" />
+      <input class="form-control" [(ngModel)]="vehicle.address" name="address" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Organization</label>
-      <input class="form-control" [(ngModel)]="equipment.departmentName" name="departmentName" />
+      <input class="form-control" [(ngModel)]="vehicle.departmentName" name="departmentName" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Department</label>
-      <input class="form-control" [(ngModel)]="equipment.departmentName" name="departmentName" />
+      <input class="form-control" [(ngModel)]="vehicle.departmentName" name="departmentName" />
     </div>
   </div>
   
@@ -86,18 +56,18 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Authority</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <input class="form-control" [(ngModel)]="vehicle.vehicleId" name="description" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Compliance Obtained Date</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <input class="form-control" [(ngModel)]="vehicle.vehicleId" name="description" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Building Description</label>
-      <textarea class="form-control" [(ngModel)]="equipment.equipmentId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="vehicle.vehicleId" name="description"></textarea>
     </div>
   </div>
 </div>

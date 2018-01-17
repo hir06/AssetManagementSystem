@@ -6,41 +6,11 @@
 </div>
 
 <ul class="nav nav-tabs mb-2">
-  <li class="nav-item">
-    <a class="nav-link active" >Building Details</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" >Maintenance</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" >Inspection</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >License</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Loan</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Policy</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Rent or Lease</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Service</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Warranty</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " >Supporting Documents</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link ">Summary</a>
+  <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
+    <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}</a>
   </li>
 </ul>
-<div class="tab-content">
+<div class="tab-content" *ngIf="currentTab.tab == 1">
   <h5>Building Details</h5>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
@@ -101,4 +71,30 @@
       <textarea class="form-control" [(ngModel)]="building.buildingId" name="description"></textarea>
     </div>
   </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Exits</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Exit Location</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Extinguisher</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Extinguisher Location</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+    </div>
+  </div>
+  <div class="row pb-2">
+
+  </div>
 </div>
+<app-maintenance *ngIf="currentTab.tab==2"></app-maintenance>
