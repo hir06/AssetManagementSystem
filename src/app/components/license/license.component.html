@@ -1,3 +1,139 @@
-<p>
-  license works!
-</p>
+<div class="tab-content">
+  <h5>License Details</h5>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>License Number</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>License Holder Name</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>License Holder Company</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>License Holder Email</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>License Holder Phone</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provided By</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Phone</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Email</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>License Holder Company Description</label>
+      <textarea class="form-control" [(ngModel)]="license.buildingId" name="description"></textarea>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>Provider Description</label>
+      <textarea class="form-control" [(ngModel)]="license.buildingId" name="description"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Providing Authority</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Issued Date</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Place Of Issue</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Renewal Date</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Start Date ime</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>End Date Time</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Grace Date Time</label>
+      <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Grace Period In Months</label>
+        <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>License Amount</label>
+        <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Renewal Amount</label>
+        <input class="form-control" [(ngModel)]="license.buildingId" name="description" />
+      </div>
+    </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Comments</label>
+      <textarea class="form-control" [(ngModel)]="license.buildingId" name="description"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <button class="btn btn-primary">Save</button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-success float-right">Lookup</button>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>License #</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Renewal Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>License #</td>
+        <td>Start Date</td>
+        <td>End Date</td>
+        <td>Renewal Date</td>
+        <td>
+          <span class="fa fa-trash"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-supporting-documents></app-supporting-documents>
+</div>

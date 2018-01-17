@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inspection.component.scss']
 })
 export class InspectionComponent implements OnInit {
-
+  inspection:any;
   constructor() { }
 
   ngOnInit() {
