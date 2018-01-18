@@ -1,10 +1,10 @@
 <div class="row pb-3">
   <div class="col-md-12">
-    <h3>
-      <span class="fa fa-vehicle"></span> Add Vehicle</h3>
+    <h4>
+      <span class="fa fa-vehicle"></span> Add Vehicle</h4>
   </div>
 </div>
-<ul class="nav nav-tabs mb-2">
+<ul class="row nav nav-tabs mb-2">
   <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
     <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}</a>
   </li>
@@ -73,3 +73,10 @@
 </div>
 <app-maintenance *ngIf="currentTab.tab==2"></app-maintenance>
 <app-inspection *ngIf="currentTab.tab==3"></app-inspection>
+<app-license *ngIf="currentTab.tab==4"></app-license>
+<app-loan *ngIf="currentTab.tab==5"></app-loan>
+<app-policy *ngIf="currentTab.tab==6"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8"></app-service>
+<app-warranty *ngIf="currentTab.tab==9"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10"></app-supporting-documents>

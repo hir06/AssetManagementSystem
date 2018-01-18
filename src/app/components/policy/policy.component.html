@@ -1,3 +1,143 @@
-<p>
-  policy works!
-</p>
+<div class="tab-content">
+  <h5>Policy Details</h5>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Policy ID</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Name</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Cover Amount</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Premium Amount</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Policy Description</label>
+      <textarea class="form-control" [(ngModel)]="policy.buildingId" name="description"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Start Date Time</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy End Date Time</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Grace Date Time</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Grace Period In Months</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Policy Type</label>
+      <select class="form-control" [(ngModel)]="policy.buildingId" name="description">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Renewal Type</label>
+      <select class="form-control" [(ngModel)]="policy.buildingId" name="description">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Provider Name</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Provider Phone</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Provider Email</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Provider Contact Person</label>
+      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Provider Description</label>
+      <textarea class="form-control" [(ngModel)]="policy.buildingId" name="description"></textarea>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>Comments</label>
+      <textarea class="form-control" [(ngModel)]="policy.buildingId" name="description"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <button class="btn btn-primary">Save</button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-success float-right">Lookup</button>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Policy #</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Cover Amount</th>
+        <th>Policy Type</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          I123
+        </td>
+        <td>
+          Name
+        </td>
+        <td>
+          Date
+        </td>
+        <td>
+          Date
+        </td>
+        <td>
+          Amount
+        </td>
+        <td>
+            Policy type
+          </td>
+        <td>
+          <span class="fa fa-trash"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-supporting-documents></app-supporting-documents>
+</div>

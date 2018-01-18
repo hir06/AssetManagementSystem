@@ -6,7 +6,7 @@ export class SharedService {
         public activeView: string;
         public tabs = [
                 {
-                  name: "Building Details",
+                  name: "Asset Details",
                   tab:1
                 }, {
                   name: "Maintenance",
@@ -30,17 +30,14 @@ export class SharedService {
                   name: "Service",
                   tab:8
                 }, {
-                  name: "Building Details",
+                  name: "Warranty",
                   tab:9
                 }, {
-                  name: "Warranty",
+                  name: "Documents",
                   tab:10
                 }, {
-                  name: "Supporting Documents",
-                  tab:11
-                }, {
                   name: "Summary",
-                  tab:12
+                  tab:11
                 }
               ];
         constructor() { }

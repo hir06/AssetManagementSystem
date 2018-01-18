@@ -1,3 +1,139 @@
-<p>
-  warranty works!
-</p>
+<div class="tab-content">
+  <h5>Warranty Details</h5>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Warranty ID</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Warranty Name</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provided By</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Phone</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Warranty Description</label>
+      <textarea class="form-control" [(ngModel)]="warranty.buildingId" name="description"></textarea>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>Provider Description</label>
+      <textarea class="form-control" [(ngModel)]="warranty.buildingId" name="description"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Email</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Contact Person</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provided Date</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Start Date Time</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>End Date Time</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Grace Date Time</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Grace Period In Months</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Amount</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Renewal Date</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Renewal Amount</label>
+      <input class="form-control" [(ngModel)]="warranty.buildingId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Comments</label>
+      <textarea class="form-control" [(ngModel)]="warranty.buildingId" name="description"></textarea>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <button class="btn btn-primary">Save</button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-success float-right">Lookup</button>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Warranty #</th>
+        <th>Provided By</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Amount</th>
+        <th>Renewal Date</th>
+        <th>Renewal Amount</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          I123
+        </td>
+        <td>
+          Name
+        </td>
+        <td>
+          Date
+        </td>
+        <td>
+          Date
+        </td>
+        <td>
+          Amount
+        </td>
+        <td>
+          Renewal Date
+        </td>
+        <td>
+          Renewal Amount
+        </td>
+        <td>
+          <span class="fa fa-trash"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-supporting-documents></app-supporting-documents>
+</div>

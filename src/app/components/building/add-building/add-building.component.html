@@ -1,11 +1,11 @@
 <div class="row pb-3">
   <div class="col-md-12">
-    <h3>
-      <span class="fa fa-building"></span> Add Building</h3>
+    <h4>
+      <span class="fa fa-building"></span> Add Building</h4>
   </div>
 </div>
 
-<ul class="nav nav-tabs mb-2">
+<ul class="row nav nav-tabs mb-2">
   <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
     <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}</a>
   </li>
@@ -22,7 +22,7 @@
       <input class="form-control" [(ngModel)]="building.name" name="buildingname" />
     </div>
     <div class="col-sm-12 col-md-3">
-      <label>No. Of Floor</label>
+      <label>No. Of Floors</label>
       <input class="form-control" [(ngModel)]="building.floor" name="floor" />
     </div>
     <div class="col-sm-12 col-md-3">
@@ -30,8 +30,8 @@
       <input class="form-control" [(ngModel)]="building.floor" name="floor" />
     </div>
   </div>
-  
-  
+
+
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Asset Category</label>
@@ -46,7 +46,14 @@
       <input class="form-control" [(ngModel)]="building.departmentName" name="departmentName" />
     </div>
   </div>
-  
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Building Description</label>
+      <textarea class="form-control" [(ngModel)]="building.buildingId" name="description"></textarea>
+    </div>
+  </div>
+
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Compliance</label>
@@ -65,12 +72,7 @@
     </div>
   </div>
 
-  <div class="row pb-2">
-    <div class="col-sm-12">
-      <label>Building Description</label>
-      <textarea class="form-control" [(ngModel)]="building.buildingId" name="description"></textarea>
-    </div>
-  </div>
+
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
@@ -93,11 +95,149 @@
       <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
     </div>
   </div>
+
   <div class="row pb-2">
-    <div class="col-sm-6">
-      <button class="btn btn-primary">Save</button>
+    <div class="col-sm-12 col-md-3">
+      <label>Annual Maintenance Contract</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-12 col-md-3">
+      <label>Inspection</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>License</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Loan</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Policy</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Rental/Lease</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Service</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Warranty</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Asset Condition</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>If Other Specify</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Asset Status</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>If Other Specify</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Asset Type</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>If Other Specify</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      Assigned To:
+      <button class="btn btn-primary">Lookup</button>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <th>
+        Name
+      </th>
+      <th>
+        Phone
+      </th>
+      <th>
+        Email
+      </th>
+      <th></th>
+    </thead>
+    <tbody>
+      <td>Karthik</td>
+      <td>125-365-9874
+      </td>
+      <td>karthik@i2g.com
+      </td>
+      <td>
+        <span class="fa fa-trash"></span>
+      </td>
+    </tbody>
+  </table>
+  <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Notes</label>
+          <textarea class="form-control"></textarea>
+      </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <button class="btn btn-primary">Save</button>
       <button class="btn btn-success float-right">Next</button>
     </div>
   </div>
@@ -107,3 +247,7 @@
 <app-license *ngIf="currentTab.tab==4"></app-license>
 <app-loan *ngIf="currentTab.tab==5"></app-loan>
 <app-policy *ngIf="currentTab.tab==6"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8"></app-service>
+<app-warranty *ngIf="currentTab.tab==9"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10"></app-supporting-documents>
