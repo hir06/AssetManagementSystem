@@ -9,43 +9,151 @@
     <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}</a>
   </li>
 </ul>
-<div class="tab-content">
+<div class="tab-content" *ngIf="currentTab.tab == 1">
   <h5>Equipment Details</h5>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
-      <label>Building ID</label>
+      <label>Equipment ID</label>
       <input class="form-control" [(ngModel)]="equipment.equipmentId" name="equipmentid" />
     </div>
     <div class="col-sm-12 col-md-3">
-      <label>Building Name</label>
+      <label>Equipment Name</label>
       <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
     </div>
     <div class="col-sm-12 col-md-3">
-      <label>No. Of Floor</label>
+      <label>Equipment Details</label>
       <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
     </div>
     <div class="col-sm-12 col-md-3">
-      <label>Building Size</label>
+      <label>Equipment Tag</label>
       <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
     </div>
   </div>
-  
-  
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Asset Category</label>
+      <select class="form-control">
+        <option>Category</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Organization</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Department</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Equipment Cost</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Length</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Width</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Height</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Weight</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Quantity</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Serial #</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Make</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Model</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Purchased Date</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Purchased From</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Company Phone</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Company Email</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+  </div>
+
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
-      <label>Asset Category</label>
-      <input class="form-control" [(ngModel)]="equipment.address" name="address" />
+      <label>Contact Person</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
     </div>
     <div class="col-sm-12 col-md-4">
-      <label>Organization</label>
-      <input class="form-control" [(ngModel)]="equipment.departmentName" name="departmentName" />
+      <label>Order #</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
     </div>
     <div class="col-sm-12 col-md-4">
-      <label>Department</label>
-      <input class="form-control" [(ngModel)]="equipment.departmentName" name="departmentName" />
+      <label>Invoice #</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Purchase Comments</label>
+      <textarea class="form-control" [(ngModel)]="equipment.name" name="equipmentname"></textarea>
     </div>
   </div>
   
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Equipment Returned</label>
+      <select class="form-control">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Return Date</label>
+      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Refund Amount</label>
+      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Return Reason</label>
+      <textarea class="form-control" [(ngModel)]="equipment.name" name="equipmentname"></textarea>
+    </div>
+  </div>
+
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Compliance</label>
@@ -64,10 +172,173 @@
     </div>
   </div>
 
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Exits</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Exit Location</label>
+      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Extinguisher</label>
+      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Extinguisher Location</label>
+      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Annual Maintenance Contract</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Inspection</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>License</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Loan</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Policy</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Rental/Lease</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Service</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Warranty</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Asset Condition</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>If Other Specify</label>
+      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Asset Status</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>If Other Specify</label>
+      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Asset Type</label>
+      <select class="form-control">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>If Other Specify</label>
+      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+    </div>
+  </div>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <label>Building Description</label>
-      <textarea class="form-control" [(ngModel)]="equipment.equipmentId" name="description"></textarea>
+      Assigned To:
+      <button class="btn btn-primary">Lookup</button>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <th>
+        Name
+      </th>
+      <th>
+        Phone
+      </th>
+      <th>
+        Email
+      </th>
+      <th></th>
+    </thead>
+    <tbody>
+      <td>Karthik</td>
+      <td>125-365-9874
+      </td>
+      <td>karthik@i2g.com
+      </td>
+      <td>
+        <span class="fa fa-trash"></span>
+      </td>
+    </tbody>
+  </table>
+  <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Damage Description</label>
+          <textarea class="form-control"></textarea>
+      </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <button class="btn btn-primary">Save</button>
+      <button class="btn btn-success float-right">Next</button>
     </div>
   </div>
 </div>

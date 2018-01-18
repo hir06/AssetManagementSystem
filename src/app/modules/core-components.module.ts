@@ -1,3 +1,4 @@
+import { AddressComponent } from './../components/address/address.component';
 import { WarrantyComponent } from './../components/warranty/warranty.component';
 import { RentOrLeaseComponent } from './../components/rent-or-lease/rent-or-lease.component';
 import { LoanComponent } from './../components/loan/loan.component';
@@ -58,7 +59,8 @@ import { SupportingDocumentsComponent } from '../components/supporting-documents
         RentOrLeaseComponent,
         ServiceComponent,
         WarrantyComponent,
-        SupportingDocumentsComponent
+        SupportingDocumentsComponent,
+        AddressComponent
     ],
     imports: [FormsModule, CommonModule,RouterModule,PaginationModule],
     providers: [],
