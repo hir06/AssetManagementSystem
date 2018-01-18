@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loan.component.scss']
 })
 export class LoanComponent implements OnInit {
-
+  loan:any;
   constructor() { }
 
   ngOnInit() {

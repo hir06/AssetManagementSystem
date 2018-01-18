@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rent-or-lease.component.scss']
 })
 export class RentOrLeaseComponent implements OnInit {
-
+  rent:any;
   constructor() { }
 
   ngOnInit() {

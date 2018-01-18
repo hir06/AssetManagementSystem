@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./warranty.component.scss']
 })
 export class WarrantyComponent implements OnInit {
-
+  warranty:any;
   constructor() { }
 
   ngOnInit() {
