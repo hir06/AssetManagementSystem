@@ -1,9 +1,10 @@
-import { AddressComponent } from './../components/address/address.component';
-import { WarrantyComponent } from './../components/warranty/warranty.component';
-import { RentOrLeaseComponent } from './../components/rent-or-lease/rent-or-lease.component';
-import { LoanComponent } from './../components/loan/loan.component';
-import { LicenseComponent } from './../components/license/license.component';
-import { MaintenanceComponent } from './../components/maintenance/maintenance.component';
+import { AlertsLoaderService } from "./../services/alerts-loader.service";
+import { AddressComponent } from "./../components/address/address.component";
+import { WarrantyComponent } from "./../components/warranty/warranty.component";
+import { RentOrLeaseComponent } from "./../components/rent-or-lease/rent-or-lease.component";
+import { LoanComponent } from "./../components/loan/loan.component";
+import { LicenseComponent } from "./../components/license/license.component";
+import { MaintenanceComponent } from "./../components/maintenance/maintenance.component";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
@@ -23,15 +24,13 @@ import { AddVehicleComponent } from "../components/vehicle/add-vehicle/add-vehic
 import { VehicleListComponent } from "../components/vehicle/vehicle-list/vehicle-list.component";
 import { AddOtherAssetsComponent } from "../components/other/add-other-assets/add-other-assets.component";
 import { OtherAssetsListComponent } from "../components/other/other-assets-list/other-assets-list.component";
-import { RouterModule } from '@angular/router';
-import { PaginationModule } from 'ngx-pagination-bootstrap';
-import { InspectionComponent } from '../components/inspection/inspection.component';
-import { PolicyComponent } from '../components/policy/policy.component';
-import { ServiceComponent } from '../components/service/service.component';
-import { SupportingDocumentsComponent } from '../components/supporting-documents/supporting-documents.component';
-
-
-
+import { RouterModule } from "@angular/router";
+import { PaginationModule } from "ngx-pagination-bootstrap";
+import { InspectionComponent } from "../components/inspection/inspection.component";
+import { PolicyComponent } from "../components/policy/policy.component";
+import { ServiceComponent } from "../components/service/service.component";
+import { SupportingDocumentsComponent } from "../components/supporting-documents/supporting-documents.component";
+import { AjaxLoaderComponent } from "../components/ajax-loader/ajax-loader.component";
 
 @NgModule({
     declarations: [
@@ -60,14 +59,12 @@ import { SupportingDocumentsComponent } from '../components/supporting-documents
         ServiceComponent,
         WarrantyComponent,
         SupportingDocumentsComponent,
-        AddressComponent
+        AddressComponent,
+        AjaxLoaderComponent
     ],
-    imports: [FormsModule, CommonModule,RouterModule,PaginationModule],
-    providers: [],
-    exports: [
-        FormsModule,
-        CommonModule
-    ],
-    entryComponents: [ DashboardComponent ]
+    imports: [FormsModule, CommonModule, RouterModule, PaginationModule],
+    providers: [AlertsLoaderService],
+    exports: [FormsModule, CommonModule],
+    entryComponents: [DashboardComponent, AjaxLoaderComponent]
 })
 export class CoreModule {}

@@ -7,6 +7,7 @@ import { UserService } from './services/userService';
 import { NgModule,APP_INITIALIZER  } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ApiService } from './services/api.services';
+import { HttpActionDirective } from './directive/http-action.directive';
 
 
 
@@ -15,7 +16,8 @@ import { ApiService } from './services/api.services';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HttpActionDirective
   ],
   imports: [
     HttpClientModule,
