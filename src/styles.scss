@@ -17,7 +17,7 @@ body {
     padding-top: 15px;
     overflow: auto;
     border-top: 15px solid $amsColor;
-    height: calc(100% - 100px);
+    min-height: 100%;
 }
 .table {
     background: white;

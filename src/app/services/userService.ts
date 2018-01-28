@@ -8,6 +8,7 @@ import { Injector } from "@angular/core";
 @Injectable()
 export class UserService implements CanActivate {
     userDetails: any;
+    authToken: any;
     constructor(private injector: Injector) {}
     decryptToken(token: any) {
         var base64Url = token.split(".")[0];
@@ -25,6 +26,7 @@ export class UserService implements CanActivate {
     getUserDetails() {
         return new Promise((resolve, reject) => {
             let amsAuthToken = localStorage.getItem("amsAuthToken");
+            this.authToken = amsAuthToken;
             setTimeout(() => {
                 if (!amsAuthToken) {
                     resolve(false);

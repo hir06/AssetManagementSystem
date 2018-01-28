@@ -1,9 +1,11 @@
+import { ApiService } from './api.services';
 import { Injectable } from '@angular/core';
 //import { Http, Response } from '@angular/http';
 
 @Injectable()
 export class SharedService {
         public activeView: string;
+        public dropDownsData: any = {};
         public tabs = [
                 {
                   name: "Asset Details",
@@ -40,6 +42,89 @@ export class SharedService {
                   tab:11
                 }
               ];
-        constructor() { }
+        constructor(private _apiService: ApiService) { }
+        getAssetType(){
+          this._apiService.get("/s/table-maintenance/asset-type/asset-types").subscribe(
+              (data)=>{
+                  this.dropDownsData.assetTypeData = data;
+              },(error)=>{
+                  console.log(error);
+              }
+          );
+      }
 
+      getRentOrLeaseType(){
+        this._apiService.get("/s/table-maintenance/rental-or-lease-type/rental-or-lease-types").subscribe(
+          (data)=>{
+              console.log(data);
+              this.dropDownsData.rentOrLeaseType = data;
+          },(error)=>{
+              console.log(error);
+          }
+      );
+      }
+
+      getAssetConditionList(){
+        this._apiService.get("/s/table-maintenance/asset-condition/asset-conditions").subscribe(
+          (data)=>{
+              console.log(data);
+              this.dropDownsData.rentOrLeaseType = data;
+          },(error)=>{
+              console.log(error);
+          }
+      );
+      }
+
+      getAssetStatusList(){
+        this._apiService.get("/s/table-maintenance/asset-status/asset-statuses").subscribe(
+          (data)=>{
+              console.log(data);
+              this.dropDownsData.rentOrLeaseType = data;
+          },(error)=>{
+              console.log(error);
+          }
+      );
+      }
+
+      getRenewalTypeList(){
+        this._apiService.get("/s/table-maintenance/renewal-type/renewal-types").subscribe(
+          (data)=>{
+              console.log(data);
+              this.dropDownsData.rentOrLeaseType = data;
+          },(error)=>{
+              console.log(error);
+          }
+      );
+      }
+      getExtinguisherTypeList(){
+        this._apiService.get("/s/table-maintenance/fire-extinguisher-type/fire-extinguisher-types").subscribe(
+          (data)=>{
+              console.log(data);
+              this.dropDownsData.rentOrLeaseType = data;
+          },(error)=>{
+              console.log(error);
+          }
+      );
+      }
+      getVehicleTypeList(){
+        this._apiService.get("/s/table-maintenance/vehicle-type/vehicle-types").subscribe(
+          (data)=>{
+              console.log(data);
+              this.dropDownsData.rentOrLeaseType = data;
+          },(error)=>{
+              console.log(error);
+          }
+      );
+      }
+      getMonthTypeList(){
+        ///s/table-maintenance/month-type/month-types
+        this._apiService.get("/s/table-maintenance/month-type/month-types").subscribe(
+          (data)=>{
+              console.log(data);
+              this.dropDownsData.rentOrLeaseType = data;
+          },(error)=>{
+              console.log(error);
+          }
+      );
+      }
 }
