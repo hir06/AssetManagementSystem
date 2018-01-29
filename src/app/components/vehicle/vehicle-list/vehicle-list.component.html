@@ -26,62 +26,17 @@
     </th>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let vehicle of vehicleList;">
       <td>
-        123456
+        {{vehicle.id}}
       </td>
       <td>
-        Building
-      </td>
-      <td>
-        Some Address
-      </td>
-    </tr>
-    <tr>
-      <td>
-        123456
-      </td>
-      <td>
-        Building
+        {{vehicle.assettype?.description}}
       </td>
       <td>
         Some Address
       </td>
     </tr>
-    <tr>
-      <td>
-        123456
-      </td>
-      <td>
-        Building
-      </td>
-      <td>
-        Some Address
-      </td>
-    </tr>
-    <tr>
-      <td>
-        123456
-      </td>
-      <td>
-        Building
-      </td>
-      <td>
-        Some Address
-      </td>
-    </tr>
-    <tr>
-      <td>
-        123456
-      </td>
-      <td>
-        Building
-      </td>
-      <td>
-        Some Address
-      </td>
-    </tr>
-
   </tbody>
 </table>
-<ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="58" (getPageData)="getPageData($event)"></ng-pagination>
+<ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
