@@ -79,4 +79,14 @@ export class ApiService {
     createOrUpdateBuilding(url: string, data: any) {
         return this.put(url, data, null);
     }
+
+    createOrUpdateOtherAsset(url: string, data: any){
+        return this.put(url, data, null);
+    }
+    createOrUpdateEquipment(url: string, data: any){
+        return this.put(url, data, null);
+    }
+    createOrUpdateVehicle(url: string, data: any){
+        return this.put(url, data, null);
+    }
 }
