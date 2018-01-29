@@ -7,42 +7,21 @@ import { Subject } from "rxjs/Subject";
 export class SharedService {
     public activeView: string;
     public dropDownsData: any = {};
+    public conditionalTabs: [
+
+        {
+            name: "Rental/Lease";
+            tab: 7;
+        },
+        {
+            name: "Service";
+            tab: 8;
+        }
+    ];
     public tabs = [
         {
             name: "Asset Details",
             tab: 1
-        },
-        {
-            name: "Maintenance",
-            tab: 2
-        },
-        {
-            name: "Inspection",
-            tab: 3
-        },
-        {
-            name: "License",
-            tab: 4
-        },
-        {
-            name: "Loan",
-            tab: 5
-        },
-        {
-            name: "Policy",
-            tab: 6
-        },
-        {
-            name: "Rental/Lease",
-            tab: 7
-        },
-        {
-            name: "Service",
-            tab: 8
-        },
-        {
-            name: "Warranty",
-            tab: 9
         },
         {
             name: "Documents",
@@ -58,6 +37,44 @@ export class SharedService {
         this.getAllDropdownData();
     }
 
+    getTabstoShow(tabConditions: any) {
+        const tabs = JSON.parse(JSON.stringify(this.tabs));
+        if (tabConditions.amcPresent == "Y") {
+            tabs.push({ name: "Maintenance", tab: 2 });
+        }
+        if (tabConditions.insurancePresent == "Y") {
+            tabs.push({name: "Policy",tab: 6 });
+        }
+        if (tabConditions.loanPresent == "Y") {
+            tabs.push({name: "Loan",tab: 5});
+        }
+        if (tabConditions.licensePresent == "Y") {
+            tabs.push({name: "License",tab: 4});
+        }
+        if (tabConditions.warrantyPresent == "Y") {
+            tabs.push({name: "Warranty",tab: 9});
+        }
+        if (tabConditions.inspectionPresent == "Y") {
+            tabs.push({name: "Inspection",tab: 3});
+        }
+        if (tabConditions.rentOrLeasePresent == "Y") {
+            tabs.push({name: "Rental/Lease",tab: 7});
+        }
+        if (tabConditions.servicePresent == "Y") {
+            tabs.push({name: "Service",tab: 8});
+        }
+        return tabs.sort((a,b)=>{
+            return a.tab - b.tab;
+        });
+    }
+
+    // addTab(tabName:string){
+
+    // }
+
+    // removeTab(){
+
+    // }
     getAssetType() {
         this._apiService
             .get("/s/table-maintenance/asset-type/asset-types")
@@ -93,7 +110,6 @@ export class SharedService {
             .get("/s/table-maintenance/organization/organizations")
             .subscribe(
                 data => {
-                    
                     this.dropDownsData.organizationList = data;
                     this.propagateNewData();
                 },
@@ -138,7 +154,6 @@ export class SharedService {
             )
             .subscribe(
                 data => {
-
                     this.dropDownsData.vehicleDamageTypeList = data;
                     this.propagateNewData();
                 },
@@ -157,7 +172,6 @@ export class SharedService {
                 data => {
                     this.dropDownsData.fireExtinguisherTypeList = data;
                     this.propagateNewData();
-                    
                 },
                 error => {
                     console.log(error);
@@ -227,7 +241,6 @@ export class SharedService {
             .get("/s/table-maintenance/renewal-type/renewal-types")
             .subscribe(
                 data => {
-                    
                     this.dropDownsData.renewalTypeList = data;
                     this.propagateNewData();
                 },
@@ -264,7 +277,7 @@ export class SharedService {
             );
     }
 
-    propagateNewData(){
+    propagateNewData() {
         this.dropDownsService.next(this.dropDownsData);
     }
 }

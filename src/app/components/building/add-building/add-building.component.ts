@@ -18,8 +18,6 @@ export class AddBuildingComponent implements OnInit {
         displayKey:"description"
     }
     constructor(private _sharedService: SharedService,private _apiService: ApiService) {
-        this.tabs = this._sharedService.tabs;
-        this.currentTab = this.tabs[0];
         this.building={
             "id": null,
             "assets": null,
@@ -78,6 +76,9 @@ export class AddBuildingComponent implements OnInit {
             "existingInspections": null,
             "existingServices": null
         }
+        this.tabs = this._sharedService.getTabstoShow(this.building);
+        this.currentTab = this.tabs[0];
+     
         this._sharedService.dropDownsService.subscribe((data)=>{
             this.dropDownsData = data;
         });
@@ -90,6 +91,9 @@ export class AddBuildingComponent implements OnInit {
         this.currentTab = tab;
     }
 
+    updateTabs(){
+        this.tabs = this._sharedService.getTabstoShow(this.building);
+    }
     save(){
         this._apiService.createOrUpdateBuilding("/s/building/create-or-update-building",this.building)
         .subscribe(

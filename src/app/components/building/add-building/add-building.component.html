@@ -110,28 +110,28 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Annual Maintenance Contract</label>
-      <select class="form-control" [(ngModel)]="building.amcPresent">
+      <select class="form-control" [(ngModel)]="building.amcPresent" (change)="updateTabs()">
           <option value="N">No</option>
           <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Inspection</label>
-      <select class="form-control" [(ngModel)]="building.inspectionPresent">
+      <select class="form-control" [(ngModel)]="building.inspectionPresent" (change)="updateTabs()">
           <option value="N">No</option>
           <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>License</label>
-      <select class="form-control" [(ngModel)]="building.licensePresent">
+      <select class="form-control" [(ngModel)]="building.licensePresent" (change)="updateTabs()">
           <option value="N">No</option>
           <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Loan</label>
-      <select class="form-control" [(ngModel)]="building.loanPresent">
+      <select class="form-control" [(ngModel)]="building.loanPresent" (change)="updateTabs()">
           <option value="N">No</option>
           <option value="Y">Yes</option>
       </select>
@@ -141,28 +141,28 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Policy</label>
-      <select class="form-control" [(ngModel)]="building.policyPresent">
+      <select class="form-control" [(ngModel)]="building.insurancePresent" (change)="updateTabs()">
           <option value="N">No</option>
           <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Rental/Lease</label>
-      <select class="form-control" [(ngModel)]="building.rentOrLeasePresent">
+      <select class="form-control" [(ngModel)]="building.rentOrLeasePresent" (change)="updateTabs()">
           <option value="N">No</option>
           <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service</label>
-      <select class="form-control" [(ngModel)]="building.servicePresent">
+      <select class="form-control" [(ngModel)]="building.servicePresent" (change)="updateTabs()">
           <option value="N">No</option>
           <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Warranty</label>
-      <select class="form-control" [(ngModel)]="building.warrantyPresent">
+      <select class="form-control" [(ngModel)]="building.warrantyPresent" (change)="updateTabs()">
           <option value="N">No</option>
           <option value="Y">Yes</option>
       </select>
