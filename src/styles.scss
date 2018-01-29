@@ -93,3 +93,19 @@ a:hover {
     flex: 0 0 50%;
     max-width: 50%;
 }
+
+.ngx-dorpdown-container{
+    /deep/ul.selected-items{
+           margin-top: 1rem;
+           margin-bottom: 1rem;
+           
+    }
+    ul{
+        li{
+            white-space: normal !important;
+           }
+    }
+    /deep/button.ngx-dropdown-button{
+           padding: 7px 12px !important;
+    }
+}

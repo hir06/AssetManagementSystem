@@ -31,6 +31,7 @@ import { PolicyComponent } from "../components/policy/policy.component";
 import { ServiceComponent } from "../components/service/service.component";
 import { SupportingDocumentsComponent } from "../components/supporting-documents/supporting-documents.component";
 import { AjaxLoaderComponent } from "../components/ajax-loader/ajax-loader.component";
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 
 @NgModule({
     declarations: [
@@ -62,7 +63,7 @@ import { AjaxLoaderComponent } from "../components/ajax-loader/ajax-loader.compo
         AddressComponent,
         AjaxLoaderComponent
     ],
-    imports: [FormsModule, CommonModule, RouterModule, PaginationModule],
+    imports: [FormsModule, CommonModule, RouterModule, PaginationModule, SelectDropDownModule],
     providers: [AlertsLoaderService],
     exports: [FormsModule, CommonModule],
     entryComponents: [DashboardComponent, AjaxLoaderComponent]

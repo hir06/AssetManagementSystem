@@ -19,15 +19,15 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Building Name</label>
-      <input class="form-control" [(ngModel)]="building.name" name="buildingname" />
+      <input class="form-control" [(ngModel)]="building.buildingName" name="buildingName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>No. Of Floors</label>
-      <input class="form-control" [(ngModel)]="building.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="building.numberOfFloors" name="numberOfFloors" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Building Size</label>
-      <input class="form-control" [(ngModel)]="building.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="building.buildingSize" name="buildingSize" />
     </div>
   </div>
 
@@ -35,23 +35,23 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Asset Category</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" disabled [(ngModel)]="building.assetCategory.id">
+        <option value="null"></option>
+        <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category.id">{{category.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Organization</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.organization">
+        <option value="null"></option>
+        <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Department</label>
       <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+        <option value="null"></option>
+        <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
       </select>
     </div>
   </div>
@@ -59,25 +59,26 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Building Description</label>
-      <textarea class="form-control" [(ngModel)]="building.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="building.buildingDescription" name="buildingDescription"></textarea>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Compliance</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
+      <select class="form-control" [(ngModel)]="building.regulatoryCompliance">
         <option value="N">No</option>
+        <option value="Y">Yes</option>
+
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Authority</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="building.regulatoryAuthorityName" name="regulatoryAuthorityName" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Compliance Obtained Date</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="building.regCompObtainedDate" name="regCompObtainedDate" />
     </div>
   </div>
 
@@ -86,52 +87,53 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.fireExits">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Exit Location</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="building.fireExitsLoc" name="fireExitsLoc" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <ngx-select-dropdown *ngIf="dropDownsData.fireExtinguisherTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="building.fireExtinguisherTypes"
+        [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher Location</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="building.fireExtinguisherLoc" name="fireExtinguisherLoc" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Annual Maintenance Contract</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.amcPresent">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Inspection</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.inspectionPresent">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>License</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.licensePresent">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Loan</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.loanPresent">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
       </select>
     </div>
   </div>
@@ -139,30 +141,30 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Policy</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.policyPresent">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Rental/Lease</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.rentOrLeasePresent">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.servicePresent">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Warranty</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.warrantyPresent">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
       </select>
     </div>
   </div>
@@ -170,41 +172,41 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.assetCondition">
+        <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="building.assetConditionOther" name="assetConditionOther" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.assetStatus">
+        <option value="null"></option>
+        <option  *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
+
       </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="building.assetStatusOther" name="assetStatusOther" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
+      <select class="form-control" [(ngModel)]="building.assetType">
+        <option value="null"></option>
+        <option  *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="building.assetTypeOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
@@ -228,25 +230,27 @@
       <th></th>
     </thead>
     <tbody>
-      <td>Karthik</td>
-      <td>125-365-9874
-      </td>
-      <td>karthik@i2g.com
-      </td>
-      <td>
-        <span class="fa fa-trash"></span>
-      </td>
+      <tr *ngFor="let assignee of building.assignees">
+        <td>{{assignee.id}}</td>
+        <td>{{assignee.username}}
+        </td>
+        <td>{{assignee.loginId}}</td>
+        <td>
+          <span class="fa fa-trash"></span>
+        </td>
+      </tr>
+
     </tbody>
   </table>
   <div class="row pb-2">
-      <div class="col-sm-12">
-        <label>Notes</label>
-          <textarea class="form-control"></textarea>
-      </div>
+    <div class="col-sm-12">
+      <label>Notes</label>
+      <textarea class="form-control" [(ngModel)]="building.notes"></textarea>
+    </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary">Save</button>
+      <button class="btn btn-primary" (click)="save()">Save</button>
       <button class="btn btn-success float-right">Next</button>
     </div>
   </div>
