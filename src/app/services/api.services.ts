@@ -35,11 +35,12 @@ export class ApiService {
                 return Observable.throw(error);
             });
     }
-    get(url: string, showLoader?: boolean) {
+    get(url: string, headers?: any, showLoader?: boolean) {
         this._ajaxLoader.showLoader();
-        let headers = {
-            "X-AUTH-TOKEN": this._userService.authToken
-        };
+        if (!headers) {
+            headers = {};
+        }
+        headers["X-AUTH-TOKEN"] = this._userService.authToken;
         return this._http
             .get(this.apiUrl + url, { headers: headers })
             .map((res: any) => {
