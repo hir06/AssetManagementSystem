@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-warranty',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WarrantyComponent implements OnInit {
   warranty:any;
+  @Input() asset: any;
   constructor() { }
 
   ngOnInit() {

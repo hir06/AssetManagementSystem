@@ -255,12 +255,12 @@
     </div>
   </div>
 </div>
-<app-maintenance *ngIf="currentTab.tab==2"></app-maintenance>
-<app-inspection *ngIf="currentTab.tab==3"></app-inspection>
-<app-license *ngIf="currentTab.tab==4"></app-license>
-<app-loan *ngIf="currentTab.tab==5"></app-loan>
-<app-policy *ngIf="currentTab.tab==6"></app-policy>
-<app-rent-or-lease *ngIf="currentTab.tab==7"></app-rent-or-lease>
-<app-service *ngIf="currentTab.tab==8"></app-service>
-<app-warranty *ngIf="currentTab.tab==9"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10"></app-supporting-documents>
+<app-maintenance *ngIf="currentTab.tab==2" [asset]="building"></app-maintenance>
+<app-inspection *ngIf="currentTab.tab==3" [asset]="building"></app-inspection>
+<app-license *ngIf="currentTab.tab==4" [asset]="building"></app-license>
+<app-loan *ngIf="currentTab.tab==5" [asset]="building"></app-loan>
+<app-policy *ngIf="currentTab.tab==6" [asset]="building"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="building"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8" [asset]="building"></app-service>
+<app-warranty *ngIf="currentTab.tab==9" [asset]="building"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10" [asset]="building"></app-supporting-documents>

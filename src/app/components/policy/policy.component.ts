@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-policy',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PolicyComponent implements OnInit {
   policy:any;
+  @Input() asset: any;
   constructor() { }
 
   ngOnInit() {

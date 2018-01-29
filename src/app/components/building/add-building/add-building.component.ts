@@ -94,7 +94,7 @@ export class AddBuildingComponent implements OnInit {
         this._apiService.createOrUpdateBuilding("/s/building/create-or-update-building",this.building)
         .subscribe(
             (data)=>{
-                alert("Success");
+                this.building = data;
             },
             (error)=>{
                 alert("Error");

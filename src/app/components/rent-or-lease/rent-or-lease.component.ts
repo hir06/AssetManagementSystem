@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-rent-or-lease',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RentOrLeaseComponent implements OnInit {
   rent:any;
+  @Input() asset: any;
   constructor() { }
 
   ngOnInit() {

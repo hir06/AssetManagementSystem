@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-supporting-documents',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supporting-documents.component.scss']
 })
 export class SupportingDocumentsComponent implements OnInit {
-
+  @Input() asset: any;
   constructor() { }
 
   ngOnInit() {
