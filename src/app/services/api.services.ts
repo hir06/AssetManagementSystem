@@ -18,7 +18,7 @@ export class ApiService {
         private _ajaxLoader: AlertsLoaderService,
         private _userService: UserService
     ) {}
-    post(url: string, data: any, headers?: any, showLoader?: boolean) {
+    post(url: string, data: any, headers?: any, showLoader: boolean = true) {
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
@@ -35,7 +35,7 @@ export class ApiService {
                 return Observable.throw(error);
             });
     }
-    get(url: string, headers?: any, showLoader?: boolean) {
+    get(url: string, headers?: any, showLoader: boolean = true) {
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
@@ -53,7 +53,7 @@ export class ApiService {
             });
     }
 
-    put(url: string, data: any, headers?: any, showLoader?: boolean) {
+    put(url: string, data: any, headers?: any, showLoader: boolean = true) {
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
@@ -71,22 +71,26 @@ export class ApiService {
             });
     }
     login(url, data) {
-        return this.post(url, data, null);
+        return this.post(url, data);
     }
     getAssetTypes(url: string) {
         return this.get(url);
     }
     createOrUpdateBuilding(url: string, data: any) {
-        return this.put(url, data, null);
+        return this.put(url, data);
     }
 
     createOrUpdateOtherAsset(url: string, data: any){
-        return this.put(url, data, null);
+        return this.put(url, data);
     }
     createOrUpdateEquipment(url: string, data: any){
-        return this.put(url, data, null);
+        return this.put(url, data);
     }
     createOrUpdateVehicle(url: string, data: any){
-        return this.put(url, data, null);
+        return this.put(url, data);
+    }
+
+    addToAsset(url: string, data: any){
+        return this.put(url, data);
     }
 }

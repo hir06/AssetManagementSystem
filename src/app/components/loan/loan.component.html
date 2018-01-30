@@ -3,85 +3,92 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Agreement ID</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.agreementId" name="agreementId" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Agreement Name</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.agreementName" name="agreementName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Name</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.companyName" name="companyName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Phone</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.companyPhone" name="companyPhone" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Agreement Description</label>
-      <textarea class="form-control" [(ngModel)]="loan.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="loan.agreementDescription" name="agreementDescription"></textarea>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>Company Description</label>
-      <textarea class="form-control" [(ngModel)]="loan.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="loan.companyDescription" name="companyDescription"></textarea>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Company Email</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.companyEmail" name="companyEmail" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Contact Person Name</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.companyContactPerson" name="companyContactPerson" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Start Date Time</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.startDateTime" name="startDateTime" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>End Date Time</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.endDateTime" name="endDateTime" />
     </div>
   </div>
-
 
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-md-4">
       <label>Amount</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.loanAmount" name="loanAmount" />
     </div>
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-md-4">
       <label>EMI Amount</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="loan.loanEmi" name="loanEmi" />
     </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Grace Date Time</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
-    </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Grace Period In Months</label>
-      <input class="form-control" [(ngModel)]="loan.buildingId" name="description" />
+    <div class="col-sm-12 col-md-4">
+      <label>Interest Rate</label>
+      <input class="form-control" [(ngModel)]="loan.interestPercentage" name="interestPercentage" />
     </div>
   </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Grace Date Time</label>
+      <input class="form-control" [(ngModel)]="loan.graceDateTime" name="graceDateTime" />
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>Grace Period In Months</label>
+      <input class="form-control" [(ngModel)]="loan.gracePeriodInMonths" name="gracePeriodInMonths" />
+    </div>
+  </div>
+  
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Comments</label>
-      <textarea class="form-control" [(ngModel)]="loan.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="loan.comments" name="comments"></textarea>
     </div>
   </div>
   <div class="row pb-2">
-      <div class="col-sm-6">
-        <button class="btn btn-primary">Save</button>
-      </div>
-      <div class="col-sm-6">
-        <button class="btn btn-success float-right">Lookup</button>
-      </div>
+    <div class="col-sm-6">
+      <button class="btn btn-primary" (click)="save()">Save</button>
     </div>
+    <div class="col-sm-6">
+      <button class="btn btn-success float-right">Lookup</button>
+    </div>
+  </div>
   <table class="table table-bordered">
     <thead>
       <tr>

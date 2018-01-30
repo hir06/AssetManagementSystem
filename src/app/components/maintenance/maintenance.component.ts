@@ -1,5 +1,6 @@
 import { ApiService } from './../../services/api.services';
 import { Component, OnInit, Input } from '@angular/core';
+import { AlertsLoaderService } from '../../services/alerts-loader.service';
 
 @Component({
   selector: 'app-maintenance',
@@ -34,7 +35,7 @@ export class MaintenanceComponent implements OnInit {
     "existingAssetTypeOthers": null
   };
   @Input() asset: any;
-  constructor(private _apiService: ApiService) { }
+  constructor(private _apiService: ApiService,private _alertsService: AlertsLoaderService) { }
 
   ngOnInit() {
   }
@@ -52,12 +53,17 @@ export class MaintenanceComponent implements OnInit {
     }
     url  = url + this.asset.id;
     this._apiService.put(url, this.maintenance).subscribe(
-      (data)=>{
-        alert("Saved")
-      },
-      (error)=>{
-        console.log(error);
-      }
+      data => {
+        this._alertsService.success(
+            "Service successfully added to " +
+                this.asset.assetCategory.description
+        );
+    },
+    error => {
+        this._alertsService.error(
+            "Some error occured. Please try again."
+        );
+    }
     )
   }
 }

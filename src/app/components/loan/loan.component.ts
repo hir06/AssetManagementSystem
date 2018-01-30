@@ -1,16 +1,75 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { AlertsLoaderService } from "./../../services/alerts-loader.service";
+import { Component, OnInit, Input } from "@angular/core";
+import { ApiService } from "../../services/api.services";
 
 @Component({
-  selector: 'app-loan',
-  templateUrl: './loan.component.html',
-  styleUrls: ['./loan.component.scss']
+    selector: "app-loan",
+    templateUrl: "./loan.component.html",
+    styleUrls: ["./loan.component.scss"]
 })
 export class LoanComponent implements OnInit {
-  loan:any;
-  @Input() asset: any;
-  constructor() { }
+    loan: any = {
+        id: null,
+        statusFlag: null,
+        agreementId: null,
+        agreementName: null,
+        agreementDescription:
+        null,
+        companyName: null,
+        companyDescription: null,
+        companyPhone: null,
+        companyEmail: null,
+        companyContactPerson: null,
+        startDateTime: null,
+        endDateTime: null,
+        graceDateTime: null,
+        loanAmount: null,
+        loanEmi: null,
+        gracePeriodInMonths: null,
+        comments: null,
+        interestPercentage: null,
+        buildings: null,
+        equipments: null,
+        vehicles: null,
+        assetTypeOthers: null,
+        existingBuildings: null,
+        existingEquipments: null,
+        existingVehicles: null,
+        existingAssetTypeOthers: null
+    };
+    @Input() asset: any;
+    constructor(
+        private _alertsService: AlertsLoaderService,
+        private _apiService: ApiService
+    ) {}
 
-  ngOnInit() {
-  }
+    ngOnInit() {}
 
+    save() {
+        let url = "/s/building/add-loan-to-building/buildingId/";
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url =
+                "/s/asset-type-other/add-loan-to-asset-type-other/assetTypeOtherId/";
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = "/s/equipment/add-loan-to-equipment/equipmentId/";
+        }
+        if (this.asset.assetCategory.id == "OTHER") {
+            url = "/s/vehicle/add-loan-to-vehicle/vehicleId/";
+        }
+        url = url + this.asset.id;
+        this._apiService.put(url, this.loan).subscribe(
+            data => {
+                this._alertsService.success(
+                    "Service successfully added to " +
+                        this.asset.assetCategory.description
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
+    }
 }

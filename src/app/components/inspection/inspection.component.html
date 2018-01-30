@@ -3,45 +3,45 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Inspection Number</label>
-      <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="inspection.inspectionNumber" name="inspectionNumber" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Name</label>
-      <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="inspection.inspectionCompanyName" name="inspectionCompanyName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Phone</label>
-      <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="inspection.inspectionCompanyPhone" name="inspectionCompanyPhone" />
     </div>
     <div class="col-sm-12 col-md-3">
         <label>Company Email</label>
-        <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+        <input class="form-control" [(ngModel)]="inspection.inspectionCompanyEmail" name="inspectionCompanyEmail" />
       </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Company Description</label>
-      <textarea class="form-control" [(ngModel)]="inspection.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="inspection.inspectionCompanyDescription" name="inspectionCompanyDescription"></textarea>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Contact Person Name</label>
-      <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="inspection.inspectionCompanyContactPerson" name="inspectionCompanyContactPerson" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Inspection Due Date</label>
-      <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="inspection.inspectionDueDate" name="inspectionDueDate" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Inspection Done By</label>
-      <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="inspection.inspectionDoneBy" name="inspectionDoneBy" />
     </div>
     <div class="col-sm-12 col-md-3">
         <label>Inspection Done Date Time</label>
-        <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+        <input class="form-control" [(ngModel)]="inspection.inspectionDoneDateTime" name="inspectionDoneDateTime" />
       </div>
   </div>
 
@@ -49,26 +49,26 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Inspection Duration</label>
-      <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="inspection.inspectionDurationInHours" name="inspectionDurationInHours" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Inspection Amount</label>
-      <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="inspection.inspectionAmount" name="inspectionAmount" />
     </div>
     <div class="col-sm-12 col-md-4">
         <label>Next Inspection Date Time</label>
-        <input class="form-control" [(ngModel)]="inspection.buildingId" name="description" />
+        <input class="form-control" [(ngModel)]="inspection.nextInspectionDueDate" name="nextInspectionDueDate" />
       </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Comments/Observations</label>
-      <textarea class="form-control" [(ngModel)]="inspection.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="inspection.comments" name="comments"></textarea>
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-6">
-      <button class="btn btn-primary">Save</button>
+      <button class="btn btn-primary" (click)="save()">Save</button>
     </div>
     <div class="col-sm-6">
       <button class="btn btn-success float-right">Lookup</button>

@@ -2,94 +2,100 @@
   <h5>Policy Details</h5>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
-      <label>Policy ID</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <label>Policy #</label>
+      <input class="form-control" [(ngModel)]="policy.policyNumber" name="policyNumber" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Policy Name</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.policyName" name="policyName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Policy Cover Amount</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.policyCoverAmount" name="policyCoverAmount" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Policy Premium Amount</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.policyPremiumAmount" name="policyPremiumAmount" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Policy Description</label>
-      <textarea class="form-control" [(ngModel)]="policy.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="policy.policyDescription" name="policyDescription"></textarea>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Policy Start Date Time</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.policyStartDateTime" name="policyStartDateTime" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Policy End Date Time</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.policyEndDateTime" name="policyEndDateTime" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Date Time</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.graceDateTime" name="graceDateTime" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Period In Months</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.gracePeriodInMonths" name="gracePeriodInMonths" />
     </div>
   </div>
 
 
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
       <label>Policy Type</label>
-      <select class="form-control" [(ngModel)]="policy.buildingId" name="description">
-        <option>Yes</option>
-        <option>No</option>
+      <select class="form-control" [(ngModel)]="policy.policyType" name="policyType">
+        <option *ngFor="let type of dropDownsData.policyTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
     </div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Type Other</label>
+      <input class="form-control" [(ngModel)]="policy.policyTypeOther" name="policyTypeOther" />
+    </div>
+    <div class="col-sm-12 col-md-3">
       <label>Renewal Type</label>
-      <select class="form-control" [(ngModel)]="policy.buildingId" name="description">
-        <option>Yes</option>
-        <option>No</option>
+      <select class="form-control" [(ngModel)]="policy.policyRenewalType" name="policyRenewalType">
+        <option *ngFor="let renew of dropDownsData.renewalTypeList" [ngValue]="renew">{{renew.description}}</option>
       </select>
     </div>
-    <div class="col-sm-12 col-md-4">
-      <label>Provider Name</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Renewal Type Other</label>
+      <input class="form-control" [(ngModel)]="policy.policyRenewalTypeOther" name="policyRenewalTypeOther" />
     </div>
   </div>
 
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Name</label>
+      <input class="form-control" [(ngModel)]="policy.providerName" name="providerName" />
+    </div>
+    <div class="col-sm-12 col-md-3">
       <label>Provider Phone</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.providerPhone" name="providerPhone" />
     </div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
       <label>Provider Email</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.providerEmail" name="providerEmail" />
     </div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
       <label>Provider Contact Person</label>
-      <input class="form-control" [(ngModel)]="policy.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="policy.providerContactPerson" name="providerContactPerson" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Provider Description</label>
-      <textarea class="form-control" [(ngModel)]="policy.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="policy.providerDescription" name="providerDescription"></textarea>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>Comments</label>
-      <textarea class="form-control" [(ngModel)]="policy.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="policy.comments" name="comments"></textarea>
     </div>
   </div>
 
@@ -131,8 +137,8 @@
           Amount
         </td>
         <td>
-            Policy type
-          </td>
+          Policy type
+        </td>
         <td>
           <span class="fa fa-trash"></span>
         </td>
