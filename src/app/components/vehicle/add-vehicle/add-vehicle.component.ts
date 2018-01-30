@@ -1,6 +1,7 @@
 import { SharedService } from './../../../services/shared.service';
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from '../../../services/api.services';
+import { AlertsLoaderService } from '../../../services/alerts-loader.service';
 
 @Component({
     selector: "app-add-vehicle",
@@ -96,7 +97,7 @@ export class AddVehicleComponent implements OnInit {
     public currentTab: any;
     public tabs: any;
     public dropDownsData: any;
-    constructor(private _sharedService: SharedService,private _apiService: ApiService) {
+    constructor(private _sharedService: SharedService,private _apiService: ApiService, private _alertsService: AlertsLoaderService) {
         this.tabs = this._sharedService.getTabstoShow(this.vehicle);
         this.currentTab = this.tabs[0];
         this._sharedService.dropDownsService.subscribe((data)=>{
@@ -105,7 +106,11 @@ export class AddVehicleComponent implements OnInit {
     }
     ngOnInit() {}
     changeTab(tab:string){
-      this.currentTab = tab;
+      if(!this.vehicle.id){
+        this._alertsService.error("Please save building details first.");
+        return;
+    }
+    this.currentTab = tab;
     }
     updateTabs(){
         this.tabs = this._sharedService.getTabstoShow(this.vehicle);
@@ -116,9 +121,10 @@ export class AddVehicleComponent implements OnInit {
         .subscribe(
             (data)=>{
                 this.vehicle = data;
+                this._alertsService.success("Vehicle details successfully saved.");
             },
             (error)=>{
-                alert("Error");
+              this._alertsService.error("Some error occured hile saving vehicle details.");
             }
         )
     }

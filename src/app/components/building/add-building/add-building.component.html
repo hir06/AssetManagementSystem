@@ -36,7 +36,6 @@
     <div class="col-sm-12 col-md-4">
       <label>Asset Category</label>
       <select class="form-control" disabled [(ngModel)]="building.assetCategory.id">
-        <option value="null"></option>
         <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category.id">{{category.description}}</option>
       </select>
     </div>
@@ -49,7 +48,7 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Department</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="building.department">
         <option value="null"></option>
         <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
       </select>
@@ -188,7 +187,6 @@
       <select class="form-control" [(ngModel)]="building.assetStatus">
         <option value="null"></option>
         <option  *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
-
       </select>
     </div>
     <div class="col-sm-12 col-md-6">

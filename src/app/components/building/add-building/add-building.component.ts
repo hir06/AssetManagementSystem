@@ -89,6 +89,10 @@ export class AddBuildingComponent implements OnInit {
 
     }
     changeTab(tab: string) {
+        if(!this.building.id){
+            this._alertsService.error("Please save building details first.");
+            return;
+        }
         this.currentTab = tab;
     }
 
@@ -103,7 +107,7 @@ export class AddBuildingComponent implements OnInit {
                 this._alertsService.success("Building successfully saved");
             },
             (error)=>{
-                this._alertsService.success(error.erroMessage);
+                this._alertsService.error(error.erroMessage);
             }
         )
     }

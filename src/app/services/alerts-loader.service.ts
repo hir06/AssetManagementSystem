@@ -38,10 +38,10 @@ export class AlertsLoaderService {
         let viewContainerRef = this.httpActionIndicator.viewContainerRef;
         viewContainerRef.clear();
         this.componentRef = viewContainerRef.createComponent(componentFactory);
-        this.componentRef.message = message;
+        this.componentRef.instance.message = message;
         setTimeout(()=>{
             this.hideLoader();
-        },1500);
+        },2000);
     }
     error(message: string) {
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
@@ -50,9 +50,9 @@ export class AlertsLoaderService {
         let viewContainerRef = this.httpActionIndicator.viewContainerRef;
         viewContainerRef.clear();
         this.componentRef = viewContainerRef.createComponent(componentFactory);
-        this.componentRef.message = message;
+        this.componentRef.instance.message = message;
         setTimeout(()=>{
             this.hideLoader();
-        },1500)
+        },2000)
     }
 }

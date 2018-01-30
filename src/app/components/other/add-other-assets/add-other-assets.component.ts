@@ -1,6 +1,7 @@
 import { SharedService } from './../../../services/shared.service';
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from '../../../services/api.services';
+import { AlertsLoaderService } from '../../../services/alerts-loader.service';
 
 @Component({
     selector: "app-add-other-assets",
@@ -96,7 +97,7 @@ export class AddOtherAssetsComponent implements OnInit {
     public currentTab: any;
     public tabs: any;
     public dropDownsData: any;
-    constructor(private _sharedService: SharedService,private _apiService: ApiService) {
+    constructor(private _sharedService: SharedService,private _apiService: ApiService,private _alertsService: AlertsLoaderService) {
         this.tabs =  this._sharedService.getTabstoShow(this.asset);;
         this.currentTab = this.tabs[0];
         this._sharedService.dropDownsService.subscribe((data)=>{
@@ -105,7 +106,11 @@ export class AddOtherAssetsComponent implements OnInit {
     }
     ngOnInit() {}
     changeTab(tab:string){
-      this.currentTab = tab;
+        if(!this.asset.id){
+            this._alertsService.error("Please save building details first.");
+            return;
+        }
+        this.currentTab = tab;
     }
     updateTabs(){
         this.tabs = this._sharedService.getTabstoShow(this.asset);
@@ -116,9 +121,10 @@ export class AddOtherAssetsComponent implements OnInit {
         .subscribe(
             (data)=>{
                 this.asset = data;
+                this._alertsService.success("Asset details saved successfully.");
             },
             (error)=>{
-                alert("Error");
+                this._alertsService.error("Some error occured while saving asset details.");
             }
         )
     }

@@ -1,3 +1,4 @@
+import { SharedService } from './../services/shared.service';
 import { AlertsLoaderService } from "./../services/alerts-loader.service";
 import { AddressComponent } from "./../components/address/address.component";
 import { WarrantyComponent } from "./../components/warranty/warranty.component";
@@ -70,7 +71,7 @@ import { SuccessMessageComponent } from "../components/success-message/success-m
         SuccessMessageComponent
     ],
     imports: [FormsModule, CommonModule, RouterModule, PaginationModule, SelectDropDownModule],
-    providers: [AlertsLoaderService],
+    providers: [SharedService, AlertsLoaderService],
     exports: [FormsModule, CommonModule],
     entryComponents: [DashboardComponent, AjaxLoaderComponent, ErrorMessageComponent, SuccessMessageComponent]
 })
