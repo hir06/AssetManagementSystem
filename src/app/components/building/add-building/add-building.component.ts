@@ -1,8 +1,8 @@
-import { ApiService } from './../../../services/api.services';
+import { ApiService } from "./../../../services/api.services";
 import { Component, OnInit } from "@angular/core";
 import { SharedService } from "../../../services/shared.service";
-import { AlertsLoaderService } from '../../../services/alerts-loader.service';
-
+import { AlertsLoaderService } from "../../../services/alerts-loader.service";
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
     selector: "app-add-building",
@@ -14,101 +14,126 @@ export class AddBuildingComponent implements OnInit {
     public currentTab: any;
     public tabs: any;
     public dropDownsData: any;
-    public multiselectConfig:any ={
-        search:false,
-        displayKey:"description"
-    }
-    constructor(private _sharedService: SharedService,private _apiService: ApiService,private _alertsService: AlertsLoaderService) {
-        this.building={
-            "id": null,
-            "assets": null,
-            "statusFlag": null,
-            "buildingId": "",
-            "buildingDescription": null,
-            "buildingName": null,
-            "assetCategory": {
-              "id": "BUILDING"
+    public multiselectConfig: any = {
+        search: false,
+        displayKey: "description"
+    };
+    constructor(
+        private _sharedService: SharedService,
+        private _apiService: ApiService,
+        private _alertsService: AlertsLoaderService,
+        private route: ActivatedRoute
+    ) {
+        this.building = {
+            id: null,
+            assets: null,
+            statusFlag: null,
+            buildingId: "",
+            buildingDescription: null,
+            buildingName: null,
+            assetCategory: {
+                id: "BUILDING"
             },
-            "addresses": [
-            ],
-            "organization": null,
-            "department": null,
-            "numberOfFloors": null,
-            "regulatoryCompliance": null,
-            "regulatoryAuthorityName": null,
-            "regCompObtainedDate": null,
-            "fireExits": null,
-            "fireExitsLoc": null,
-            "fireExtinguishers": null,
-            "fireExtinguisherLoc": null,
-            "fireExtinguisherTypes": [
-            ],
-            "amcPresent": null,
-            "insurancePresent": null,
-            "loanPresent": null,
-            "licensePresent": null,
-            "warrantyPresent": null,
-            "inspectionPresent": null,
-            "servicePresent": null,
-            "assetCondition": null,
-            "assetStatus": null,
-            "assetType": null,
-            "notes": null,
-            "buildingSize": null,
-            "assetConditionOther": null,
-            "assetStatusOther": null,
-            "assetTypeOther": null,
-            "assignees": [
-            ],
-            "insurancePolicies": null,
-            "rentalOrLeaseAgreements": null,
-            "loanAgreements": null,
-            "annualMaintenanceContracts": null,
-            "licenses": null,
-            "warrantyAgreements": null,
-            "inspections": null,
-            "services": null,
-            "existingInsurancePolicies": null,
-            "existingRentalOrLeaseAgreements": null,
-            "existingLoanAgreements": null,
-            "existingAnnualMaintenanceContracts": null,
-            "existingLicenses": null,
-            "existingWarrantyAgreements": null,
-            "existingInspections": null,
-            "existingServices": null
-        }
+            addresses: [],
+            organization: null,
+            department: null,
+            numberOfFloors: null,
+            regulatoryCompliance: null,
+            regulatoryAuthorityName: null,
+            regCompObtainedDate: null,
+            fireExits: null,
+            fireExitsLoc: null,
+            fireExtinguishers: null,
+            fireExtinguisherLoc: null,
+            fireExtinguisherTypes: [],
+            amcPresent: null,
+            insurancePresent: null,
+            loanPresent: null,
+            licensePresent: null,
+            warrantyPresent: null,
+            inspectionPresent: null,
+            servicePresent: null,
+            assetCondition: null,
+            assetStatus: null,
+            assetType: null,
+            notes: null,
+            buildingSize: null,
+            assetConditionOther: null,
+            assetStatusOther: null,
+            assetTypeOther: null,
+            assignees: [],
+            insurancePolicies: null,
+            rentalOrLeaseAgreements: null,
+            loanAgreements: null,
+            annualMaintenanceContracts: null,
+            licenses: null,
+            warrantyAgreements: null,
+            inspections: null,
+            services: null,
+            existingInsurancePolicies: null,
+            existingRentalOrLeaseAgreements: null,
+            existingLoanAgreements: null,
+            existingAnnualMaintenanceContracts: null,
+            existingLicenses: null,
+            existingWarrantyAgreements: null,
+            existingInspections: null,
+            existingServices: null
+        };
         this.tabs = this._sharedService.getTabstoShow(this.building);
         this.currentTab = this.tabs[0];
-     
-        this._sharedService.dropDownsService.subscribe((data)=>{
+        this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });
     }
     ngOnInit() {
         this.dropDownsData = this._sharedService.dropDownsData;
-
+        this.route.params.subscribe((params: Params) => {
+            let Id = params["id"];
+            if (Id) {
+                this.getBuildingById(Id);
+            }
+        });
     }
+
+    getBuildingById(buidingId: number) {
+        this._apiService.get("/s/building/buildingId/" + buidingId).subscribe(
+            data => {
+                this.building = data;
+                this.updateTabs();
+            },
+            error => {
+                this._alertsService.error(
+                    "Unable to get building details. Try Again."
+                );
+            }
+        );
+    }
+
     changeTab(tab: string) {
-        if(!this.building.id){
+        if (!this.building.id) {
             this._alertsService.error("Please save building details first.");
             return;
         }
         this.currentTab = tab;
     }
 
-    updateTabs(){
+    updateTabs() {
         this.tabs = this._sharedService.getTabstoShow(this.building);
     }
-    save(){
-        this._apiService.createOrUpdateBuilding("/s/building/create-or-update-building",this.building)
-        .subscribe(
-            (data)=>{
-                this.building = data;
-                this._alertsService.success("Building successfully saved");
-            },
-            (error)=>{
-                this._alertsService.error(error.erroMessage);
-            }
-        )
+    save() {
+        this._apiService
+            .createOrUpdateBuilding(
+                "/s/building/create-or-update-building",
+                this.building
+            )
+            .subscribe(
+                data => {
+                    this.building = data;
+                    this._alertsService.success("Building successfully saved");
+                },
+                error => {
+                    this._alertsService.error(error.erroMessage);
+                }
+            );
     }
 }

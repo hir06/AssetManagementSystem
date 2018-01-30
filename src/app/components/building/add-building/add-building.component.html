@@ -7,7 +7,7 @@
 
 <ul class="row nav nav-tabs mb-2">
   <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
-    <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}</a>
+    <a class="nav-link" [ngClass]="{'active': currentTab.tab == tab.tab}">{{tab.name}}</a>
   </li>
 </ul>
 <div class="tab-content" *ngIf="currentTab.tab == 1">

@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SupportingDocumentsComponent implements OnInit {
   @Input() asset: any;
+  files: any = [];
   constructor() { }
 
   ngOnInit() {

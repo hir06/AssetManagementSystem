@@ -28,7 +28,7 @@
   <tbody>
     <tr *ngFor="let building of buildingList;">
       <td>
-        {{building.id}}
+        <a [routerLink]="['edit-building', building.id]">{{building.id}}</a>
       </td>
       <td>
         {{building.assetType?.description}}

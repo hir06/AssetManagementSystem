@@ -28,7 +28,7 @@
   <tbody>
     <tr *ngFor="let vehicle of vehicleList;">
       <td>
-        {{vehicle.id}}
+        <a [routerLink]="['edit-vehicle', vehicle.id]">{{vehicle.id}}</a>
       </td>
       <td>
         {{vehicle.assettype?.description}}
