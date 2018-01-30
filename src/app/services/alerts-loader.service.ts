@@ -7,6 +7,8 @@ import {
     ApplicationRef
 } from "@angular/core";
 import { AjaxLoaderComponent } from "../components/ajax-loader/ajax-loader.component";
+import { SuccessMessageComponent } from "../components/success-message/success-message.component";
+import { ErrorMessageComponent } from "../components/error-message/error-message.component";
 
 @Injectable()
 export class AlertsLoaderService {
@@ -18,13 +20,39 @@ export class AlertsLoaderService {
         private injector: Injector
     ) {}
 
-    showLoader(){
-       let componentFactory = this.componentFactoryResolver.resolveComponentFactory(AjaxLoaderComponent);
-       let viewContainerRef = this.httpActionIndicator.viewContainerRef;
-       viewContainerRef.clear();
-       this.componentRef = viewContainerRef.createComponent(componentFactory);
+    showLoader() {
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+            AjaxLoaderComponent
+        );
+        let viewContainerRef = this.httpActionIndicator.viewContainerRef;
+        viewContainerRef.clear();
+        this.componentRef = viewContainerRef.createComponent(componentFactory);
     }
-    hideLoader(){
-           this.componentRef.destroy();
+    hideLoader() {
+        this.componentRef.destroy();
+    }
+    success(message: string) {
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+            SuccessMessageComponent
+        );
+        let viewContainerRef = this.httpActionIndicator.viewContainerRef;
+        viewContainerRef.clear();
+        this.componentRef = viewContainerRef.createComponent(componentFactory);
+        this.componentRef.message = message;
+        setTimeout(()=>{
+            this.hideLoader();
+        },1500);
+    }
+    error(message: string) {
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+            ErrorMessageComponent
+        );
+        let viewContainerRef = this.httpActionIndicator.viewContainerRef;
+        viewContainerRef.clear();
+        this.componentRef = viewContainerRef.createComponent(componentFactory);
+        this.componentRef.message = message;
+        setTimeout(()=>{
+            this.hideLoader();
+        },1500)
     }
 }

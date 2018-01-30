@@ -94,6 +94,16 @@ a:hover {
     max-width: 50%;
 }
 
+.alert{
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width:500px;
+    text-align: center;
+}
+
 .ngx-dorpdown-container{
     /deep/ul.selected-items{
            margin-top: 1rem;

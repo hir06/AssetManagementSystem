@@ -1,7 +1,8 @@
 import { ApiService } from './../../../services/api.services';
 import { Component, OnInit } from "@angular/core";
 import { SharedService } from "../../../services/shared.service";
-import { last } from 'rxjs/operator/last';
+import { AlertsLoaderService } from '../../../services/alerts-loader.service';
+
 
 @Component({
     selector: "app-add-building",
@@ -17,7 +18,7 @@ export class AddBuildingComponent implements OnInit {
         search:false,
         displayKey:"description"
     }
-    constructor(private _sharedService: SharedService,private _apiService: ApiService) {
+    constructor(private _sharedService: SharedService,private _apiService: ApiService,private _alertsService: AlertsLoaderService) {
         this.building={
             "id": null,
             "assets": null,
@@ -99,9 +100,10 @@ export class AddBuildingComponent implements OnInit {
         .subscribe(
             (data)=>{
                 this.building = data;
+                this._alertsService.success("Building successfully saved");
             },
             (error)=>{
-                alert("Error");
+                this._alertsService.success(error.erroMessage);
             }
         )
     }

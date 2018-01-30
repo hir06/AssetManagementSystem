@@ -31,7 +31,11 @@ import { PolicyComponent } from "../components/policy/policy.component";
 import { ServiceComponent } from "../components/service/service.component";
 import { SupportingDocumentsComponent } from "../components/supporting-documents/supporting-documents.component";
 import { AjaxLoaderComponent } from "../components/ajax-loader/ajax-loader.component";
-import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { SelectDropDownModule } from 'ngx-select-dropdown';
+import { ErrorMessageComponent } from "../components/error-message/error-message.component";
+import { SuccessMessageComponent } from "../components/success-message/success-message.component";
+
+
 
 @NgModule({
     declarations: [
@@ -61,11 +65,13 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
         WarrantyComponent,
         SupportingDocumentsComponent,
         AddressComponent,
-        AjaxLoaderComponent
+        AjaxLoaderComponent,
+        ErrorMessageComponent,
+        SuccessMessageComponent
     ],
     imports: [FormsModule, CommonModule, RouterModule, PaginationModule, SelectDropDownModule],
     providers: [AlertsLoaderService],
     exports: [FormsModule, CommonModule],
-    entryComponents: [DashboardComponent, AjaxLoaderComponent]
+    entryComponents: [DashboardComponent, AjaxLoaderComponent, ErrorMessageComponent, SuccessMessageComponent]
 })
 export class CoreModule {}

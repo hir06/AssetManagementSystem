@@ -18,7 +18,7 @@ export class ApiService {
         private _ajaxLoader: AlertsLoaderService,
         private _userService: UserService
     ) {}
-    post(url: string, data: any, headers: any, showLoader?: boolean) {
+    post(url: string, data: any, headers?: any, showLoader?: boolean) {
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
@@ -53,7 +53,7 @@ export class ApiService {
             });
     }
 
-    put(url: string, data: any, headers: any, showLoader?: boolean) {
+    put(url: string, data: any, headers?: any, showLoader?: boolean) {
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
