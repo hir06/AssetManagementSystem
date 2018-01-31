@@ -1,6 +1,7 @@
 import { ApiService } from "./../../services/api.services";
 import { Component, OnInit, Input } from "@angular/core";
 import { AlertsLoaderService } from "../../services/alerts-loader.service";
+import { THROW_IF_NOT_FOUND } from "@angular/core/src/di/injector";
 
 @Component({
     selector: "app-service",
@@ -34,6 +35,7 @@ export class ServiceComponent implements OnInit {
         existingAssetTypeOthers: null
     };
     @Input() asset: any;
+    editMode: boolean = false;
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
@@ -42,6 +44,10 @@ export class ServiceComponent implements OnInit {
     ngOnInit() {}
 
     save() {
+        if(this.editMode){
+            this.updateService();
+            return;
+        }
         let url = "/s/building/add-service-to-building/buildingId/";
         if (this.asset.assetCategory.id == "OTHER") {
             url =
@@ -72,6 +78,22 @@ export class ServiceComponent implements OnInit {
 
     editService(service: any){
         this.service = service;
+        this.editMode = true;
+    }
+    updateService(){
+        this._apiService.put("/s/service/create-or-update-service",this.service).subscribe(
+            data => {
+                this.service = data;
+                this._alertsService.success(
+                    "Service successfully updated."
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
     }
     removeServiceFromAsset(service: any){
         let url = `/s/building/remove-service-from-building/buildingId/${this.asset.id}/serviceId/${service.id}`;

@@ -48,6 +48,7 @@ export class PolicyComponent implements OnInit {
     };
     dropDownsData: any;
     @Input() asset: any;
+    editMode: boolean =false;
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService,
@@ -60,6 +61,10 @@ export class PolicyComponent implements OnInit {
 
     ngOnInit() {}
     save() {
+        if(this.editMode){
+            this.updatePolicy();
+            return;
+        }
         let url = "/s/building/add-policy-to-building/buildingId/";
         if (this.asset.assetCategory.id == "OTHER") {
             url =
@@ -89,8 +94,24 @@ export class PolicyComponent implements OnInit {
 
     editPolicy(policy:any){
         this.policy = policy;
+        this.editMode = true;
     }
 
+    updatePolicy(){
+        this._apiService.put("/s/policy/update-policy",this.policy).subscribe(
+            data => {
+                this.policy = data;
+                this._alertsService.success(
+                    "Policy successfully updated."
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
+    }
     removePolicyFromAsset(policy: any){
         let url = `/s/building/remove-policy-from-building/buildingId/${this.asset.id}/policyId/${policy.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {

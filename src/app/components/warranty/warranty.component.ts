@@ -38,6 +38,7 @@ export class WarrantyComponent implements OnInit {
         existingAssetTypeOthers: null
     };
     @Input() asset: any;
+    editMode: boolean = false;
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService
@@ -45,6 +46,10 @@ export class WarrantyComponent implements OnInit {
 
     ngOnInit() {}
     save() {
+        if(this.editMode){
+            this.updateWarranty();
+            return;
+        }
         let url = "/s/building/add-inspection-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = "/s/vehicle/add-inspection-to-vehicle/vehicleId/";
@@ -73,6 +78,22 @@ export class WarrantyComponent implements OnInit {
     }
     editWarranty(warranty: any){
         this.warranty = warranty;
+        this.editMode = true;
+    }
+    updateWarranty(){
+        this._apiService.put("/s/warranty/create-or-update-warranty",this.warranty).subscribe(
+            data => {
+                this.warranty = data;
+                this._alertsService.success(
+                    "Warranty successfully updated."
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
     }
     removeWarrantyFromAsset(warranty: any){
         let url = `/s/building/remove-warranty-from-building/buildingId/${this.asset.id}/warrantyId/${warranty.id}`;

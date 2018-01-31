@@ -8,9 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SupportingDocumentsComponent implements OnInit {
   @Input() asset: any;
   files: any = [];
+  @Input() docsObject: any;
   constructor() { }
 
   ngOnInit() {
   }
-
+  
 }

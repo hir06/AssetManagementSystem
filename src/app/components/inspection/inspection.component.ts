@@ -34,10 +34,15 @@ export class InspectionComponent implements OnInit {
         existingAssetTypeOthers: null
     };
     @Input() asset: any;
+    editMode: boolean = false;
     constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService) {}
 
     ngOnInit() {}
     save() {
+        if(this.editMode){
+            this.updateInspection();
+            return;
+        }
         let url = "/s/building/add-inspection-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url =
@@ -67,6 +72,25 @@ export class InspectionComponent implements OnInit {
 
     editThisInspection(inspection: any){
        this.inspection = inspection;
+       this.editMode = true;
+    }
+
+    updateInspection() {
+        this._apiService
+            .put("/s/inspection/update-inspection", this.inspection)
+            .subscribe(
+                data => {
+                    this.inspection = data;
+                    this._alertsService.success(
+                        "License successfully updated."
+                    );
+                },
+                error => {
+                    this._alertsService.error(
+                        "Some error occured. Please try again."
+                    );
+                }
+            );
     }
     removeInspectionFromAsset(inspection: any){
         let url = `/s/building/remove-inspection-from-building/buildingId/${this.asset.id}/inspectionId/${inspection.id}`;

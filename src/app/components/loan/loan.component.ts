@@ -38,6 +38,7 @@ export class LoanComponent implements OnInit {
         existingAssetTypeOthers: null
     };
     @Input() asset: any;
+    editMode: boolean=false;
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
@@ -46,6 +47,10 @@ export class LoanComponent implements OnInit {
     ngOnInit() {}
 
     save() {
+        if(this.editMode){
+            this.updateLoan();
+            return;
+        }
         let url = "/s/building/add-loan-to-building/buildingId/";
         if (this.asset.assetCategory.id == "OTHER") {
             url =
@@ -76,6 +81,21 @@ export class LoanComponent implements OnInit {
 
     editLoan(loan: any){
         this.loan = loan;
+    }
+    updateLoan(){
+        this._apiService.put("/s/loan/update-loan",this.loan).subscribe(
+            data => {
+                this.loan = data;
+                this._alertsService.success(
+                    "Policy successfully updated."
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
     }
     removeLoanFromAsset(loan: any){
         let url = `/s/building/remove-loan-from-building/buildingId/${this.asset.id}/loanId/${loan.id}`;

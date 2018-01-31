@@ -34,6 +34,7 @@ export class LicenseComponent implements OnInit {
         comments: null
     };
     @Input() asset: any;
+    editMode: boolean = false;
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
@@ -42,6 +43,10 @@ export class LicenseComponent implements OnInit {
     ngOnInit() {}
 
     save() {
+        if (this.editMode) {
+            this.updateLicense();
+            return;
+        }
         let url = "/s/building/add-license-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url =
@@ -70,25 +75,52 @@ export class LicenseComponent implements OnInit {
         );
     }
 
-    editLicense(license: any){
+    editLicense(license: any) {
         this.license = license;
+        this.editMode = true;
     }
-    removeLicenseFromAsset(license: any){
-        let url = `/s/building/remove-license-from-building/buildingId/${this.asset.id}/licenseId/${license.id}`;
+    updateLicense() {
+        this._apiService
+            .put("/s/license/update-license", this.license)
+            .subscribe(
+                data => {
+                    this.license = data;
+                    this._alertsService.success(
+                        "License successfully updated."
+                    );
+                },
+                error => {
+                    this._alertsService.error(
+                        "Some error occured. Please try again."
+                    );
+                }
+            );
+    }
+    removeLicenseFromAsset(license: any) {
+        let url = `/s/building/remove-license-from-building/buildingId/${
+            this.asset.id
+        }/licenseId/${license.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = `/s/vehicle/remove-license-from-vehicle/vehicleId/${this.asset.id}/licenseId/${license.id}`;
+            url = `/s/vehicle/remove-license-from-vehicle/vehicleId/${
+                this.asset.id
+            }/licenseId/${license.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = `/s/equipment/remove-license-from-equipment/equipmentId/${this.asset.id}/licenseId/${license.id}`;
+            url = `/s/equipment/remove-license-from-equipment/equipmentId/${
+                this.asset.id
+            }/licenseId/${license.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url =  `/s/asset-type-other/remove-license-from-asset-type-other/assetTypeOtherId/${this.asset.id}/licenseId/${license.id}`;;
+            url = `/s/asset-type-other/remove-license-from-asset-type-other/assetTypeOtherId/${
+                this.asset.id
+            }/licenseId/${license.id}`;
         }
         this._apiService.delete(url).subscribe(
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "License successfully removed from " +this.asset.assetCategory.description
+                    "License successfully removed from " +
+                        this.asset.assetCategory.description
                 );
             },
             error => {

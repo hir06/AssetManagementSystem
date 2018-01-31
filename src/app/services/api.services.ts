@@ -12,7 +12,7 @@ import { UserService } from "./userService";
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = "https://ddf10148.ngrok.io/rmsrest";
+    apiUrl: string = "http://0ba0e9e1.ngrok.io/rmsrest";
     constructor(
         private _http: HttpClient,
         private _ajaxLoader: AlertsLoaderService,

@@ -42,6 +42,7 @@ export class RentOrLeaseComponent implements OnInit {
     };
     dropDownsData:any;
     @Input() asset: any;
+    editMode:boolean = false;
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService,
@@ -54,6 +55,10 @@ export class RentOrLeaseComponent implements OnInit {
 
     ngOnInit() {}
     save() {
+        if(this.editMode){
+            this.updateRentOrLease();
+            return;
+        }
         let url = "/s/building/add-rental-or-lease-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url =
@@ -83,6 +88,23 @@ export class RentOrLeaseComponent implements OnInit {
     }
     editRentOrLease(rol: any){
         this.rent = rol;
+        this.editMode = true;
+    }
+
+    updateRentOrLease(){
+        this._apiService.put("/s/rental-or-lease/update-rental-or-lease-agreement",this.rent).subscribe(
+            data => {
+                this.rent = data;
+                this._alertsService.success(
+                    "retal or lease agreement successfully updated."
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
     }
     removeRentOrLeaseFromAsset(rol: any){
         let url = `/s/building/remove-rental-or-lease-from-building/buildingId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
