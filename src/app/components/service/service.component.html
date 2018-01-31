@@ -92,30 +92,31 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let service of asset.services">
         <td>
-          I123
+          {{service.serviceNumber}}
         </td>
         <td>
-          Due Date
+          {{service.serviceDueDate}}
         </td>
         <td>
-          Done by
+          {{service.serviceDoneBy}}
         </td>
         <td>
-          Done Date
+          {{service.serviceDoneDateTime}}
         </td>
         <td>
-          Duration
+          {{service.serviceDurationInHours}}
         </td>
         <td>
-          Amount
+          {{service.serviceAmount}}
         </td>
         <td>
-          Next Service Date
+          {{service.nextServiceDueDate}}
         </td>
         <td>
-          <span class="fa fa-trash"></span>
+          <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editService(service)"></span>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeServiceFromAsset(service)"></span>
         </td>
       </tr>
     </tbody>

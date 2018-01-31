@@ -101,24 +101,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let loan of asset.loanAgreements">
         <td>
-          I123
+          {{loan.agreementId}}
         </td>
         <td>
-          Name
+          {{loan.agreementName}}
         </td>
         <td>
-          Date
+            {{loan.startDateTime}}
         </td>
         <td>
-          Date
+            {{loan.endDateTime}}
         </td>
         <td>
-          Amount
+            {{loan.loanAmount}}
         </td>
         <td>
-          <span class="fa fa-trash"></span>
+            <span class="fa fa-trash btn btn-sm btn-outline-danger"(click)="editLoan(loan)"></span><span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeLoanFromAsset(loan)"></span>
         </td>
       </tr>
     </tbody>

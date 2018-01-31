@@ -43,22 +43,52 @@ export class ServiceComponent implements OnInit {
 
     save() {
         let url = "/s/building/add-service-to-building/buildingId/";
-        if (this.asset.assetCategory.id == "VEHICLE") {
+        if (this.asset.assetCategory.id == "OTHER") {
             url =
                 "/s/asset-type-other/add-service-to-asset-type-other/assetTypeOtherId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
             url = "/s/equipment/add-service-to-equipment/equipmentId/";
         }
-        if (this.asset.assetCategory.id == "OTHER") {
+        if (this.asset.assetCategory.id == "VEHICLE") {
             url = "/s/vehicle/add-service-to-vehicle/vehicleId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.service).subscribe(
             data => {
+                this.asset = data;
                 this._alertsService.success(
                     "Service successfully added to " +
                         this.asset.assetCategory.description
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
+    }
+
+    editService(service: any){
+        this.service = service;
+    }
+    removeServiceFromAsset(service: any){
+        let url = `/s/building/remove-service-from-building/buildingId/${this.asset.id}/serviceId/${service.id}`;
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = `/s/vehicle/remove-service-from-vehicle/vehicleId/${this.asset.id}/serviceId/${service.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/s/equipment/remove-service-from-equipment/equipmentId/${this.asset.id}/serviceId/${service.id}`;
+        }
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =  `/s/asset-type-other/remove-service-from-asset-type-other/assetTypeOtherId/${this.asset.id}/serviceId/${service.id}`;;
+        }
+        this._apiService.delete(url).subscribe(
+            data => {
+                this.asset = data;
+                this._alertsService.success(
+                    "Service successfully removed from " +this.asset.assetCategory.description
                 );
             },
             error => {

@@ -120,27 +120,27 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let policy of asset.insurancePolicies">
         <td>
-          I123
+          {{policy.policyNumber}}
         </td>
         <td>
-          Name
+          {{policy.policyName}}
         </td>
         <td>
-          Date
+          {{policy.policyStartDateTime}}
         </td>
         <td>
-          Date
+          {{policy.policyEndDateTime}}
         </td>
         <td>
-          Amount
+          {{policy.policyCoverAmount}}
         </td>
         <td>
-          Policy type
+          {{policy.policyType?.id}}
         </td>
         <td>
-          <span class="fa fa-trash"></span>
+            <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editPolicy(policy)"></span><span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removePolicyFromAsset(policy)"></span>
         </td>
       </tr>
     </tbody>

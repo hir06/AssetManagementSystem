@@ -56,9 +56,39 @@ export class LicenseComponent implements OnInit {
         url = url + this.asset.id;
         this._apiService.put(url, this.license).subscribe(
             data => {
+                this.asset = data;
                 this._alertsService.success(
                     "Service successfully added to " +
                         this.asset.assetCategory.description
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
+    }
+
+    editLicense(license: any){
+        this.license = license;
+    }
+    removeLicenseFromAsset(license: any){
+        let url = `/s/building/remove-license-from-building/buildingId/${this.asset.id}/licenseId/${license.id}`;
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = `/s/vehicle/remove-license-from-vehicle/vehicleId/${this.asset.id}/licenseId/${license.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/s/equipment/remove-license-from-equipment/equipmentId/${this.asset.id}/licenseId/${license.id}`;
+        }
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =  `/s/asset-type-other/remove-license-from-asset-type-other/assetTypeOtherId/${this.asset.id}/licenseId/${license.id}`;;
+        }
+        this._apiService.delete(url).subscribe(
+            data => {
+                this.asset = data;
+                this._alertsService.success(
+                    "License successfully removed from " +this.asset.assetCategory.description
                 );
             },
             error => {

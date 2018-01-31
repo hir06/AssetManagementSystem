@@ -88,15 +88,16 @@
       </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Inspection #</td>
-            <td>Due Date</td>
-            <td>Done By</td>
-            <td>Done Date</td>
-            <td>Duration</td>
-            <td>Amount</td>
-            <td>Next Insp. Date</td>
-            <td><span class="fa fa-trash"></span></td>
+        <tr *ngFor="let inspection of asset.inspections">
+            <td>{{inspection.inspectionNumber}}</td>
+            <td>{{inspection.inspectionDueDate}}</td>
+            <td>{{inspection.inspectionDoneBy}}</td>
+            <td>{{inspection.inspectionDoneDateTime}}</td>
+            <td>{{inspection.inspectionDurationInHours}}</td>
+            <td>{{inspection.inspectionAmount}}</td>
+            <td>{{inspection.nextInspectionDueDate}}</td>
+            <td><span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editThisInspection(inspection)">
+            </span><span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeInspectionFromAsset(inspection)"></span></td>
           </tr>
     </tbody>
   </table>

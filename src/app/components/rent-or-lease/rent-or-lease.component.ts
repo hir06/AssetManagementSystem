@@ -68,9 +68,38 @@ export class RentOrLeaseComponent implements OnInit {
         url = url + this.asset.id;
         this._apiService.put(url, this.rent).subscribe(
             data => {
+                this.asset = data;
                 this._alertsService.success(
                     "Service successfully added to " +
                         this.asset.assetCategory.description
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
+    }
+    editRentOrLease(rol: any){
+        this.rent = rol;
+    }
+    removeRentOrLeaseFromAsset(rol: any){
+        let url = `/s/building/remove-rental-or-lease-from-building/buildingId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = `/s/vehicle/remove-rental-or-lease-from-vehicle/vehicleId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/s/equipment/remove-rental-or-lease-from-equipment/equipmentId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+        }
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =  `/s/asset-type-other/remove-rental-or-lease-from-asset-type-other/assetTypeOtherId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;;
+        }
+        this._apiService.delete(url).subscribe(
+            data => {
+                this.asset = data;
+                this._alertsService.success(
+                    "Rental or Lease successfully removed from " +this.asset.assetCategory.description
                 );
             },
             error => {

@@ -70,6 +70,25 @@ export class ApiService {
                 return Observable.throw(error);
             });
     }
+
+    delete(url: string, headers?: any, showLoader: boolean = true){
+        this._ajaxLoader.showLoader();
+        if (!headers) {
+            headers = {};
+        }
+        headers["X-AUTH-TOKEN"] = this._userService.authToken;
+        return this._http
+        .delete(this.apiUrl + url, { headers: headers })
+        .map((res: any) => {
+            this._ajaxLoader.hideLoader();
+            return res;
+        })
+        .catch((error: HttpErrorResponse) => {
+            this._ajaxLoader.hideLoader();
+            return Observable.throw(error);
+        });
+    }
+    
     login(url, data) {
         return this.post(url, data);
     }
@@ -87,10 +106,6 @@ export class ApiService {
         return this.put(url, data);
     }
     createOrUpdateVehicle(url: string, data: any){
-        return this.put(url, data);
-    }
-
-    addToAsset(url: string, data: any){
         return this.put(url, data);
     }
 }

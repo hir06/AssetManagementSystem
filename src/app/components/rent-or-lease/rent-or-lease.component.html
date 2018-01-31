@@ -107,27 +107,28 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let rol of asset.rentalOrLeaseAgreements">
         <td>
-          I123
+          {{rol.agreementId}}
         </td>
         <td>
-          Name
+          {{rol.agreementName}}
         </td>
         <td>
-          Date
+          {{rol.startDateTime}}
         </td>
         <td>
-          Date
+          {{rol.endDateTime}}
         </td>
         <td>
-          Amount
+          {{rol.agreementAmount}}
         </td>
         <td>
-          Type
+          {{rol.rentalOrLeaseType?.description}}
         </td>
         <td>
-          <span class="fa fa-trash"></span>
+          <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editRentOrLease(rol)"></span>
+          <span class="fa fa-trash btn btn-sm btn-outline-dangerr" (click)="removeRentOrLeaseFromAsset(rol)"></span>
         </td>
       </tr>
     </tbody>

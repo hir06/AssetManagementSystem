@@ -42,20 +42,21 @@ export class MaintenanceComponent implements OnInit {
 
   save(){
     let url = "/s/building/add-amc-to-building/buildingId/";
-    if(this.asset.assetCategory.id == "VEHICLE"){
+    if(this.asset.assetCategory.id == "OTHER"){
       url = "/s/asset-type-other/add-amc-to-asset-type-other/assetTypeOtherId/";
     }
     if(this.asset.assetCategory.id == "EQUIPMENT"){
       url = "/s/equipment/add-amc-to-equipment/equipmentId/";
     }
-    if(this.asset.assetCategory.id == "OTHER"){
+    if(this.asset.assetCategory.id == "VEHICLE"){
       url = "/s/vehicle/add-amc-to-vehicle/vehicleId/";
     }
     url  = url + this.asset.id;
     this._apiService.put(url, this.maintenance).subscribe(
       data => {
+        this.asset = data;
         this._alertsService.success(
-            "Service successfully added to " +
+            "Asset Management Contract successfully added to " +
                 this.asset.assetCategory.description
         );
     },
@@ -65,5 +66,34 @@ export class MaintenanceComponent implements OnInit {
         );
     }
     )
+  }
+
+  editMaintenance(amc: any){
+    this.maintenance = amc;
+  }
+  removeMaintenanceFromAsset(amc: any){
+    let url = `/s/building/remove-amc-from-building/buildingId/${this.asset.id}/amcId/${amc.id}`;
+    if (this.asset.assetCategory.id == "VEHICLE") {
+        url = `/s/vehicle/remove-amc-from-vehicle/vehicleId/${this.asset.id}/amcId/${amc.id}`;
+    }
+    if (this.asset.assetCategory.id == "EQUIPMENT") {
+        url = `/s/equipment/remove-amc-from-equipment/equipmentId/${this.asset.id}/amcId/${amc.id}`;
+    }
+    if (this.asset.assetCategory.id == "OTHER") {
+        url =  `/s/asset-type-other/remove-amc-from-asset-type-other/assetTypeOtherId/${this.asset.id}/amcId/${amc.id}`;;
+    }
+    this._apiService.delete(url).subscribe(
+        data => {
+          this.asset = data;
+            this._alertsService.success(
+                "Annual maintenanace contract successfully removed from " +this.asset.assetCategory.description
+            );
+        },
+        error => {
+            this._alertsService.error(
+                "Some error occured. Please try again."
+            );
+        }
+    );
   }
 }

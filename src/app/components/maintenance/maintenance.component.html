@@ -90,24 +90,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let amc of asset.annualMaintenanceContracts">
         <td>
-          I123
+          {{amc.agreementId}}
         </td>
         <td>
-          Name
+          {{amc.agreementName}}
         </td>
         <td>
-          Date
+          {{amc.startDateTime}}
         </td>
         <td>
-          Date
+          {{amc.endDateTime}}
         </td>
         <td>
-          Amount
+          {{amc.amcAmount}}
         </td>
         <td>
-          <span class="fa fa-trash"></span>
+            <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editMaintenance(amc)"></span><span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeMaintenanceFromAsset(amc)"></span>
         </td>
       </tr>
     </tbody>

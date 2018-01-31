@@ -64,4 +64,33 @@ export class InspectionComponent implements OnInit {
             }
         );
     }
+
+    editThisInspection(inspection: any){
+       this.inspection = inspection;
+    }
+    removeInspectionFromAsset(inspection: any){
+        let url = `/s/building/remove-inspection-from-building/buildingId/${this.asset.id}/inspectionId/${inspection.id}`;
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = `/s/vehicle/remove-inspection-from-vehicle/vehicleId/${this.asset.id}/inspectionId/${inspection.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/s/equipment/remove-inspection-from-equipment/equipmentId/${this.asset.id}/inspectionId/${inspection.id}`;
+        }
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =  `/s/asset-type-other/remove-inspection-from-asset-type-other/assetTypeOtherId/${this.asset.id}/inspectionId/${inspection.id}`;;
+        }
+        this._apiService.delete(url).subscribe(
+            data => {
+                this.asset = data;
+                this._alertsService.success(
+                    "Inspection successfully removed from " +this.asset.assetCategory.description
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
+    }
 }

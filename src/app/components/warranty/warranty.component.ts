@@ -47,21 +47,49 @@ export class WarrantyComponent implements OnInit {
     save() {
         let url = "/s/building/add-inspection-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url =
-                "/s/asset-type-other/add-inspection-to-asset-type-other/assetTypeOtherId/";
+            url = "/s/vehicle/add-inspection-to-vehicle/vehicleId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
             url = "/s/equipment/add-inspection-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/s/vehicle/add-inspection-to-vehicle/vehicleId/";
+            url = "/s/asset-type-other/add-inspection-to-asset-type-other/assetTypeOtherId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.warranty).subscribe(
             data => {
+                this.asset = data;
                 this._alertsService.success(
                     "Service successfully added to " +
                         this.asset.assetCategory.description
+                );
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
+        );
+    }
+    editWarranty(warranty: any){
+        this.warranty = warranty;
+    }
+    removeWarrantyFromAsset(warranty: any){
+        let url = `/s/building/remove-warranty-from-building/buildingId/${this.asset.id}/warrantyId/${warranty.id}`;
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = `/s/vehicle/remove-warranty-from-vehicle/vehicleId/${this.asset.id}/warrantyId/${warranty.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/s/equipment/remove-warranty-from-equipment/equipmentId/${this.asset.id}/warrantyId/${warranty.id}`;
+        }
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =  `/s/asset-type-other/remove-warranty-from-asset-type-other/assetTypeOtherId/${this.asset.id}/warrantyId/${warranty.id}`;;
+        }
+        this._apiService.delete(url).subscribe(
+            data => {
+                this.asset = data;
+                this._alertsService.success(
+                    "Warranty successfully removed from " +this.asset.assetCategory.description
                 );
             },
             error => {
