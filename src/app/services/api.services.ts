@@ -5,6 +5,7 @@ import {
     HttpHeaders,
     HttpErrorResponse
 } from "@angular/common/http";
+import { ResponseContentType } from '@angular/http';
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
@@ -17,7 +18,7 @@ export class ApiService {
         private _http: HttpClient,
         private _ajaxLoader: AlertsLoaderService,
         private _userService: UserService
-    ) {}
+    ) { }
     post(url: string, data: any, headers?: any, showLoader: boolean = true) {
         this._ajaxLoader.showLoader();
         if (!headers) {
@@ -35,15 +36,22 @@ export class ApiService {
                 return Observable.throw(error);
             });
     }
-    get(url: string, headers?: any, showLoader: boolean = true) {
+    get(url: string, headers?: any, showLoader: boolean = true,blob:boolean = false) {
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
         }
         headers["X-AUTH-TOKEN"] = this._userService.authToken;
+        let options: any ={
+            headers: headers,
+        }
+        if(blob){
+            options.responseType ='arraybuffer'
+        }
         return this._http
-            .get(this.apiUrl + url, { headers: headers })
+            .get(this.apiUrl + url, options)
             .map((res: any) => {
+                debugger;
                 this._ajaxLoader.hideLoader();
                 return res;
             })
@@ -71,24 +79,34 @@ export class ApiService {
             });
     }
 
-    delete(url: string, headers?: any, showLoader: boolean = true){
+    delete(url: string, headers?: any, showLoader: boolean = true) {
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
         }
         headers["X-AUTH-TOKEN"] = this._userService.authToken;
         return this._http
-        .delete(this.apiUrl + url, { headers: headers })
-        .map((res: any) => {
-            this._ajaxLoader.hideLoader();
-            return res;
-        })
-        .catch((error: HttpErrorResponse) => {
-            this._ajaxLoader.hideLoader();
-            return Observable.throw(error);
-        });
+            .delete(this.apiUrl + url, { headers: headers })
+            .map((res: any) => {
+                this._ajaxLoader.hideLoader();
+                return res;
+            })
+            .catch((error: HttpErrorResponse) => {
+                this._ajaxLoader.hideLoader();
+                return Observable.throw(error);
+            });
     }
-    
+
+    // getFile(url: string) {
+    //     const options = new HttpHeaders();
+    //     options.append("responseType",'arraybuffer');
+    //     options.append('Accept', 'application/octet-stream');
+    //     options.append("X-AUTH-TOKEN",this._userService.authToken);
+    //     // let headers = {};
+    //     // headers["X-AUTH-TOKEN"] = this._userService.authToken;
+    //     // headers['responseType']='arraybuffer';
+    //     return this._http.get(this.apiUrl + url,{headers:options});
+    // }
     login(url, data) {
         return this.post(url, data);
     }
@@ -99,13 +117,13 @@ export class ApiService {
         return this.put(url, data);
     }
 
-    createOrUpdateOtherAsset(url: string, data: any){
+    createOrUpdateOtherAsset(url: string, data: any) {
         return this.put(url, data);
     }
-    createOrUpdateEquipment(url: string, data: any){
+    createOrUpdateEquipment(url: string, data: any) {
         return this.put(url, data);
     }
-    createOrUpdateVehicle(url: string, data: any){
+    createOrUpdateVehicle(url: string, data: any) {
         return this.put(url, data);
     }
 }
