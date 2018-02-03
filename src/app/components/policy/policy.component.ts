@@ -54,6 +54,7 @@ export class PolicyComponent implements OnInit {
         private _alertsService: AlertsLoaderService,
         private _sharedService: SharedService
     ) {
+        this.dropDownsData = this._sharedService.dropDownsData;
         this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });

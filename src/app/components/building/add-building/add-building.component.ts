@@ -81,6 +81,7 @@ export class AddBuildingComponent implements OnInit {
     ) {
         this.tabs = this._sharedService.getTabstoShow(this.building);
         this.currentTab = this.tabs[0];
+        this.dropDownsData = this._sharedService.dropDownsData;
         this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });

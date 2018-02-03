@@ -106,6 +106,7 @@ export class AddOtherAssetsComponent implements OnInit {
     ) {
         this.tabs = this._sharedService.getTabstoShow(this.asset);
         this.currentTab = this.tabs[0];
+        this.dropDownsData = this._sharedService.dropDownsData;
         this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });

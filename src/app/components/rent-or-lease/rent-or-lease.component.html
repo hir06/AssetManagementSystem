@@ -91,7 +91,7 @@
       <button class="btn btn-primary" (click)="save()">Save</button>
     </div>
     <div class="col-sm-6">
-      <button class="btn btn-success float-right">Lookup</button>
+      <button class="btn btn-success float-right btn-sm">Lookup</button>
     </div>
   </div>
   <table class="table table-bordered">
@@ -133,5 +133,5 @@
       </tr>
     </tbody>
   </table>
-  <app-supporting-documents [docsObject]="rent"></app-supporting-documents>
+  <app-supporting-documents [docsObject]="rent" [addTo]="'rental-or-lease'"></app-supporting-documents>
 </div>

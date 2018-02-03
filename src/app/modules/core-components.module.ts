@@ -71,7 +71,7 @@ import { SuccessMessageComponent } from "../components/success-message/success-m
         SuccessMessageComponent
     ],
     imports: [FormsModule, CommonModule, RouterModule, PaginationModule, SelectDropDownModule],
-    providers: [SharedService, AlertsLoaderService],
+    providers: [AlertsLoaderService],
     exports: [FormsModule, CommonModule],
     entryComponents: [DashboardComponent, AjaxLoaderComponent, ErrorMessageComponent, SuccessMessageComponent]
 })

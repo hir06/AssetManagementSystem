@@ -40,22 +40,23 @@ export class RentOrLeaseComponent implements OnInit {
         existingVehicles: null,
         existingAssetTypeOthers: null
     };
-    dropDownsData:any;
+    dropDownsData: any;
     @Input() asset: any;
-    editMode:boolean = false;
+    editMode: boolean = false;
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService,
         private _sharedService: SharedService
     ) {
-      this._sharedService.dropDownsService.subscribe((data)=>{
-        this.dropDownsData = data;//rentOrLeaseTypeList
-    });
+        this.dropDownsData = this._sharedService.dropDownsData;
+        this._sharedService.dropDownsService.subscribe((data) => {
+            this.dropDownsData = data;//rentOrLeaseTypeList
+        });
     }
 
-    ngOnInit() {}
+    ngOnInit() { }
     save() {
-        if(this.editMode){
+        if (this.editMode) {
             this.updateRentOrLease();
             return;
         }
@@ -76,7 +77,7 @@ export class RentOrLeaseComponent implements OnInit {
                 this.asset = data;
                 this._alertsService.success(
                     "Service successfully added to " +
-                        this.asset.assetCategory.description
+                    this.asset.assetCategory.description
                 );
             },
             error => {
@@ -86,13 +87,13 @@ export class RentOrLeaseComponent implements OnInit {
             }
         );
     }
-    editRentOrLease(rol: any){
+    editRentOrLease(rol: any) {
         this.rent = rol;
         this.editMode = true;
     }
 
-    updateRentOrLease(){
-        this._apiService.put("/s/rental-or-lease/update-rental-or-lease-agreement",this.rent).subscribe(
+    updateRentOrLease() {
+        this._apiService.put("/s/rental-or-lease/update-rental-or-lease-agreement", this.rent).subscribe(
             data => {
                 this.rent = data;
                 this._alertsService.success(
@@ -106,7 +107,7 @@ export class RentOrLeaseComponent implements OnInit {
             }
         );
     }
-    removeRentOrLeaseFromAsset(rol: any){
+    removeRentOrLeaseFromAsset(rol: any) {
         let url = `/s/building/remove-rental-or-lease-from-building/buildingId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = `/s/vehicle/remove-rental-or-lease-from-vehicle/vehicleId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
@@ -115,13 +116,13 @@ export class RentOrLeaseComponent implements OnInit {
             url = `/s/equipment/remove-rental-or-lease-from-equipment/equipmentId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url =  `/s/asset-type-other/remove-rental-or-lease-from-asset-type-other/assetTypeOtherId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;;
+            url = `/s/asset-type-other/remove-rental-or-lease-from-asset-type-other/assetTypeOtherId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;;
         }
         this._apiService.delete(url).subscribe(
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Rental or Lease successfully removed from " +this.asset.assetCategory.description
+                    "Rental or Lease successfully removed from " + this.asset.assetCategory.description
                 );
             },
             error => {

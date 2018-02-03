@@ -71,7 +71,7 @@
       <button class="btn btn-primary" (click)="save()">Save</button>
     </div>
     <div class="col-sm-6">
-      <button class="btn btn-success float-right">Lookup</button>
+      <button class="btn btn-success float-right btn-sm">Lookup</button>
     </div>
   </div>
   <table class="table table-bordered">
@@ -101,5 +101,5 @@
           </tr>
     </tbody>
   </table>
-  <app-supporting-documents [docsObject]="inspection"></app-supporting-documents>
+  <app-supporting-documents [docsObject]="inspection" [addTo]="'inspection'"></app-supporting-documents>
 </div>

@@ -305,7 +305,7 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       Assigned To:
-      <button class="btn btn-primary">Lookup</button>
+      <button class="btn btn-primary btn-sm">Lookup</button>
     </div>
   </div>
 
@@ -354,4 +354,4 @@
 <app-rent-or-lease *ngIf="currentTab.tab==7"  [asset]="equipment"></app-rent-or-lease>
 <app-service *ngIf="currentTab.tab==8"  [asset]="equipment"></app-service>
 <app-warranty *ngIf="currentTab.tab==9"  [asset]="equipment"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10"  [asset]="equipment"></app-supporting-documents>
+<app-supporting-documents *ngIf="currentTab.tab==10"  [docsObject]="equipment" [addTo]="'equipment'"></app-supporting-documents>
