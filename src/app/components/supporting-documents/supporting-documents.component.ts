@@ -60,7 +60,6 @@ export class SupportingDocumentsComponent implements OnInit {
   downloadDocument(doc: any) {
     this._apiService.get(`/s/document/download-document/${doc.id}`,{},true,true).subscribe(
       data => {
-        debugger
         this.saveFile(data, doc.originalFileName);
       },
       error => {

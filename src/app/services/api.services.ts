@@ -51,7 +51,6 @@ export class ApiService {
         return this._http
             .get(this.apiUrl + url, options)
             .map((res: any) => {
-                debugger;
                 this._ajaxLoader.hideLoader();
                 return res;
             })
