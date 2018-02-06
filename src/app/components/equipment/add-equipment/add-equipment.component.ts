@@ -164,7 +164,7 @@ export class AddEquipmentComponent implements OnInit {
                     this.initEquipment();
                 },
                 error => {
-                    this._alertsService.success(
+                    this._alertsService.error(
                         "Error occured while saving equpment details"
                     );
                 }
