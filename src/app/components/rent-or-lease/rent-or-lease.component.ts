@@ -9,37 +9,7 @@ import { SharedService } from "../../services/shared.service";
     styleUrls: ["./rent-or-lease.component.scss"]
 })
 export class RentOrLeaseComponent implements OnInit {
-    rent: any = {
-        id: null,
-        statusFlag: null,
-        agreementId: "ASSET_TYPE_OTHER1",
-        agreementName: "AGREEMENT FOR ASSET TYPE OTHER NAME 1",
-        agreementDescription: "AGREEMENT FOR ASSET TYPE OTHER DESCRIPTION 1",
-        companyName: "CHRIS RENTAL",
-        companyDescription: "CHRIS RENTAL OR LEASING COMPANY LIMITED",
-        companyPhone: "258-369-1478",
-        companyEmail: "chrisrental@cr.com",
-        companyContactPerson: "Mr. Christopher Julian",
-        startDateTime: "01/01/2017 00:00:01",
-        endDateTime: "31/12/2017 23:59:59",
-        graceDateTime: "31/01/2018 23:59:59",
-        gracePeriodInMonths: 1,
-        agreementAmount: 26581.98,
-        renewalAmount: 2568.25,
-        rentalOrLeaseType: {
-            id: "RENTAL"
-        },
-        rentalOrLeaseTypeOther: null,
-        comments: "Worlds No. 1 Rental and Leasing Company.",
-        buildings: null,
-        equipments: null,
-        vehicles: null,
-        assetTypeOthers: null,
-        existingBuildings: null,
-        existingEquipments: null,
-        existingVehicles: null,
-        existingAssetTypeOthers: null
-    };
+    rent: any;
     dropDownsData: any;
     @Input() asset: any;
     editMode: boolean = false;
@@ -52,9 +22,43 @@ export class RentOrLeaseComponent implements OnInit {
         this._sharedService.dropDownsService.subscribe((data) => {
             this.dropDownsData = data;//rentOrLeaseTypeList
         });
+        this.initRentOrLease();
     }
 
     ngOnInit() { }
+    initRentOrLease(){
+        this.rent = {
+            id: null,
+            statusFlag: null,
+            agreementId: null,
+            agreementName: null,
+            agreementDescription: null,
+            companyName: null,
+            companyDescription: null,
+            companyPhone: null,
+            companyEmail: null,
+            companyContactPerson: null,
+            startDateTime: null,
+            endDateTime: null,
+            graceDateTime: null,
+            gracePeriodInMonths: null,
+            agreementAmount: null,
+            renewalAmount: null,
+            rentalOrLeaseType: {
+                id: null
+            },
+            rentalOrLeaseTypeOther: null,
+            comments: null,
+            buildings: null,
+            equipments: null,
+            vehicles: null,
+            assetTypeOthers: null,
+            existingBuildings: null,
+            existingEquipments: null,
+            existingVehicles: null,
+            existingAssetTypeOthers: null
+        };
+    }
     save() {
         if (this.editMode) {
             this.updateRentOrLease();
@@ -79,6 +83,7 @@ export class RentOrLeaseComponent implements OnInit {
                     "Service successfully added to " +
                     this.asset.assetCategory.description
                 );
+                this.initRentOrLease();
             },
             error => {
                 this._alertsService.error(

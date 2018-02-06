@@ -8,40 +8,46 @@ import { ApiService } from "../../services/api.services";
     styleUrls: ["./license.component.scss"]
 })
 export class LicenseComponent implements OnInit {
-    license: any = {
-        id: null,
-        statusFlag: null,
-        licenseNumber: null,
-        licenseHolderName: null,
-        licenseHoldingCompany: null,
-        licenseHolderDescription: null,
-        licenseHolderPhone: null,
-        licenseHolderEmail: null,
-        licenseProvidedBy: null,
-        licenseProvidingAuthority: null,
-        licenseProviderDescription: null,
-        licenseProviderPhone: null,
-        licenseProviderEmail: null,
-        placeIssued: null,
-        issuedDate: null,
-        startDateTime: null,
-        endDateTime: null,
-        graceDateTime: null,
-        renewalDate: null,
-        gracePeriodInMonths: null,
-        licenseAmount: null,
-        renewalAmount: null,
-        comments: null
-    };
+    license: any;
     @Input() asset: any;
     editMode: boolean = false;
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
-    ) {}
+    ) {
+        this.initLicense();
+    }
 
-    ngOnInit() {}
-
+    ngOnInit() {
+        
+    }
+    initLicense(){
+        this.license =  {
+            id: null,
+            statusFlag: null,
+            licenseNumber: null,
+            licenseHolderName: null,
+            licenseHoldingCompany: null,
+            licenseHolderDescription: null,
+            licenseHolderPhone: null,
+            licenseHolderEmail: null,
+            licenseProvidedBy: null,
+            licenseProvidingAuthority: null,
+            licenseProviderDescription: null,
+            licenseProviderPhone: null,
+            licenseProviderEmail: null,
+            placeIssued: null,
+            issuedDate: null,
+            startDateTime: null,
+            endDateTime: null,
+            graceDateTime: null,
+            renewalDate: null,
+            gracePeriodInMonths: null,
+            licenseAmount: null,
+            renewalAmount: null,
+            comments: null
+        };
+    }
     save() {
         if (this.editMode) {
             this.updateLicense();
@@ -63,9 +69,10 @@ export class LicenseComponent implements OnInit {
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Service successfully added to " +
+                    "License successfully added to " +
                         this.asset.assetCategory.description
                 );
+                this.initLicense();
             },
             error => {
                 this._alertsService.error(

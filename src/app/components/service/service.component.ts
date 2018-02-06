@@ -9,40 +9,44 @@ import { THROW_IF_NOT_FOUND } from "@angular/core/src/di/injector";
     styleUrls: ["./service.component.scss"]
 })
 export class ServiceComponent implements OnInit {
-    service: any = {
-        id: null,
-        statusFlag: null,
-        serviceNumber: null,
-        serviceCompanyName: null,
-        serviceCompanyDescription: null,
-        serviceDoneBy: null,
-        serviceCompanyContactPerson: null,
-        serviceCompanyPhone: null,
-        serviceCompanyEmail: null,
-        serviceDoneDateTime: null,
-        serviceDueDate: null,
-        nextServiceDueDate: null,
-        serviceAmount: null,
-        comments: null,
-        serviceDurationInHours: null,
-        buildings: null,
-        equipments: null,
-        vehicles: null,
-        assetTypeOthers: null,
-        existingBuildings: null,
-        existingEquipments: null,
-        existingVehicles: null,
-        existingAssetTypeOthers: null
-    };
+    service: any ;
     @Input() asset: any;
     editMode: boolean = false;
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
-    ) {}
+    ) {
+        this.initService();
+    }
 
     ngOnInit() {}
-
+    initService(){
+        this.service= {
+            id: null,
+            statusFlag: null,
+            serviceNumber: null,
+            serviceCompanyName: null,
+            serviceCompanyDescription: null,
+            serviceDoneBy: null,
+            serviceCompanyContactPerson: null,
+            serviceCompanyPhone: null,
+            serviceCompanyEmail: null,
+            serviceDoneDateTime: null,
+            serviceDueDate: null,
+            nextServiceDueDate: null,
+            serviceAmount: null,
+            comments: null,
+            serviceDurationInHours: null,
+            buildings: null,
+            equipments: null,
+            vehicles: null,
+            assetTypeOthers: null,
+            existingBuildings: null,
+            existingEquipments: null,
+            existingVehicles: null,
+            existingAssetTypeOthers: null
+        };
+    }
     save() {
         if(this.editMode){
             this.updateService();
@@ -67,6 +71,7 @@ export class ServiceComponent implements OnInit {
                     "Service successfully added to " +
                         this.asset.assetCategory.description
                 );
+                this.initService();
             },
             error => {
                 this._alertsService.error(

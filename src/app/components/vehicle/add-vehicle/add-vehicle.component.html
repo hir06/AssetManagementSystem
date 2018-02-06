@@ -74,12 +74,13 @@
     <div class="col-sm-12 col-md-6">
       <label>Vehicle Type</label>
       <select class="form-control" [(ngModel)]="vehicle.vehicleType">
+        <option value="null"></option>
           <option *ngFor="let veh of dropDownsData.vehicleTypeList" [ngValue]="veh">{{veh.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.vehicleTypeOther" name="vehicleTypeOther" />
+      <input class="form-control" [disabled]="!vehicle.vehicleType || vehicle.vehicleType.id != 'OTHER'" [(ngModel)]="vehicle.vehicleTypeOther" name="vehicleTypeOther" />
     </div>
   </div>
 
@@ -147,7 +148,7 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>If other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.vehicleDamageTypeOther" name="vehicleDamageTypeOther" />
+      <input class="form-control"  [(ngModel)]="vehicle.vehicleDamageTypeOther" name="vehicleDamageTypeOther" />
     </div>
   </div>
 
@@ -260,12 +261,13 @@
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
       <select class="form-control" [(ngModel)]="vehicle.assetCondition">
+        <option value="null"></option>
           <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.assetConditionOther" name="assetConditionOther" />
+      <input class="form-control" [disabled]="!vehicle.assetCondition || vehicle.assetCondition.id != 'OTHER'"  [(ngModel)]="vehicle.assetConditionOther" name="assetConditionOther" />
     </div>
   </div>
 
@@ -279,7 +281,7 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.assetStatusOther" name="description" />
+      <input class="form-control" [disabled]="!vehicle.assetStatus || vehicle.assetStatus.id != 'OTHER'" [(ngModel)]="vehicle.assetStatusOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
@@ -292,7 +294,7 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.assetTypeOther" name="description" />
+      <input class="form-control" [disabled]="!vehicle.assetType || vehicle.assetType.id != 'OTHER'" [(ngModel)]="vehicle.assetTypeOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">

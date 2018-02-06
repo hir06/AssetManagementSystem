@@ -272,7 +272,7 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="equipment.assetConditionOther" name="description" />
+      <input class="form-control" [disabled]="!equipment.assetCondition || equipment.assetCondition.id != 'OTHER'" [(ngModel)]="equipment.assetConditionOther" name="description" />
     </div>
   </div>
 
@@ -286,7 +286,7 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="equipment.assetStatusOther" name="description" />
+      <input class="form-control" [disabled]="!equipment.assetStatus || equipment.assetStatus.id != 'OTHER'" [(ngModel)]="equipment.assetStatusOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
@@ -299,7 +299,7 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="equipment.assetTypeOther" name="description" />
+      <input class="form-control" [disabled]="!equipment.assetType || equipment.assetType.id != 'OTHER'" [(ngModel)]="equipment.assetTypeOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">

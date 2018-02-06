@@ -27,7 +27,7 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Others, Specify</label>
-      <input disabled class="form-control" [(ngModel)]="rent.rentalOrLeaseTypeOther" name="rentalOrLeaseTypeOther" />
+      <input disabled class="form-control" [disabled]="!rent.rentalOrLeaseType || rent.rentalOrLeaseType.id != 'OTHER'" [(ngModel)]="rent.rentalOrLeaseTypeOther" name="rentalOrLeaseTypeOther" />
     </div>
   </div>
 

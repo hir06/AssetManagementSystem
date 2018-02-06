@@ -10,91 +10,7 @@ import { ActivatedRoute, Params } from "@angular/router";
     styleUrls: ["./add-vehicle.component.scss"]
 })
 export class AddVehicleComponent implements OnInit {
-    vehicle: any = {
-        id: null,
-        assets: null,
-        statusFlag: null,
-        vehicleRegistrationId: null,
-        engineNumber: null,
-        chasisNumber: null,
-        make: null,
-        model: null,
-        commentDescription: null,
-        vehicleDamageTypes: [],
-        assetCategory: {
-            id: "VEHICLE"
-        },
-        addresses: [],
-        insurancePolicies: null,
-        rentalOrLeaseAgreements: null,
-        loanAgreements: null,
-        annualMaintenanceContracts: null,
-        licenses: null,
-        warrantyAgreements: null,
-        inspections: null,
-        services: null,
-        existingInsurancePolicies: null,
-        existingRentalOrLeaseAgreements: null,
-        existingLoanAgreements: null,
-        existingAnnualMaintenanceContracts: null,
-        existingLicenses: null,
-        existingWarrantyAgreements: null,
-        existingInspections: null,
-        existingServices: null,
-        assignees: null,
-        vehicleDamageTypeOther: null,
-        assetCondition: {
-            id: null
-        },
-        assetStatus: {
-            id: null
-        },
-        assetType: {
-            id: null
-        },
-        assetConditionOther: null,
-        assetStatusOther: null,
-        assetTypeOther: null,
-        yearOfManufacturing: null,
-        monthOfManufacturing: {
-            id: null
-        },
-        motApplicable: null,
-        motStartDateTime: null,
-        motEndDateTime: null,
-        motObtainedDate: null,
-        motAuthorityName: null,
-        motPlace: null,
-        taxApplicable: null,
-        taxStartDateTime: null,
-        taxEndDateTime: null,
-        taxAmount: null,
-        vehicleType: {
-            id: null
-        },
-        vehicleTypeOther: null,
-        organization: {
-            id: null
-        },
-        department: {
-            id: null
-        },
-        regulatoryCompliance: null,
-        regulatoryAuthorityName: null,
-        regCompObtainedDate: null,
-        fireExits: null,
-        fireExitsLoc: null,
-        fireExtinguishers: null,
-        fireExtinguisherLoc: null,
-        amcPresent: "N",
-        insurancePresent: "N",
-        loanPresent: "N",
-        licensePresent: "N",
-        warrantyPresent: "N",
-        inspectionPresent: "N",
-        servicePresent: "N",
-        fireExtinguisherTypes: []
-    };
+    vehicle: any ;
     public currentTab: any;
     public tabs: any;
     public dropDownsData: any;
@@ -104,12 +20,14 @@ export class AddVehicleComponent implements OnInit {
         private _alertsService: AlertsLoaderService,
         private route: ActivatedRoute
     ) {
+        this.initVehicle();
         this.tabs = this._sharedService.getTabstoShow(this.vehicle);
         this.currentTab = this.tabs[0];
         this.dropDownsData = this._sharedService.dropDownsData;
         this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });
+        
     }
     ngOnInit() {
         this.dropDownsData = this._sharedService.dropDownsData;
@@ -122,6 +40,93 @@ export class AddVehicleComponent implements OnInit {
         });
     }
 
+    initVehicle(){
+        this.vehicle = {
+            id: null,
+            assets: null,
+            statusFlag: null,
+            vehicleRegistrationId: null,
+            engineNumber: null,
+            chasisNumber: null,
+            make: null,
+            model: null,
+            commentDescription: null,
+            vehicleDamageTypes: [],
+            assetCategory: {
+                id: "VEHICLE"
+            },
+            addresses: [],
+            insurancePolicies: null,
+            rentalOrLeaseAgreements: null,
+            loanAgreements: null,
+            annualMaintenanceContracts: null,
+            licenses: null,
+            warrantyAgreements: null,
+            inspections: null,
+            services: null,
+            existingInsurancePolicies: null,
+            existingRentalOrLeaseAgreements: null,
+            existingLoanAgreements: null,
+            existingAnnualMaintenanceContracts: null,
+            existingLicenses: null,
+            existingWarrantyAgreements: null,
+            existingInspections: null,
+            existingServices: null,
+            assignees: null,
+            vehicleDamageTypeOther: null,
+            assetCondition: {
+                id: null
+            },
+            assetStatus: {
+                id: null
+            },
+            assetType: {
+                id: null
+            },
+            assetConditionOther: null,
+            assetStatusOther: null,
+            assetTypeOther: null,
+            yearOfManufacturing: null,
+            monthOfManufacturing: {
+                id: null
+            },
+            motApplicable: null,
+            motStartDateTime: null,
+            motEndDateTime: null,
+            motObtainedDate: null,
+            motAuthorityName: null,
+            motPlace: null,
+            taxApplicable: null,
+            taxStartDateTime: null,
+            taxEndDateTime: null,
+            taxAmount: null,
+            vehicleType: {
+                id: null
+            },
+            vehicleTypeOther: null,
+            organization: {
+                id: null
+            },
+            department: {
+                id: null
+            },
+            regulatoryCompliance: null,
+            regulatoryAuthorityName: null,
+            regCompObtainedDate: null,
+            fireExits: null,
+            fireExitsLoc: null,
+            fireExtinguishers: null,
+            fireExtinguisherLoc: null,
+            amcPresent: "N",
+            insurancePresent: "N",
+            loanPresent: "N",
+            licensePresent: "N",
+            warrantyPresent: "N",
+            inspectionPresent: "N",
+            servicePresent: "N",
+            fireExtinguisherTypes: []
+        };
+    }
     getVehicleById(id: number) {
         this._apiService.get("/s/vehicle/vehicleId/" + id).subscribe(
             data => {
@@ -158,6 +163,7 @@ export class AddVehicleComponent implements OnInit {
                     this._alertsService.success(
                         "Vehicle details successfully saved."
                     );
+                    this.initVehicle();
                 },
                 error => {
                     this._alertsService.error(

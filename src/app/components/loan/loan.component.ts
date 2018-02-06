@@ -8,44 +8,48 @@ import { ApiService } from "../../services/api.services";
     styleUrls: ["./loan.component.scss"]
 })
 export class LoanComponent implements OnInit {
-    loan: any = {
-        id: null,
-        statusFlag: null,
-        agreementId: null,
-        agreementName: null,
-        agreementDescription:
-        null,
-        companyName: null,
-        companyDescription: null,
-        companyPhone: null,
-        companyEmail: null,
-        companyContactPerson: null,
-        startDateTime: null,
-        endDateTime: null,
-        graceDateTime: null,
-        loanAmount: null,
-        loanEmi: null,
-        gracePeriodInMonths: null,
-        comments: null,
-        interestPercentage: null,
-        buildings: null,
-        equipments: null,
-        vehicles: null,
-        assetTypeOthers: null,
-        existingBuildings: null,
-        existingEquipments: null,
-        existingVehicles: null,
-        existingAssetTypeOthers: null
-    };
+    loan: any ;
     @Input() asset: any;
     editMode: boolean=false;
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
-    ) {}
+    ) {
+        this.initLoan();
+    }
 
     ngOnInit() {}
-
+    initLoan(){
+        this.loan = {
+            id: null,
+            statusFlag: null,
+            agreementId: null,
+            agreementName: null,
+            agreementDescription:
+            null,
+            companyName: null,
+            companyDescription: null,
+            companyPhone: null,
+            companyEmail: null,
+            companyContactPerson: null,
+            startDateTime: null,
+            endDateTime: null,
+            graceDateTime: null,
+            loanAmount: null,
+            loanEmi: null,
+            gracePeriodInMonths: null,
+            comments: null,
+            interestPercentage: null,
+            buildings: null,
+            equipments: null,
+            vehicles: null,
+            assetTypeOthers: null,
+            existingBuildings: null,
+            existingEquipments: null,
+            existingVehicles: null,
+            existingAssetTypeOthers: null
+        };
+    }
     save() {
         if(this.editMode){
             this.updateLoan();
@@ -70,6 +74,7 @@ export class LoanComponent implements OnInit {
                     "Service successfully added to " +
                         this.asset.assetCategory.description
                 );
+                this.initLoan();
             },
             error => {
                 this._alertsService.error(

@@ -8,36 +8,41 @@ import { AlertsLoaderService } from '../../services/alerts-loader.service';
     styleUrls: ["./inspection.component.scss"]
 })
 export class InspectionComponent implements OnInit {
-    inspection: any = {
-        id: null,
-        statusFlag: null,
-        inspectionNumber: null,
-        inspectionCompanyName: null,
-        inspectionCompanyDescription: null,
-        inspectionDoneBy: null,
-        inspectionCompanyPhone: null,
-        inspectionCompanyEmail: null,
-        inspectionCompanyContactPerson: null,
-        inspectionDoneDateTime: null,
-        inspectionDueDate: null,
-        nextInspectionDueDate: null,
-        inspectionAmount: null,
-        comments: null,
-        inspectionDurationInHours: null,
-        buildings: null,
-        equipments: null,
-        vehicles: null,
-        assetTypeOthers: null,
-        existingBuildings: null,
-        existingEquipments: null,
-        existingVehicles: null,
-        existingAssetTypeOthers: null
-    };
+    inspection: any ;
     @Input() asset: any;
     editMode: boolean = false;
-    constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService) {}
+    constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService) {
+        this.initInspection();
+    }
 
     ngOnInit() {}
+    initInspection(){
+        this.inspection = {
+            id: null,
+            statusFlag: null,
+            inspectionNumber: null,
+            inspectionCompanyName: null,
+            inspectionCompanyDescription: null,
+            inspectionDoneBy: null,
+            inspectionCompanyPhone: null,
+            inspectionCompanyEmail: null,
+            inspectionCompanyContactPerson: null,
+            inspectionDoneDateTime: null,
+            inspectionDueDate: null,
+            nextInspectionDueDate: null,
+            inspectionAmount: null,
+            comments: null,
+            inspectionDurationInHours: null,
+            buildings: null,
+            equipments: null,
+            vehicles: null,
+            assetTypeOthers: null,
+            existingBuildings: null,
+            existingEquipments: null,
+            existingVehicles: null,
+            existingAssetTypeOthers: null
+        };
+    }
     save() {
         if(this.editMode){
             this.updateInspection();
@@ -61,6 +66,7 @@ export class InspectionComponent implements OnInit {
                     "Service successfully added to " +
                         this.asset.assetCategory.description
                 );
+                this.initInspection();
             },
             error => {
                 this._alertsService.error(
