@@ -137,7 +137,7 @@ export class AddBuildingComponent implements OnInit {
                 data => {
                     this.building = data;
                     this._alertsService.success("Building successfully saved");
-                    this.initBuilding();
+                    //this.initBuilding();
                 },
                 error => {
                     this._alertsService.error(error.erroMessage);

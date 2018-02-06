@@ -163,7 +163,7 @@ export class AddVehicleComponent implements OnInit {
                     this._alertsService.success(
                         "Vehicle details successfully saved."
                     );
-                    this.initVehicle();
+                    //this.initVehicle();
                 },
                 error => {
                     this._alertsService.error(

@@ -161,7 +161,7 @@ export class AddEquipmentComponent implements OnInit {
                 data => {
                     this.equipment = data;
                     this._alertsService.success("Equipment successfully saved");
-                    this.initEquipment();
+                    //this.initEquipment();
                 },
                 error => {
                     this._alertsService.error(

@@ -163,7 +163,7 @@ export class AddOtherAssetsComponent implements OnInit {
                     this._alertsService.success(
                         "Asset details saved successfully."
                     );
-                    this.initAssetOther();
+                    //this.initAssetOther();
                 },
                 error => {
                     this._alertsService.error(
