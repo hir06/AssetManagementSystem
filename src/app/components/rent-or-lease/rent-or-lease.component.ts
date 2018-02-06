@@ -80,7 +80,7 @@ export class RentOrLeaseComponent implements OnInit {
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Service successfully added to " +
+                    "rental or lease agreement successfully added to " +
                     this.asset.assetCategory.description
                 );
                 this.initRentOrLease();
@@ -102,7 +102,7 @@ export class RentOrLeaseComponent implements OnInit {
             data => {
                 this.rent = data;
                 this._alertsService.success(
-                    "retal or lease agreement successfully updated."
+                    "Rental or lease agreement successfully updated."
                 );
             },
             error => {

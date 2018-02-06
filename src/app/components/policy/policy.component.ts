@@ -133,7 +133,7 @@ export class PolicyComponent implements OnInit {
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Rental or Lease successfully removed from " +this.asset.assetCategory.description
+                    "Policy successfully removed from " +this.asset.assetCategory.description
                 );
             },
             error => {

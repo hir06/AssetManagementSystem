@@ -71,7 +71,7 @@ export class LoanComponent implements OnInit {
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Service successfully added to " +
+                    "Loan successfully added to " +
                         this.asset.assetCategory.description
                 );
                 this.initLoan();
@@ -92,7 +92,7 @@ export class LoanComponent implements OnInit {
             data => {
                 this.loan = data;
                 this._alertsService.success(
-                    "Policy successfully updated."
+                    "Loan successfully updated."
                 );
             },
             error => {

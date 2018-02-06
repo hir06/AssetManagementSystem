@@ -88,7 +88,7 @@ export class InspectionComponent implements OnInit {
                 data => {
                     this.inspection = data;
                     this._alertsService.success(
-                        "License successfully updated."
+                        "Inspection successfully updated."
                     );
                 },
                 error => {
