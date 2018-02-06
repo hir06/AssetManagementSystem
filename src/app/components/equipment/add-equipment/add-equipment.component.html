@@ -6,7 +6,7 @@
 </div>
 <ul class="row nav nav-tabs mb-2">
   <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
-    <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}</a>
+    <a class="nav-link" [ngClass]="{'active': currentTab.tab == tab.tab}">{{tab.name}}</a>
   </li>
 </ul>
 <div class="tab-content" *ngIf="currentTab.tab == 1">
@@ -18,157 +18,161 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Equipment Name</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentName" name="equipmentname" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Equipment Details</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentDetails" name="floor" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Equipment Tag</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentTag" name="floor" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Asset Category</label>
-      <select class="form-control">
-        <option>Category</option>
+      <select disabled class="form-control" [(ngModel)]="equipment.assetCategory.id">
+          <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category.id">{{category.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Organization</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <select  class="form-control" [(ngModel)]="equipment.organization">
+          <option *ngFor="let org of dropDownsData.organizationList" [ngValue]="org">{{org.description}}</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Department</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <select  class="form-control" [(ngModel)]="equipment.department">
+          <option *ngFor="let dep of dropDownsData.departmentList" [ngValue]="org">{{dep.description}}</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Equipment Cost</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentCost" name="equipmentCost" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Length</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentLength" name="equipmentLength" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Width</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentWidth" name="equipmentWidth" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Height</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentHeight" name="equipmentHeight" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Weight</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentWeight" name="equipmentWeight" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Quantity</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentQuantity" name="equipmentQuantity" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Serial #</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.serialNumber" name="serialNumber" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Make</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentMake" name="equipmentMake" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Model</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentModel" name="equipmentModel" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Purchased Date</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentPurchasedDate" name="equipmentPurchasedDate" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Purchased From</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentPurchasedFrom" name="equipmentPurchasedFrom" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Phone</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentCompanyPhone" name="equipmentCompanyPhone" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Email</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentCompanyEmail" name="equipmentCompanyEmail" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Contact Person</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentCompanyContactPerson" name="equipmentCompanyContactPerson" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Order #</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.orderNumber" name="orderNumber" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Invoice #</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.invoiceNumber" name="invoiceNumber" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Purchase Comments</label>
-      <textarea class="form-control" [(ngModel)]="equipment.name" name="equipmentname"></textarea>
+      <textarea class="form-control" [(ngModel)]="equipment.equipmentCompanyComments" name="equipmentCompanyComments"></textarea>
     </div>
   </div>
   
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Equipment Returned</label>
-      <select class="form-control">
-        <option>Yes</option>
-        <option>No</option>
+      <select class="form-control" [(ngModel)]="equipment.equipmentReturned">
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Return Date</label>
-      <input class="form-control" [(ngModel)]="equipment.name" name="equipmentname" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentReturnedDate" name="equipmentReturnedDate" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Refund Amount</label>
-      <input class="form-control" [(ngModel)]="equipment.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="equipment.refundAmount" name="refundAmount" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Return Reason</label>
-      <textarea class="form-control" [(ngModel)]="equipment.name" name="equipmentname"></textarea>
+      <textarea class="form-control" [(ngModel)]="equipment.equipmentReturnedReason" name="equipmentReturnedReason"></textarea>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Compliance</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="equipment.regulatoryCompliance">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Authority</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <input class="form-control" [(ngModel)]="equipment.regulatoryAuthorityName" name="regulatoryAuthorityName" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Compliance Obtained Date</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <input class="form-control" [(ngModel)]="equipment.regCompObtainedDate" name="regCompObtainedDate" />
     </div>
   </div>
 
@@ -177,131 +181,131 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="equipment.fireExits">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Exit Location</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <input class="form-control" [(ngModel)]="equipment.fireExitsLoc" name="fireExitsLoc" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <ngx-select-dropdown *ngIf="dropDownsData.fireExtinguisherTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="equipment.fireExtinguisherTypes"
+      [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher Location</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <input class="form-control" [(ngModel)]="equipment.fireExtinguisherLoc" name="fireExtinguisherLoc" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Annual Maintenance Contract</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.amcPresent" (change)="updateTabs()">
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Inspection</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.inspectionPresent" (change)="updateTabs()">
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>License</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.licensePresent" (change)="updateTabs()">
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Loan</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.loanPresent" (change)="updateTabs()">
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Policy</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.insurancePresent" (change)="updateTabs()">
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Rental/Lease</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.rentOrLeasePresent" (change)="updateTabs()">
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.servicePresent" (change)="updateTabs()">
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Warranty</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.warrantyPresent" (change)="updateTabs()">
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.assetCondition">
+          <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <input class="form-control" [(ngModel)]="equipment.assetConditionOther" name="description" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.assetStatus">
+          <option value="null"></option>
+          <option  *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <input class="form-control" [(ngModel)]="equipment.assetStatusOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="equipment.assetType">
+          <option value="null"></option>
+          <option  *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentId" name="description" />
+      <input class="form-control" [(ngModel)]="equipment.assetTypeOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
       Assigned To:
-      <button class="btn btn-primary">Lookup</button>
+      <button class="btn btn-primary btn-sm">Lookup</button>
     </div>
   </div>
 
@@ -332,22 +336,22 @@
   <div class="row pb-2">
       <div class="col-sm-12">
         <label>Damage Description</label>
-          <textarea class="form-control"></textarea>
+          <textarea class="form-control" [(ngModel)]="equipment.equipmentDamageDesc"></textarea>
       </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary">Save</button>
+      <button class="btn btn-primary" (click)="save()">Save</button>
       <button class="btn btn-success float-right">Next</button>
     </div>
   </div>
 </div>
-<app-maintenance *ngIf="currentTab.tab==2"></app-maintenance>
-<app-inspection *ngIf="currentTab.tab==3"></app-inspection>
-<app-license *ngIf="currentTab.tab==4"></app-license>
-<app-loan *ngIf="currentTab.tab==5"></app-loan>
-<app-policy *ngIf="currentTab.tab==6"></app-policy>
-<app-rent-or-lease *ngIf="currentTab.tab==7"></app-rent-or-lease>
-<app-service *ngIf="currentTab.tab==8"></app-service>
-<app-warranty *ngIf="currentTab.tab==9"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10"></app-supporting-documents>
+<app-maintenance *ngIf="currentTab.tab==2" [asset]="equipment"></app-maintenance>
+<app-inspection *ngIf="currentTab.tab==3"  [asset]="equipment"></app-inspection>
+<app-license *ngIf="currentTab.tab==4"  [asset]="equipment"></app-license>
+<app-loan *ngIf="currentTab.tab==5"  [asset]="equipment"></app-loan>
+<app-policy *ngIf="currentTab.tab==6"  [asset]="equipment"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7"  [asset]="equipment"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8"  [asset]="equipment"></app-service>
+<app-warranty *ngIf="currentTab.tab==9"  [asset]="equipment"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10"  [docsObject]="equipment" [addTo]="'equipment'"></app-supporting-documents>

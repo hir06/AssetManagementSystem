@@ -1,19 +1,19 @@
 <h5>Supporting Documents</h5>
-  <div class="row pb-4">
+  <div class="row pb-4" >
     <div class="col-sm-12 col-md-3">
       <label>File Name</label>
       <input class="form-control"  name="description" />
     </div>
     <div class="col-sm-12 col-md-3">
         <label>File Description</label>
-        <input class="form-control"  name="description" />
+        <input class="form-control" [(ngModel)]="fileDescription"  name="fileDescription" />
       </div>
     <div class="col-sm-12 col-md-3">
         <label>File</label>
-        <input class="form-control" style="padding-top:5px;padding-bottom:5px;" type="file"  name="description" />
+        <input class="form-control" (change)="documentSelected($event)" style="padding-top:5px;padding-bottom:5px;" type="file"  name="description" />
     </div>
     <div class="col-sm-12 col-md-3">
-        <button class="btn btn-primary" style="margin-top:32px;">Add</button>
+        <button class="btn btn-primary" style="margin-top:32px;" (click)="addDocuments()">Add</button>
     </div>
   </div>
   <table class="table table-bordered">
@@ -26,18 +26,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let doc of docsObject.documents; let i = index;">
           <td>
-            I123
+            {{doc.fileName}}
           </td>
           <td>
-            Description
+            {{doc.fileDescription}}
           </td>
           <td>
-            content type
+            {{doc.contentType}}
           </td>
           <td>
-            <span class="fa fa-trash"></span><span class="fa fa-download"></span>
+            <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteDocument(doc,i)"></span>
+            <span class="fa fa-download btn btn-sm btn-outline-success" (click)="downloadDocument(doc)"></span>
           </td>
         </tr>
       </tbody>

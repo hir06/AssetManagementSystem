@@ -6,7 +6,7 @@
 </div>
 <ul class="row nav nav-tabs mb-2">
   <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
-    <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}</a>
+    <a class="nav-link" [ngClass]="{'active': currentTab.tab == tab.tab}">{{tab.name}}</a>
   </li>
 </ul>
 <div class="tab-content" *ngIf="currentTab.tab == 1">
@@ -14,56 +14,58 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Vehicle Reg. No.</label>
-      <input class="form-control" [(ngModel)]="vehicle.vehicleId" name="vehicleid" />
+      <input class="form-control" [(ngModel)]="vehicle.vehicleRegistrationId" name="vehicleRegistrationId" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Engine #</label>
-      <input class="form-control" [(ngModel)]="vehicle.name" name="vehiclename" />
+      <input class="form-control" [(ngModel)]="vehicle.engineNumber" name="engineNumber" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Chasis #</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.chasisNumber" name="chasisNumber" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Asset Category</label>
-      <select class="form-control">
-        <option>Vehicle</option>
-      </select>
+      <select class="form-control" disabled [(ngModel)]="vehicle.assetCategory.id">
+          <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category.id">{{category.description}}</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Organization</label>
-      <select class="form-control">
-        <option>Vehicle</option>
-      </select>
+      <select class="form-control" [(ngModel)]="vehicle.organization">
+          <option value="null"></option>
+          <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Department</label>
-      <select class="form-control">
-        <option>Vehicle</option>
-      </select>
+      <select class="form-control" [(ngModel)]="vehicle.department">
+          <option value="null"></option>
+          <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
+        </select>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Make</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.make" name="make" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Model</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.model" name="model" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Year Of Manufacturing</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.yearOfManufacturing" name="yearOfManufacturing" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Month Of Manufacturing</label>
-      <select class="form-control">
-        <option>January</option>
+      <select class="form-control" [(ngModel)]="vehicle.monthOfManufacturing">
+          <option *ngFor="let month of dropDownsData.monthTypeList" [ngValue]="month">{{month.description}}</option>
       </select>
     </div>
   </div>
@@ -71,70 +73,68 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Vehicle Type</label>
-      <select class="form-control">
-        <option>January</option>
+      <select class="form-control" [(ngModel)]="vehicle.vehicleType">
+          <option *ngFor="let veh of dropDownsData.vehicleTypeList" [ngValue]="veh">{{veh.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.vehicleTypeOther" name="vehicleTypeOther" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Tax</label>
-      <select class="form-control">
-        <option>Yes</option>
-        <option>No</option>
+      <select class="form-control" [(ngModel)]="vehicle.taxApplicable">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax Amount</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.taxAmount" name="taxAmount" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax Start Date Time</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.taxStartDateTime" name="taxStartDateTime" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax End Date Time</label>
-      <select class="form-control">
-        <option>January</option>
-      </select>
+      <input class="form-control" [(ngModel)]="vehicle.taxEndDateTime" name="taxEndDateTime" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>MOT</label>
-      <select class="form-control">
-        <option>Yes</option>
-        <option>No</option>
+      <select class="form-control" [(ngModel)]="vehicle.motApplicable">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>MOT Authority Name</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.motAuthorityName" name="motAuthorityName" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>MOT Place</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.motPlace" name="motPlace" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>MOT Start Date Time</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.motStartDateTime" name="motStartDateTime" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>MOT End Date Time</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.motEndDateTime" name="motEndDateTime" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>MOT Obtained Date</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.motObtainedDate" name="motObtainedDate" />
     </div>
   </div>
 
@@ -142,32 +142,30 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Vehicle Damage Type</label>
-      <select class="form-control">
-        <option>Yes</option>
-        <option>No</option>
-      </select>
+      <ngx-select-dropdown *ngIf="dropDownsData.vehicleDamageTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="vehicle.vehicleDamageTypes"
+        [options]="dropDownsData.vehicleDamageTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>If other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.floor" name="floor" />
+      <input class="form-control" [(ngModel)]="vehicle.vehicleDamageTypeOther" name="vehicleDamageTypeOther" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Compliance</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.regulatoryCompliance">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Authority</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="vehicle.regulatoryAuthorityName" name="regulatoryAuthorityName" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Compliance Obtained Date</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="vehicle.regCompObtainedDate" name="regCompObtainedDate" />
     </div>
   </div>
 
@@ -176,50 +174,51 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.fireExits">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Exit Location</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="vehicle.fireExitsLoc" name="fireExitsLoc" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <ngx-select-dropdown *ngIf="dropDownsData.fireExtinguisherTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="vehicle.fireExtinguisherTypes"
+        [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher Location</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="vehicle.fireExtinguisherLoc" name="description" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Annual Maintenance Contract</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.amcPresent">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Inspection</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.inspectionPresent">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>License</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.licensePresent">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Loan</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.loanPresent">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -229,28 +228,28 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Policy</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.insurancePresent">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Rental/Lease</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.rentOrLeasePresent">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.servicePresent">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Warranty</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="vehicle.warrantyPresent">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -260,41 +259,40 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="vehicle.assetCondition">
+          <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="vehicle.assetConditionOther" name="assetConditionOther" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="vehicle.assetStatus">
+          <option value="null"></option>
+          <option  *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="vehicle.assetStatusOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
-      <select class="form-control">
-        <option value="Y">Yes</option>
-        <option value="N">No</option>
-      </select>
+      <select class="form-control" [(ngModel)]="vehicle.assetType">
+          <option value="null"></option>
+          <option  *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
+        </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="building.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="vehicle.assetTypeOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
@@ -318,35 +316,36 @@
       <th></th>
     </thead>
     <tbody>
-      <td>Karthik</td>
-      <td>125-365-9874
-      </td>
-      <td>karthik@i2g.com
-      </td>
-      <td>
-        <span class="fa fa-trash"></span>
-      </td>
+        <tr *ngFor="let assignee of vehicle.assignees">
+            <td>{{assignee.id}}</td>
+            <td>{{assignee.username}}
+            </td>
+            <td>{{assignee.loginId}}</td>
+            <td>
+              <span class="fa fa-trash"></span>
+            </td>
+          </tr>
     </tbody>
   </table>
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Comment/Description</label>
-      <textarea class="form-control"></textarea>
+      <textarea class="form-control" [(ngModel)]="vehicle.commentDescription"></textarea>
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary">Save</button>
+      <button class="btn btn-primary" (click)="save()">Save</button>
       <button class="btn btn-success float-right">Next</button>
     </div>
   </div>
 </div>
-<app-maintenance *ngIf="currentTab.tab==2"></app-maintenance>
-<app-inspection *ngIf="currentTab.tab==3"></app-inspection>
-<app-license *ngIf="currentTab.tab==4"></app-license>
-<app-loan *ngIf="currentTab.tab==5"></app-loan>
-<app-policy *ngIf="currentTab.tab==6"></app-policy>
-<app-rent-or-lease *ngIf="currentTab.tab==7"></app-rent-or-lease>
-<app-service *ngIf="currentTab.tab==8"></app-service>
-<app-warranty *ngIf="currentTab.tab==9"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10"></app-supporting-documents>
+<app-maintenance *ngIf="currentTab.tab==2" [asset]="vehicle"></app-maintenance>
+<app-inspection *ngIf="currentTab.tab==3" [asset]="vehicle"></app-inspection>
+<app-license *ngIf="currentTab.tab==4" [asset]="vehicle"></app-license>
+<app-loan *ngIf="currentTab.tab==5" [asset]="vehicle"></app-loan>
+<app-policy *ngIf="currentTab.tab==6" [asset]="vehicle"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="vehicle"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8" [asset]="vehicle"></app-service>
+<app-warranty *ngIf="currentTab.tab==9" [asset]="vehicle"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10" [docsObject]="vehicle" [addTo]="'vehicle'"></app-supporting-documents>

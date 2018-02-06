@@ -2,44 +2,44 @@
   <h5>Service Details</h5>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
-      <label>Service ID</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <label>Service #</label>
+      <input class="form-control" [(ngModel)]="service.serviceNumber" name="serviceNumber" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Name</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="service.serviceCompanyName" name="serviceCompanyName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Phone</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="service.serviceCompanyPhone" name="serviceCompanyPhone" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Email</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="service.serviceCompanyEmail" name="serviceCompanyEmail" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Company Description</label>
-      <textarea class="form-control" [(ngModel)]="service.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="service.serviceCompanyDescription" name="serviceCompanyDescription"></textarea>
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Company Contact Person</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="service.serviceCompanyContactPerson" name="serviceCompanyContactPerson" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service Due Date</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="service.serviceDueDate" name="serviceDueDate" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service Done By</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="service.serviceDoneBy" name="serviceDoneBy" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service Done Date Time</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="service.serviceDoneDateTime" name="serviceDoneDateTime" />
     </div>
   </div>
 
@@ -50,15 +50,15 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Service Amount</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="service.serviceAmount" name="serviceAmount" />
     </div>
     <div class="col-sm-12 col-md-4">
-      <label>Service Duration</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <label>Service Duration in hrs</label>
+      <input class="form-control" [(ngModel)]="service.serviceDurationInHours" name="serviceDurationInHours" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Next Service Date</label>
-      <input class="form-control" [(ngModel)]="service.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="service.nextServiceDueDate" name="nextServiceDueDate" />
     </div>
   </div>
 
@@ -66,13 +66,13 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Comments</label>
-      <textarea class="form-control" [(ngModel)]="service.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="service.comments" name="comments"></textarea>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-6">
-      <button class="btn btn-primary">Save</button>
+      <button class="btn btn-primary" (click)="save()">Save</button>
     </div>
     <div class="col-sm-6">
       <button class="btn btn-success float-right">Lookup</button>
@@ -92,33 +92,34 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let service of asset.services">
         <td>
-          I123
+          {{service.serviceNumber}}
         </td>
         <td>
-          Due Date
+          {{service.serviceDueDate}}
         </td>
         <td>
-          Done by
+          {{service.serviceDoneBy}}
         </td>
         <td>
-          Done Date
+          {{service.serviceDoneDateTime}}
         </td>
         <td>
-          Duration
+          {{service.serviceDurationInHours}}
         </td>
         <td>
-          Amount
+          {{service.serviceAmount}}
         </td>
         <td>
-          Next Service Date
+          {{service.nextServiceDueDate}}
         </td>
         <td>
-          <span class="fa fa-trash"></span>
+          <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editService(service)"></span>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeServiceFromAsset(service)"></span>
         </td>
       </tr>
     </tbody>
   </table>
-  <app-supporting-documents></app-supporting-documents>
+  <app-supporting-documents [docsObject]="service" [addTo]="'service'"></app-supporting-documents>
 </div>

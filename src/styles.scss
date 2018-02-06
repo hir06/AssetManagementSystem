@@ -17,7 +17,7 @@ body {
     padding-top: 15px;
     overflow: auto;
     border-top: 15px solid $amsColor;
-    height: calc(100% - 100px);
+    min-height: 100%;
 }
 .table {
     background: white;
@@ -92,4 +92,33 @@ a:hover {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
+}
+
+.alert{
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width:500px;
+    text-align: center;
+}
+label{
+    font-weight:bold;
+}
+
+.ngx-dorpdown-container{
+    /deep/ul.selected-items{
+           margin-top: 1rem;
+           margin-bottom: 1rem;
+           
+    }
+    ul{
+        li{
+            white-space: normal !important;
+           }
+    }
+    /deep/button.ngx-dropdown-button{
+           padding: 7px 12px !important;
+    }
 }

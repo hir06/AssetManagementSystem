@@ -7,7 +7,7 @@ import { UserService } from './services/userService';
 import { NgModule,APP_INITIALIZER  } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ApiService } from './services/api.services';
-import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { HttpActionDirective } from './directive/http-action.directive';
 
 
 
@@ -17,7 +17,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent
+    HttpActionDirective
   ],
   imports: [
     HttpClientModule,
@@ -48,4 +48,4 @@ export function getUserDetails(userService: UserService) {
   });
 }
 
-//license and insurance,inspection information can be different components
+//license and insurance,inspection information can be different components 

@@ -3,61 +3,61 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Agreement ID</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.agreementId" name="agreementId" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Agreement Name</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.agreementName" name="agreementName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Name</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.companyName" name="companyName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Phone</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.companyPhone" name="companyPhone" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Rental or Lease Type</label>
-      <select class="form-control" [(ngModel)]="rent.buildingId" name="description">
-        <option>Lease type</option>
+      <select class="form-control" [(ngModel)]="rent.rentalOrLeaseType" name="rentalOrLeaseType">
+        <option *ngFor="let type of dropDownsData.rentOrLeaseTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Others, Specify</label>
-      <input disabled class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input disabled class="form-control" [(ngModel)]="rent.rentalOrLeaseTypeOther" name="rentalOrLeaseTypeOther" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Agreement Description</label>
-      <textarea class="form-control" [(ngModel)]="rent.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="rent.agreementDescription" name="agreementDescription"></textarea>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>Company Description</label>
-      <textarea class="form-control" [(ngModel)]="rent.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="rent.companyDescription" name="companyDescription"></textarea>
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Company Email</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.companyName" name="companyName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Contact Person Name</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.companyContactPerson" name="companyContactPerson" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Start Date Time</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.startDateTime" name="startDateTime" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>End Date Time</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.endDateTime" name="endDateTime" />
     </div>
   </div>
 
@@ -65,30 +65,30 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Amount</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.agreementAmount" name="agreementAmount" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Renewal Amount</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.renewalAmount" name="renewalAmount" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Date Time</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.graceDateTime" name="graceDateTime" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Period In Months</label>
-      <input class="form-control" [(ngModel)]="rent.buildingId" name="description" />
+      <input class="form-control" [(ngModel)]="rent.gracePeriodInMonths" name="gracePeriodInMonths" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Comments</label>
-      <textarea class="form-control" [(ngModel)]="rent.buildingId" name="description"></textarea>
+      <textarea class="form-control" [(ngModel)]="rent.comments" name="comments"></textarea>
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-6">
-      <button class="btn btn-primary">Save</button>
+      <button class="btn btn-primary" (click)="save()">Save</button>
     </div>
     <div class="col-sm-6">
       <button class="btn btn-success float-right">Lookup</button>
@@ -107,30 +107,31 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let rol of asset.rentalOrLeaseAgreements">
         <td>
-          I123
+          {{rol.agreementId}}
         </td>
         <td>
-          Name
+          {{rol.agreementName}}
         </td>
         <td>
-          Date
+          {{rol.startDateTime}}
         </td>
         <td>
-          Date
+          {{rol.endDateTime}}
         </td>
         <td>
-          Amount
+          {{rol.agreementAmount}}
         </td>
         <td>
-          Type
+          {{rol.rentalOrLeaseType?.description}}
         </td>
         <td>
-          <span class="fa fa-trash"></span>
+          <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editRentOrLease(rol)"></span>
+          <span class="fa fa-trash btn btn-sm btn-outline-dangerr" (click)="removeRentOrLeaseFromAsset(rol)"></span>
         </td>
       </tr>
     </tbody>
   </table>
-  <app-supporting-documents></app-supporting-documents>
+  <app-supporting-documents [docsObject]="rent" [addTo]="'rental-or-lease'"></app-supporting-documents>
 </div>

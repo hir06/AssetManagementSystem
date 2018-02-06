@@ -26,25 +26,29 @@ const appRoutes: Routes = [
       { path: 'buildings', component: BuildingComponent,
             children:[
                   {path: '',component: BuildingListComponent , pathMatch: 'full'},
-                  {path: 'add-building',component: AddBuildingComponent , pathMatch: 'full'}
+                  {path: 'add-building',component: AddBuildingComponent , pathMatch: 'full'},
+                  {path:'edit-building/:id',component: AddBuildingComponent , pathMatch: 'full'}
             ],canActivate:[UserService]
       },
       { path: 'equipments', component: EquipmentComponent,
             children:[
                   {path: '',component: EquipmentListComponent , pathMatch: 'full'},
-                  {path: 'add-equipment',component: AddEquipmentComponent , pathMatch: 'full'}
+                  {path: 'add-equipment',component: AddEquipmentComponent , pathMatch: 'full'},
+                  {path:'edit-equipment/:id',component: AddEquipmentComponent , pathMatch: 'full'}
             ],canActivate:[UserService]
       },
       { path: 'vehicles', component: VehicleComponent,
             children:[
                   {path: '',component: VehicleListComponent , pathMatch: 'full'},
-                  {path: 'add-vehicle',component: AddVehicleComponent , pathMatch: 'full'}
+                  {path: 'add-vehicle',component: AddVehicleComponent , pathMatch: 'full'},
+                  {path:'edit-vehicle/:id',component: AddVehicleComponent , pathMatch: 'full'}
             ],canActivate:[UserService]
       },
       { path: 'others', component: OtherComponent,
             children:[
                   {path: '',component: OtherAssetsListComponent , pathMatch: 'full'},
-                  {path: 'add-other-asset',component: AddOtherAssetsComponent , pathMatch: 'full'}
+                  {path: 'add-other-asset',component: AddOtherAssetsComponent , pathMatch: 'full'},
+                  {path:'edit-other-asset/:id',component: AddOtherAssetsComponent , pathMatch: 'full'}
             ],canActivate:[UserService]
       }
 ];
