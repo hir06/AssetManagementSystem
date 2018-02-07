@@ -1,5 +1,5 @@
 import { ApiService } from "./../../services/api.services";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { AlertsLoaderService } from "../../services/alerts-loader.service";
 import { SharedService } from "../../services/shared.service";
 
@@ -12,6 +12,7 @@ export class PolicyComponent implements OnInit {
     policy: any ;
     dropDownsData: any;
     @Input() asset: any;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     editMode: boolean =false;
     constructor(
         private _apiService: ApiService,
@@ -89,6 +90,7 @@ export class PolicyComponent implements OnInit {
                     "Policy successfully added to" + this.asset.assetCategory.description
                 );
                 this.initPolicy();
+                this.addedToAsset.emit(data);
             },
             (error) => {
                 this._alertsService.error(
@@ -135,6 +137,7 @@ export class PolicyComponent implements OnInit {
                 this._alertsService.success(
                     "Policy successfully removed from " +this.asset.assetCategory.description
                 );
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(

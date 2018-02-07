@@ -15,6 +15,7 @@ export class AddEquipmentComponent implements OnInit {
     public currentTab: any;
     public tabs: any;
     public dropDownsData: any = {};
+    public editMode: boolean;
     constructor(
         private _sharedService: SharedService,
         private _apiService: ApiService,
@@ -36,10 +37,16 @@ export class AddEquipmentComponent implements OnInit {
             let Id = params["id"];
             if (Id) {
                 this.getEquipmentById(Id);
+                this.editMode = true;
             }
         });
     }
-
+    selectCompareFunction(item1:any,item2:any) {
+        if(item1 == null || item2 ==null){
+            return false;
+        }
+        return item1.id == item2.id;
+    }
     initEquipment(){
         this.equipment = {
             id: null,
@@ -150,6 +157,9 @@ export class AddEquipmentComponent implements OnInit {
 
     updateTabs() {
         this.tabs = this._sharedService.getTabstoShow(this.equipment);
+    }
+    addedToAsset($event:any){
+        this.equipment = $event;
     }
     save() {
         this._apiService

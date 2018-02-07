@@ -1,5 +1,5 @@
 import { AlertsLoaderService } from "./../../services/alerts-loader.service";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ApiService } from "../../services/api.services";
 
 @Component({
@@ -11,6 +11,7 @@ export class WarrantyComponent implements OnInit {
     warranty: any ;
     @Input() asset: any;
     editMode: boolean = false;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService
@@ -74,6 +75,7 @@ export class WarrantyComponent implements OnInit {
                         this.asset.assetCategory.description
                 );
                 this.initWarranty();
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(
@@ -118,6 +120,7 @@ export class WarrantyComponent implements OnInit {
                 this._alertsService.success(
                     "Warranty successfully removed from " +this.asset.assetCategory.description
                 );
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(

@@ -14,6 +14,7 @@ export class AddVehicleComponent implements OnInit {
     public currentTab: any;
     public tabs: any;
     public dropDownsData: any;
+    public editMode: boolean;
     constructor(
         private _sharedService: SharedService,
         private _apiService: ApiService,
@@ -35,9 +36,16 @@ export class AddVehicleComponent implements OnInit {
             let Id = params["id"];
             if (Id) {
               this.getVehicleById(Id);
+              this.editMode = true;
           }
            
         });
+    }
+    selectCompareFunction(item1:any,item2:any) {
+        if(item1 == null || item2 ==null){
+            return false;
+        }
+        return item1.id == item2.id;
     }
 
     initVehicle(){
@@ -151,6 +159,9 @@ export class AddVehicleComponent implements OnInit {
         this.tabs = this._sharedService.getTabstoShow(this.vehicle);
     }
 
+    addedToAsset($event:any){
+        this.vehicle = $event;
+    }
     save() {
         this._apiService
             .createOrUpdateVehicle(

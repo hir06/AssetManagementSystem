@@ -1,5 +1,5 @@
 import { ApiService } from "./../../services/api.services";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { AlertsLoaderService } from "../../services/alerts-loader.service";
 import { THROW_IF_NOT_FOUND } from "@angular/core/src/di/injector";
 
@@ -12,6 +12,7 @@ export class ServiceComponent implements OnInit {
     service: any ;
     @Input() asset: any;
     editMode: boolean = false;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
@@ -72,6 +73,7 @@ export class ServiceComponent implements OnInit {
                         this.asset.assetCategory.description
                 );
                 this.initService();
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(
@@ -117,6 +119,7 @@ export class ServiceComponent implements OnInit {
                 this._alertsService.success(
                     "Service successfully removed from " +this.asset.assetCategory.description
                 );
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(

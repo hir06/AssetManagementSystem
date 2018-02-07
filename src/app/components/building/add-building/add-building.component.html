@@ -171,7 +171,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
-      <select class="form-control" [(ngModel)]="building.assetCondition">
+      <select [compareWith]="selectCompareFunction"  class="form-control" [(ngModel)]="building.assetCondition">
         <option value="null"></option>
         <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
       </select>
@@ -185,7 +185,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
-      <select class="form-control" [(ngModel)]="building.assetStatus">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="building.assetStatus">
         <option value="null"></option>
         <option  *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
       </select>
@@ -198,7 +198,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
-      <select class="form-control" [(ngModel)]="building.assetType">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="building.assetType">
         <option value="null"></option>
         <option  *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
@@ -249,17 +249,17 @@
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary" (click)="save()">Save</button>
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
       <!-- <button class="btn btn-success float-right">Next</button> -->
     </div>
   </div>
 </div>
-<app-maintenance *ngIf="currentTab.tab==2" [asset]="building"></app-maintenance>
-<app-inspection *ngIf="currentTab.tab==3" [asset]="building"></app-inspection>
-<app-license *ngIf="currentTab.tab==4" [asset]="building"></app-license>
-<app-loan *ngIf="currentTab.tab==5" [asset]="building"></app-loan>
-<app-policy *ngIf="currentTab.tab==6" [asset]="building"></app-policy>
-<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="building"></app-rent-or-lease>
-<app-service *ngIf="currentTab.tab==8" [asset]="building"></app-service>
-<app-warranty *ngIf="currentTab.tab==9" [asset]="building"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10" [docsObject]="building" [addTo]="'building'"></app-supporting-documents>
+<app-maintenance *ngIf="currentTab.tab==2" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-maintenance>
+<app-inspection *ngIf="currentTab.tab==3" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-inspection>
+<app-license *ngIf="currentTab.tab==4" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-license>
+<app-loan *ngIf="currentTab.tab==5" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-loan>
+<app-policy *ngIf="currentTab.tab==6" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-service>
+<app-warranty *ngIf="currentTab.tab==9" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10" (addedToAsset)="addedToAsset($event)" [docsObject]="building" [addTo]="'building'"></app-supporting-documents>

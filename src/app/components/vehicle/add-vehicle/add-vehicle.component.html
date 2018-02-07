@@ -260,7 +260,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
-      <select class="form-control" [(ngModel)]="vehicle.assetCondition">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="vehicle.assetCondition">
         <option value="null"></option>
           <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
         </select>
@@ -274,7 +274,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
-      <select class="form-control" [(ngModel)]="vehicle.assetStatus">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="vehicle.assetStatus">
           <option value="null"></option>
           <option  *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
         </select>
@@ -287,7 +287,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
-      <select class="form-control" [(ngModel)]="vehicle.assetType">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="vehicle.assetType">
           <option value="null"></option>
           <option  *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
         </select>
@@ -337,17 +337,17 @@
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary" (click)="save()">Save</button>
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
       <button class="btn btn-success float-right">Next</button>
     </div>
   </div>
 </div>
-<app-maintenance *ngIf="currentTab.tab==2" [asset]="vehicle"></app-maintenance>
-<app-inspection *ngIf="currentTab.tab==3" [asset]="vehicle"></app-inspection>
-<app-license *ngIf="currentTab.tab==4" [asset]="vehicle"></app-license>
-<app-loan *ngIf="currentTab.tab==5" [asset]="vehicle"></app-loan>
-<app-policy *ngIf="currentTab.tab==6" [asset]="vehicle"></app-policy>
-<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="vehicle"></app-rent-or-lease>
-<app-service *ngIf="currentTab.tab==8" [asset]="vehicle"></app-service>
-<app-warranty *ngIf="currentTab.tab==9" [asset]="vehicle"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10" [docsObject]="vehicle" [addTo]="'vehicle'"></app-supporting-documents>
+<app-maintenance *ngIf="currentTab.tab==2" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-maintenance>
+<app-inspection *ngIf="currentTab.tab==3" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-inspection>
+<app-license *ngIf="currentTab.tab==4" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-license>
+<app-loan *ngIf="currentTab.tab==5" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-loan>
+<app-policy *ngIf="currentTab.tab==6"(addedToAsset)="addedToAsset($event)"  [asset]="vehicle"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-service>
+<app-warranty *ngIf="currentTab.tab==9" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10" (addedToAsset)="addedToAsset($event)" [docsObject]="vehicle" [addTo]="'vehicle'"></app-supporting-documents>

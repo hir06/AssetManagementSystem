@@ -14,6 +14,7 @@ export class AddOtherAssetsComponent implements OnInit {
     public currentTab: any;
     public tabs: any;
     public dropDownsData: any;
+    public editMode: boolean;
     constructor(
         private _sharedService: SharedService,
         private _apiService: ApiService,
@@ -35,8 +36,15 @@ export class AddOtherAssetsComponent implements OnInit {
             let Id = params["id"];
             if (Id) {
                 this.getAssetById(Id);
+                this.editMode = true;
             }
         });
+    }
+    selectCompareFunction(item1:any,item2:any) {
+        if(item1 == null || item2 ==null){
+            return false;
+        }
+        return item1.id == item2.id;
     }
     initAssetOther(){
         this.asset= {
@@ -150,7 +158,9 @@ export class AddOtherAssetsComponent implements OnInit {
                 }
             );
     }
-
+    addedToAsset($event:any){
+        this.asset = $event;
+    }
     save() {
         this._apiService
             .createOrUpdateOtherAsset(

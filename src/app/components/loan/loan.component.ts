@@ -1,5 +1,5 @@
 import { AlertsLoaderService } from "./../../services/alerts-loader.service";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ApiService } from "../../services/api.services";
 
 @Component({
@@ -11,6 +11,7 @@ export class LoanComponent implements OnInit {
     loan: any ;
     @Input() asset: any;
     editMode: boolean=false;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
@@ -75,6 +76,7 @@ export class LoanComponent implements OnInit {
                         this.asset.assetCategory.description
                 );
                 this.initLoan();
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(
@@ -119,6 +121,7 @@ export class LoanComponent implements OnInit {
             this._alertsService.success(
                 "Loan successfully removed from " +this.asset.assetCategory.description
             );
+            this.addedToAsset.emit(data);
         },
         error => {
             this._alertsService.error(

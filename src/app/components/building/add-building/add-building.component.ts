@@ -13,6 +13,7 @@ export class AddBuildingComponent implements OnInit {
     public building: any;
     public currentTab: any;
     public tabs: any;
+    public editMode: boolean;
     public dropDownsData: any;
     public multiselectConfig: any = {
         search: false,
@@ -39,10 +40,17 @@ export class AddBuildingComponent implements OnInit {
             let Id = params["id"];
             if (Id) {
                 this.getBuildingById(Id);
+                this.editMode = true;
             }
         });
     }
 
+    selectCompareFunction(item1:any,item2:any) {
+        if(item1 == null || item2 ==null){
+            return false;
+        }
+        return item1.id == item2.id;
+    }
     initBuilding(){
         this.building = {
             id: null,
@@ -116,6 +124,10 @@ export class AddBuildingComponent implements OnInit {
         );
     }
 
+    addedToAsset($event:any){
+        this.building = $event;
+    }
+
     changeTab(tab: string) {
         if (!this.building.id) {
             this._alertsService.error("Please save building details first.");
@@ -140,7 +152,7 @@ export class AddBuildingComponent implements OnInit {
                     //this.initBuilding();
                 },
                 error => {
-                    this._alertsService.error(error.erroMessage);
+                    this._alertsService.error("Some error ocured. Try again");
                 }
             );
     }
