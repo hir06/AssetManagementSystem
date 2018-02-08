@@ -16,25 +16,85 @@
 <table class="table table-bordered">
   <thead>
     <th>
-      Asset ID
+      Vehicle Reg #
     </th>
     <th>
-      Asset type
+      Make
     </th>
     <th>
-      Address
+      Model
+    </th>
+    <th>
+      Engine #
+    </th>
+    <th>
+      Chasis #
+    </th>
+    <th>
+      AMC
+    </th>
+    <th>
+      Inspection
+    </th>
+    <th>
+      License
+    </th>
+    <th>
+      Loan
+    </th>
+    <th>
+      Policy
+    </th>
+    <th>
+      Rental/Lease
+    </th>
+    <th>
+      Service
+    </th>
+    <th>
+      Warranty
     </th>
   </thead>
   <tbody>
     <tr *ngFor="let vehicle of vehicleList;">
       <td>
-        <a [routerLink]="['edit-vehicle', vehicle.id]">{{vehicle.id}}</a>
+        <a [routerLink]="['edit-vehicle', vehicle.id]">{{vehicle.vehicleRegistrationId}}</a>
       </td>
       <td>
-        {{vehicle.assettype?.description}}
+        {{vehicle.assettype?.make}}
       </td>
       <td>
-        Some Address
+        {{vehicle.assettype?.model}}
+      </td>
+      <td>
+        {{vehicle.assettype?.engineNumber}}
+      </td>
+      <td>
+        {{vehicle.assettype?.chasisNumber}}
+      </td>
+      <td>
+        {{vehicle.amcPresent}}
+      </td>
+      <td>
+        {{vehicle.inspectionPresent}}
+      </td>
+      <td>
+        {{vehicle.licensePresent}}
+      </td>
+      <td>
+        {{vehicle.loanPresent}}
+      </td>
+      <td>
+        {{vehicle.insurancePresent}}
+      </td>
+      <td>
+        {{vehicle.rentOrLeasePresent}}
+      </td>
+      <td>
+        {{vehicle.servicePresent}}
+      </td>
+      <td>
+        {{vehicle.warrantyPresent}}
       </td>
     </tr>
   </tbody>
