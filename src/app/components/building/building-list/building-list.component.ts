@@ -26,24 +26,14 @@ export class BuildingListComponent implements OnInit {
 
     ngOnInit() {}
     getPageData($event: any) {
-        this.searchParams.paging.currentPage = $event.currentPage;
+        this.searchParams.paging.currentPage = $event.pageNo;
         this.searchParams.paging.pageSize = $event.pageSize;
         this.getBuildingsList();
     }
 
     getBuildingsList() {
-        let params = {
-            paging: { currentPage: 0, pageSize: 10 },
-            sorts: [
-                {
-                    field: "buildingName",
-                    order: "ASC"
-                }
-            ],
-            filters: []
-        };
         this._apiService
-            .get("/s/building/search-buildings", { Search: params })
+            .get("/s/building/search-buildings", { Search: JSON.stringify(this.searchParams )})
             .subscribe(data => {
                 this.itemsCount = data.totalRecords;
                 this.buildingList = data.buildings;

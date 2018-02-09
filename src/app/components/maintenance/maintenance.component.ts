@@ -91,7 +91,9 @@ export class MaintenanceComponent implements OnInit {
         this._apiService.put("/s/amc/update-amc", this.maintenance).subscribe(
             data => {
                 this.maintenance = data;
-                this._alertsService.success("Policy successfully updated.");
+                this._alertsService.success("Annual maintenace contract successfully updated.");
+                this.initMaintenance();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(

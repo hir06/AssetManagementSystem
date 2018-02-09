@@ -97,6 +97,8 @@ export class LicenseComponent implements OnInit {
                 this._alertsService.success(
                     "License successfully updated."
                 );
+                this.initLicense();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(

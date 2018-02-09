@@ -112,6 +112,8 @@ export class PolicyComponent implements OnInit {
                 this._alertsService.success(
                     "Policy successfully updated."
                 );
+                this.initPolicy();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(

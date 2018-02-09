@@ -106,6 +106,10 @@ a:hover {
 label{
     font-weight:bold;
 }
+.disabled{
+    cursor: not-allowed;
+    pointer-events: none !important;
+}
 
 .ngx-dorpdown-container{
     /deep/ul.selected-items{

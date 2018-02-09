@@ -94,6 +94,8 @@ export class ServiceComponent implements OnInit {
                 this._alertsService.success(
                     "Service successfully updated."
                 );
+                this.initService();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(

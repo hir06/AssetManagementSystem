@@ -17,6 +17,7 @@ export class SupportingDocumentsComponent implements OnInit {
   uploadUrl: string;
   fileDescription: string;
   formData: FormData = new FormData();
+  fileInput: any;
 
   constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService) {
 
@@ -26,7 +27,15 @@ export class SupportingDocumentsComponent implements OnInit {
     this.uploadUrl = `/s/document/save-documents-for-${this.addTo}`;
   }
 
+  clearSelectedFile(){
+    this.fileDescription = null;
+    this.fileName = null;
+    this.fileInput.value = null;
+  }
+
   documentSelected($event: any) {
+    this.formData = new FormData();
+    this.fileInput = $event.target;
     let addTo = this.addTo !== "rental-or-lease" ? this.addTo : "rentalOrLease";
     this.formData.append(`${addTo}Id`, this.docsObject.id);
     this.formData.append("file", $event.target.files[0]);
@@ -46,6 +55,7 @@ export class SupportingDocumentsComponent implements OnInit {
         this.docsObject.documents.length==0?this.docsObject.documents = data
         :this.docsObject.documents.push(data[0]);
         this.addedToAsset.emit(this.docsObject);
+        this.clearSelectedFile();
       },
       error => {
         this._alertsService.error("Some error occured while uploading documents.");

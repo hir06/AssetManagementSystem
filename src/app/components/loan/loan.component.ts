@@ -88,6 +88,7 @@ export class LoanComponent implements OnInit {
 
     editLoan(loan: any){
         this.loan = loan;
+        this.editMode = true;
     }
     updateLoan(){
         this._apiService.put("/s/loan/update-loan",this.loan).subscribe(
@@ -96,6 +97,8 @@ export class LoanComponent implements OnInit {
                 this._alertsService.success(
                     "Loan successfully updated."
                 );
+                this.initLoan();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(

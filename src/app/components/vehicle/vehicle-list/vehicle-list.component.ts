@@ -27,24 +27,14 @@ export class VehicleListComponent implements OnInit {
     ngOnInit() {}
 
     getPageData($event: any) {
-        this.searchParams.paging.currentPage = $event.currentPage;
+        this.searchParams.paging.currentPage = $event.pageNo;
         this.searchParams.paging.pageSize = $event.pageSize;
         this.getVehicleList();
     }
 
     getVehicleList() {
-        let params = {
-            paging: { currentPage: 0, pageSize: 10 },
-            sorts: [
-                {
-                    field: "eqiupmentName",
-                    order: "ASC"
-                }
-            ],
-            filters: []
-        };
         this._apiService
-            .get("/s/vehicle/search-vehicles", { Search: params })
+            .get("/s/vehicle/search-vehicles", { Search: JSON.stringify(this.searchParams) })
             .subscribe(data => {
                 this.itemsCount = data.totalRecords;
                 this.vehicleList = data.vehicles;

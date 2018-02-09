@@ -106,6 +106,8 @@ export class RentOrLeaseComponent implements OnInit {
                 this._alertsService.success(
                     "Rental or lease agreement successfully updated."
                 );
+                this.initRentOrLease();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(

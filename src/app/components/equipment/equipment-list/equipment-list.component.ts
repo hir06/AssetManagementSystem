@@ -27,24 +27,14 @@ export class EquipmentListComponent implements OnInit {
     ngOnInit() {}
 
     getPageData($event: any) {
-        this.searchParams.paging.currentPage = $event.currentPage;
+        this.searchParams.paging.currentPage = $event.pageNo;
         this.searchParams.paging.pageSize = $event.pageSize;
         this.getEquipmentList();
     }
 
     getEquipmentList() {
-        let params = {
-            paging: { currentPage: 0, pageSize: 10 },
-            sorts: [
-                {
-                    field: "eqiupmentName",
-                    order: "ASC"
-                }
-            ],
-            filters: []
-        };
         this._apiService
-            .get("/s/equipment/search-equipments", { Search: params })
+            .get("/s/equipment/search-equipments", { Search: JSON.stringify(this.searchParams) })
             .subscribe(data => {
                 this.itemsCount = data.totalRecords;
                 this.equipmentList = data.equipments;

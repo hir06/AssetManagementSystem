@@ -95,6 +95,8 @@ export class WarrantyComponent implements OnInit {
                 this._alertsService.success(
                     "Warranty successfully updated."
                 );
+                this.initWarranty();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(
