@@ -27,7 +27,7 @@ export class OtherAssetsListComponent implements OnInit {
     ngOnInit() {}
 
     getPageData($event: any) {
-        this.searchParams.paging.currentPage = $event.pageNo;
+        this.searchParams.paging.currentPage = $event.pageNo - 1;
         this.searchParams.paging.pageSize = $event.pageSize;
         this.getOtherAssetList();
     }
