@@ -50,22 +50,26 @@
     <div class="col-sm-12 col-md-3">
       <label>Policy Type</label>
       <select class="form-control" [(ngModel)]="policy.policyType" name="policyType">
+        <option value="null"></option>
         <option *ngFor="let type of dropDownsData.policyTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Policy Type Other</label>
-      <input class="form-control" [disabled]="!policy.policyType || policy.policyType.id != 'OTHER'" [(ngModel)]="policy.policyTypeOther" name="policyTypeOther" />
+      <input class="form-control" [disabled]="!policy.policyType || policy.policyType.id != 'OTHER'" [(ngModel)]="policy.policyTypeOther"
+        name="policyTypeOther" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Renewal Type</label>
       <select class="form-control" [(ngModel)]="policy.policyRenewalType" name="policyRenewalType">
+        <option value="null"></option>
         <option *ngFor="let renew of dropDownsData.renewalTypeList" [ngValue]="renew">{{renew.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Policy Renewal Type Other</label>
-      <input class="form-control" [disabled]="!policy.policyRenewalType || policy.policyRenewalType.id != 'OTHER'" [(ngModel)]="policy.policyRenewalTypeOther" name="policyRenewalTypeOther" />
+      <input class="form-control" [disabled]="!policy.policyRenewalType || policy.policyRenewalType.id != 'OTHER'" [(ngModel)]="policy.policyRenewalTypeOther"
+        name="policyRenewalTypeOther" />
     </div>
   </div>
 
@@ -140,7 +144,8 @@
           {{policy.policyType?.id}}
         </td>
         <td>
-            <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editPolicy(policy)"></span><span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removePolicyFromAsset(policy)"></span>
+          <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editPolicy(policy)"></span>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removePolicyFromAsset(policy)"></span>
         </td>
       </tr>
     </tbody>
