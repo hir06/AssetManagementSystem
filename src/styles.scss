@@ -109,6 +109,18 @@ label{
 .disabled{
     cursor: not-allowed;
     pointer-events: none !important;
+    
+}
+ngx-select-dropdown{
+    &.disabled{
+        /deep/.ngx-dorpdown-container{
+            /deep/button.ngx-dropdown-button{
+                cursor: not-allowed !important;
+                background-color: #eceeef !important;
+            }
+        }
+    }
+    
 }
 
 .ngx-dorpdown-container{
