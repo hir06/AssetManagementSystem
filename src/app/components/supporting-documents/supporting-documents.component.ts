@@ -1,6 +1,6 @@
 import { AlertsLoaderService } from './../../services/alerts-loader.service';
 import { ApiService } from './../../services/api.services';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
@@ -11,10 +11,13 @@ import { saveAs } from 'file-saver/FileSaver';
 export class SupportingDocumentsComponent implements OnInit {
   @Input() docsObject?: any;
   @Input() addTo: string;
+  @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
   files: any = [];
+  fileName: string;
   uploadUrl: string;
   fileDescription: string;
   formData: FormData = new FormData();
+  fileInput: any;
 
   constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService) {
 
@@ -24,20 +27,35 @@ export class SupportingDocumentsComponent implements OnInit {
     this.uploadUrl = `/s/document/save-documents-for-${this.addTo}`;
   }
 
+  clearSelectedFile(){
+    this.fileDescription = null;
+    this.fileName = null;
+    this.fileInput.value = null;
+  }
+
   documentSelected($event: any) {
+    this.formData = new FormData();
+    this.fileInput = $event.target;
     let addTo = this.addTo !== "rental-or-lease" ? this.addTo : "rentalOrLease";
     this.formData.append(`${addTo}Id`, this.docsObject.id);
     this.formData.append("file", $event.target.files[0]);
     this.formData.append("fileDescription", this.fileDescription);
   }
   addDocuments() {
+    if(!this.docsObject.id){
+      this._alertsService.error("Please select an item from the table to add documents to.");
+      return;
+    }
     let headers: {
       'Content-Type': undefined
     }
     this._apiService.post(this.uploadUrl, this.formData, headers).subscribe(
       data => {
         this._alertsService.success("Documents successfully uploaded");
-        this.docsObject.documents = data;
+        this.docsObject.documents.length==0?this.docsObject.documents = data
+        :this.docsObject.documents.push(data[0]);
+        this.addedToAsset.emit(this.docsObject);
+        this.clearSelectedFile();
       },
       error => {
         this._alertsService.error("Some error occured while uploading documents.");
@@ -50,6 +68,7 @@ export class SupportingDocumentsComponent implements OnInit {
       data => {
         this._alertsService.success("Document deleted successfully");
         this.docsObject.documents.splice(index, 1);
+        this.addedToAsset.emit(this.docsObject);
       },
       error => {
         this._alertsService.error("Some error occured while deleting document.");

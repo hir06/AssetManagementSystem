@@ -2,7 +2,7 @@
   <div class="row pb-4" >
     <div class="col-sm-12 col-md-3">
       <label>File Name</label>
-      <input class="form-control"  name="description" />
+      <input class="form-control" [(ngModel)]="fileName"  name="fileName" />
     </div>
     <div class="col-sm-12 col-md-3">
         <label>File Description</label>
@@ -10,7 +10,7 @@
       </div>
     <div class="col-sm-12 col-md-3">
         <label>File</label>
-        <input class="form-control" (change)="documentSelected($event)" style="padding-top:5px;padding-bottom:5px;" type="file"  name="description" />
+        <input class="form-control" [disabled]="!fileName || !fileDescription" (change)="documentSelected($event)" style="padding-top:5px;padding-bottom:5px;" type="file"  name="description" />
     </div>
     <div class="col-sm-12 col-md-3">
         <button class="btn btn-primary" style="margin-top:32px;" (click)="addDocuments()">Add</button>
@@ -28,13 +28,13 @@
       <tbody>
         <tr *ngFor="let doc of docsObject.documents; let i = index;">
           <td>
-            {{doc.fileName}}
+            {{doc.fileName || ""}}
           </td>
           <td>
-            {{doc.fileDescription}}
+            {{doc.fileDescription || ""}}
           </td>
           <td>
-            {{doc.contentType}}
+            {{doc.fileContentType || ""}}
           </td>
           <td>
             <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteDocument(doc,i)"></span>

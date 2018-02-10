@@ -35,14 +35,14 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Organization</label>
-      <select class="form-control" [(ngModel)]="vehicle.organization">
+      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="vehicle.organization">
           <option value="null"></option>
           <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Department</label>
-      <select class="form-control" [(ngModel)]="vehicle.department">
+      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="vehicle.department">
           <option value="null"></option>
           <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
         </select>
@@ -74,12 +74,13 @@
     <div class="col-sm-12 col-md-6">
       <label>Vehicle Type</label>
       <select class="form-control" [(ngModel)]="vehicle.vehicleType">
+        <option value="null"></option>
           <option *ngFor="let veh of dropDownsData.vehicleTypeList" [ngValue]="veh">{{veh.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.vehicleTypeOther" name="vehicleTypeOther" />
+      <input class="form-control" [disabled]="!vehicle.vehicleType || vehicle.vehicleType.id != 'OTHER'" [(ngModel)]="vehicle.vehicleTypeOther" name="vehicleTypeOther" />
     </div>
   </div>
 
@@ -147,31 +148,26 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>If other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.vehicleDamageTypeOther" name="vehicleDamageTypeOther" />
+      <input class="form-control"  [(ngModel)]="vehicle.vehicleDamageTypeOther" name="vehicleDamageTypeOther" />
     </div>
   </div>
 
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
       <label>Regulatory Compliance</label>
       <select class="form-control" [(ngModel)]="vehicle.regulatoryCompliance">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
       <label>Regulatory Authority</label>
       <input class="form-control" [(ngModel)]="vehicle.regulatoryAuthorityName" name="regulatoryAuthorityName" />
     </div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
       <label>Compliance Obtained Date</label>
       <input class="form-control" [(ngModel)]="vehicle.regCompObtainedDate" name="regCompObtainedDate" />
     </div>
-  </div>
-
-
-
-  <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>
       <select class="form-control" [(ngModel)]="vehicle.fireExits">
@@ -179,18 +175,31 @@
         <option value="N">No</option>
       </select>
     </div>
+  </div>
+
+
+
+  <div class="row pb-2">
+    
     <div class="col-sm-12 col-md-3">
       <label>Fire Exit Location</label>
-      <input class="form-control" [(ngModel)]="vehicle.fireExitsLoc" name="fireExitsLoc" />
+      <input class="form-control" [disabled]="vehicle.fireExits !='Y'" [(ngModel)]="vehicle.fireExitsLoc" name="fireExitsLoc" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Exitinguishers Present</label>
+      <select class="form-control" [(ngModel)]="vehicle.fireExtinguishers">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher</label>
-      <ngx-select-dropdown *ngIf="dropDownsData.fireExtinguisherTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="vehicle.fireExtinguisherTypes"
+      <ngx-select-dropdown [ngClass]="{'disabled': vehicle.fireExtinguishers != 'Y'}" *ngIf="dropDownsData.fireExtinguisherTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="vehicle.fireExtinguisherTypes"
         [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher Location</label>
-      <input class="form-control" [(ngModel)]="vehicle.fireExtinguisherLoc" name="description" />
+      <input class="form-control" [disabled]="vehicle.fireExtinguishers !='Y'" [(ngModel)]="vehicle.fireExtinguisherLoc" name="description" />
     </div>
   </div>
 
@@ -259,40 +268,41 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
-      <select class="form-control" [(ngModel)]="vehicle.assetCondition">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="vehicle.assetCondition">
+        <option value="null"></option>
           <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.assetConditionOther" name="assetConditionOther" />
+      <input class="form-control" [disabled]="!vehicle.assetCondition || vehicle.assetCondition.id != 'OTHER'"  [(ngModel)]="vehicle.assetConditionOther" name="assetConditionOther" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
-      <select class="form-control" [(ngModel)]="vehicle.assetStatus">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="vehicle.assetStatus">
           <option value="null"></option>
           <option  *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.assetStatusOther" name="description" />
+      <input class="form-control" [disabled]="!vehicle.assetStatus || vehicle.assetStatus.id != 'OTHER'" [(ngModel)]="vehicle.assetStatusOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
-      <select class="form-control" [(ngModel)]="vehicle.assetType">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="vehicle.assetType">
           <option value="null"></option>
           <option  *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.assetTypeOther" name="description" />
+      <input class="form-control" [disabled]="!vehicle.assetType || vehicle.assetType.id != 'OTHER'" [(ngModel)]="vehicle.assetTypeOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
@@ -335,17 +345,17 @@
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary" (click)="save()">Save</button>
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
       <button class="btn btn-success float-right">Next</button>
     </div>
   </div>
 </div>
-<app-maintenance *ngIf="currentTab.tab==2" [asset]="vehicle"></app-maintenance>
-<app-inspection *ngIf="currentTab.tab==3" [asset]="vehicle"></app-inspection>
-<app-license *ngIf="currentTab.tab==4" [asset]="vehicle"></app-license>
-<app-loan *ngIf="currentTab.tab==5" [asset]="vehicle"></app-loan>
-<app-policy *ngIf="currentTab.tab==6" [asset]="vehicle"></app-policy>
-<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="vehicle"></app-rent-or-lease>
-<app-service *ngIf="currentTab.tab==8" [asset]="vehicle"></app-service>
-<app-warranty *ngIf="currentTab.tab==9" [asset]="vehicle"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10" [docsObject]="vehicle" [addTo]="'vehicle'"></app-supporting-documents>
+<app-maintenance *ngIf="currentTab.tab==2" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-maintenance>
+<app-inspection *ngIf="currentTab.tab==3" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-inspection>
+<app-license *ngIf="currentTab.tab==4" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-license>
+<app-loan *ngIf="currentTab.tab==5" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-loan>
+<app-policy *ngIf="currentTab.tab==6"(addedToAsset)="addedToAsset($event)"  [asset]="vehicle"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-service>
+<app-warranty *ngIf="currentTab.tab==9" (addedToAsset)="addedToAsset($event)" [asset]="vehicle"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10" (addedToAsset)="addedToAsset($event)" [docsObject]="vehicle" [addTo]="'vehicle'"></app-supporting-documents>

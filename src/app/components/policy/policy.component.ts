@@ -1,5 +1,5 @@
 import { ApiService } from "./../../services/api.services";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { AlertsLoaderService } from "../../services/alerts-loader.service";
 import { SharedService } from "../../services/shared.service";
 
@@ -9,45 +9,10 @@ import { SharedService } from "../../services/shared.service";
     styleUrls: ["./policy.component.scss"]
 })
 export class PolicyComponent implements OnInit {
-    policy: any = {
-        id: null,
-        statusFlag: null,
-        policyNumber: null,
-        policyName: null,
-        policyDescription: null,
-        policyStartDateTime: null,
-        policyEndDateTime: null,
-        graceDateTime: null,
-        gracePeriodInMonths: null,
-        policyCoverAmount: null,
-        policyPremiumAmount: null,
-        policyType: {
-            id: null,
-            description: null
-        },
-        policyRenewalType: {
-            id: null,
-            description: null
-        },
-        providerName: null,
-        providerDescription: null,
-        providerPhone: null,
-        providerEmail: null,
-        providerContactPerson: null,
-        comments: null,
-        policyTypeOther: null,
-        policyRenewalTypeOther: null,
-        buildings: null,
-        equipments: null,
-        vehicles: null,
-        assetTypeOthers: null,
-        existingBuildings: null,
-        existingEquipments: null,
-        existingVehicles: null,
-        existingAssetTypeOthers: null
-    };
+    policy: any ;
     dropDownsData: any;
     @Input() asset: any;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     editMode: boolean =false;
     constructor(
         private _apiService: ApiService,
@@ -58,9 +23,49 @@ export class PolicyComponent implements OnInit {
         this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });
+        this.initPolicy();
     }
 
     ngOnInit() {}
+    initPolicy(){
+        this.policy = {
+            id: null,
+            statusFlag: null,
+            policyNumber: null,
+            policyName: null,
+            policyDescription: null,
+            policyStartDateTime: null,
+            policyEndDateTime: null,
+            graceDateTime: null,
+            gracePeriodInMonths: null,
+            policyCoverAmount: null,
+            policyPremiumAmount: null,
+            policyType: {
+                id: null,
+                description: null
+            },
+            policyRenewalType: {
+                id: null,
+                description: null
+            },
+            providerName: null,
+            providerDescription: null,
+            providerPhone: null,
+            providerEmail: null,
+            providerContactPerson: null,
+            comments: null,
+            policyTypeOther: null,
+            policyRenewalTypeOther: null,
+            buildings: null,
+            equipments: null,
+            vehicles: null,
+            assetTypeOthers: null,
+            existingBuildings: null,
+            existingEquipments: null,
+            existingVehicles: null,
+            existingAssetTypeOthers: null
+        };
+    }
     save() {
         if(this.editMode){
             this.updatePolicy();
@@ -82,8 +87,10 @@ export class PolicyComponent implements OnInit {
             (data) => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Policy successfully added to." + this.asset.assetCategory.description
+                    "Policy successfully added to" + this.asset.assetCategory.description
                 );
+                this.initPolicy();
+                this.addedToAsset.emit(data);
             },
             (error) => {
                 this._alertsService.error(
@@ -105,6 +112,8 @@ export class PolicyComponent implements OnInit {
                 this._alertsService.success(
                     "Policy successfully updated."
                 );
+                this.initPolicy();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(
@@ -128,8 +137,9 @@ export class PolicyComponent implements OnInit {
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Rental or Lease successfully removed from " +this.asset.assetCategory.description
+                    "Policy successfully removed from " +this.asset.assetCategory.description
                 );
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(

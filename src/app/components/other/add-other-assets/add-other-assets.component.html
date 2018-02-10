@@ -39,14 +39,14 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Organization</label>
-      <select class="form-control" [(ngModel)]="asset.organization">
+      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="asset.organization">
           <option value="null"></option>
           <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Department</label>
-      <select class="form-control" [(ngModel)]="asset.department">
+      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="asset.department">
           <option value="null"></option>
           <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
         </select>
@@ -166,26 +166,21 @@
   </div>
 
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-">
       <label>Regulatory Compliance</label>
       <select class="form-control" [(ngModel)]="asset.regulatoryCompliance">
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
       <label>Regulatory Authority</label>
       <input class="form-control" [(ngModel)]="asset.regulatoryAuthorityName" name="regulatoryAuthorityName" />
     </div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
       <label>Compliance Obtained Date</label>
       <input class="form-control" [(ngModel)]="asset.regCompObtainedDate" name="regCompObtainedDate" />
     </div>
-  </div>
-
-
-
-  <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>
       <select class="form-control" [(ngModel)]="asset.fireExits">
@@ -193,18 +188,30 @@
           <option value="Y">Yes</option>
       </select>
     </div>
+  </div>
+
+
+
+  <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Fire Exit Location</label>
-      <input class="form-control" [(ngModel)]="asset.fireExitsLoc" name="description" />
+      <input class="form-control" [disabled]="asset.fireExits !='Y'" [(ngModel)]="asset.fireExitsLoc" name="description" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Exitinguishers Present</label>
+      <select class="form-control" [(ngModel)]="asset.fireExtinguishers" >
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher</label>
-      <ngx-select-dropdown *ngIf="dropDownsData.fireExtinguisherTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="asset.fireExtinguisherTypes"
+      <ngx-select-dropdown [ngClass]="{'disabled': asset.fireExtinguishers != 'Y'}" *ngIf="dropDownsData.fireExtinguisherTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="asset.fireExtinguisherTypes"
         [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher Location</label>
-      <input class="form-control" [(ngModel)]="asset.fireExtinguisherLoc" name="fireExtinguisherLoc" />
+      <input class="form-control" [disabled]="asset.fireExtinguishers !='Y'" [(ngModel)]="asset.fireExtinguisherLoc" name="fireExtinguisherLoc" />
     </div>
   </div>
 
@@ -273,40 +280,40 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
-      <select class="form-control" [(ngModel)]="asset.assetCondition">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="asset.assetCondition">
           <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="asset.assetConditionOther" name="assetConditionOther" />
+      <input class="form-control" [disabled]="!asset.assetCondition || asset.assetCondition.id != 'OTHER'" [(ngModel)]="asset.assetConditionOther" name="assetConditionOther" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
-      <select class="form-control" [(ngModel)]="asset.assetStatus">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="asset.assetStatus">
           <option value="null"></option>
           <option  *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="asset.assetStatusOther" name="assetStatusOther" />
+      <input class="form-control" [disabled]="!asset.assetStatus || asset.assetStatus.id != 'OTHER'" [(ngModel)]="asset.assetStatusOther" name="assetStatusOther" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
-      <select class="form-control" [(ngModel)]="asset.assetType">
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="asset.assetType">
           <option value="null"></option>
           <option  *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [(ngModel)]="asset.assetTypeOther" name="assetTypeOther" />
+      <input class="form-control" [disabled]="!asset.assetType || asset.assetType.id != 'OTHER'" [(ngModel)]="asset.assetTypeOther" name="assetTypeOther" />
     </div>
   </div>
   <div class="row pb-2">
@@ -348,17 +355,17 @@
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary" (click)="save()">Save</button>
-      <button class="btn btn-success float-right">Next</button>
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
+      <!-- <button class="btn btn-success float-right">Next</button> -->
     </div>
   </div>
 </div>
-<app-maintenance *ngIf="currentTab.tab==2" [asset]="asset"></app-maintenance>
-<app-inspection *ngIf="currentTab.tab==3" [asset]="asset"></app-inspection>
-<app-license *ngIf="currentTab.tab==4" [asset]="asset"></app-license>
-<app-loan *ngIf="currentTab.tab==5" [asset]="asset"></app-loan>
-<app-policy *ngIf="currentTab.tab==6" [asset]="asset"></app-policy>
-<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="asset"></app-rent-or-lease>
-<app-service *ngIf="currentTab.tab==8" [asset]="asset"></app-service>
-<app-warranty *ngIf="currentTab.tab==9" [asset]="asset"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10" [docsObject]="asset" [addTo]="'asset-type-other'"></app-supporting-documents>
+<app-maintenance *ngIf="currentTab.tab==2" (addedToAsset)="addedToAsset($event)" [asset]="asset"></app-maintenance>
+<app-inspection *ngIf="currentTab.tab==3" (addedToAsset)="addedToAsset($event)" [asset]="asset"></app-inspection>
+<app-license *ngIf="currentTab.tab==4" (addedToAsset)="addedToAsset($event)" [asset]="asset"></app-license>
+<app-loan *ngIf="currentTab.tab==5" (addedToAsset)="addedToAsset($event)" [asset]="asset"></app-loan>
+<app-policy *ngIf="currentTab.tab==6" (addedToAsset)="addedToAsset($event)" [asset]="asset"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7" (addedToAsset)="addedToAsset($event)" [asset]="asset"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8" (addedToAsset)="addedToAsset($event)" [asset]="asset"></app-service>
+<app-warranty *ngIf="currentTab.tab==9" (addedToAsset)="addedToAsset($event)" [asset]="asset"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10" (addedToAsset)="addedToAsset($event)" [docsObject]="asset" [addTo]="'asset-type-other'"></app-supporting-documents>

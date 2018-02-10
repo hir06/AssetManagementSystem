@@ -1,5 +1,5 @@
 import { AlertsLoaderService } from "./../../services/alerts-loader.service";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ApiService } from "../../services/api.services";
 
 @Component({
@@ -8,44 +8,49 @@ import { ApiService } from "../../services/api.services";
     styleUrls: ["./loan.component.scss"]
 })
 export class LoanComponent implements OnInit {
-    loan: any = {
-        id: null,
-        statusFlag: null,
-        agreementId: null,
-        agreementName: null,
-        agreementDescription:
-        null,
-        companyName: null,
-        companyDescription: null,
-        companyPhone: null,
-        companyEmail: null,
-        companyContactPerson: null,
-        startDateTime: null,
-        endDateTime: null,
-        graceDateTime: null,
-        loanAmount: null,
-        loanEmi: null,
-        gracePeriodInMonths: null,
-        comments: null,
-        interestPercentage: null,
-        buildings: null,
-        equipments: null,
-        vehicles: null,
-        assetTypeOthers: null,
-        existingBuildings: null,
-        existingEquipments: null,
-        existingVehicles: null,
-        existingAssetTypeOthers: null
-    };
+    loan: any ;
     @Input() asset: any;
     editMode: boolean=false;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
-    ) {}
+    ) {
+        this.initLoan();
+    }
 
     ngOnInit() {}
-
+    initLoan(){
+        this.loan = {
+            id: null,
+            statusFlag: null,
+            agreementId: null,
+            agreementName: null,
+            agreementDescription:
+            null,
+            companyName: null,
+            companyDescription: null,
+            companyPhone: null,
+            companyEmail: null,
+            companyContactPerson: null,
+            startDateTime: null,
+            endDateTime: null,
+            graceDateTime: null,
+            loanAmount: null,
+            loanEmi: null,
+            gracePeriodInMonths: null,
+            comments: null,
+            interestPercentage: null,
+            buildings: null,
+            equipments: null,
+            vehicles: null,
+            assetTypeOthers: null,
+            existingBuildings: null,
+            existingEquipments: null,
+            existingVehicles: null,
+            existingAssetTypeOthers: null
+        };
+    }
     save() {
         if(this.editMode){
             this.updateLoan();
@@ -67,9 +72,11 @@ export class LoanComponent implements OnInit {
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Service successfully added to " +
+                    "Loan successfully added to " +
                         this.asset.assetCategory.description
                 );
+                this.initLoan();
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(
@@ -81,14 +88,17 @@ export class LoanComponent implements OnInit {
 
     editLoan(loan: any){
         this.loan = loan;
+        this.editMode = true;
     }
     updateLoan(){
         this._apiService.put("/s/loan/update-loan",this.loan).subscribe(
             data => {
                 this.loan = data;
                 this._alertsService.success(
-                    "Policy successfully updated."
+                    "Loan successfully updated."
                 );
+                this.initLoan();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(
@@ -114,6 +124,7 @@ export class LoanComponent implements OnInit {
             this._alertsService.success(
                 "Loan successfully removed from " +this.asset.assetCategory.description
             );
+            this.addedToAsset.emit(data);
         },
         error => {
             this._alertsService.error(

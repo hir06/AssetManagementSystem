@@ -49,7 +49,7 @@ export class ApiService {
             options.responseType ='arraybuffer'
         }
         return this._http
-            .get(this.apiUrl + url, options)
+            .get(this.apiUrl + url, {headers: headers})
             .map((res: any) => {
                 this._ajaxLoader.hideLoader();
                 return res;

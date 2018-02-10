@@ -1,5 +1,5 @@
 import { AlertsLoaderService } from "./../../services/alerts-loader.service";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ApiService } from "../../services/api.services";
 
 @Component({
@@ -8,66 +8,74 @@ import { ApiService } from "../../services/api.services";
     styleUrls: ["./warranty.component.scss"]
 })
 export class WarrantyComponent implements OnInit {
-    warranty: any = {
-        id: null,
-        statusFlag: null,
-        warrantyNumber: null,
-        warrantyName: null,
-        warrantyDescription: null,
-        warrantyProvidedBy: null,
-        warrantyProviderDescription: null,
-        warrantyProviderPhone: null,
-        warrantyProviderEmail: null,
-        warrantyProviderContactPerson: null,
-        warrantyProvidedDate: null,
-        warrantyStartDateTime: null,
-        warrantyEndDateTime: null,
-        warrantyRenewalDate: null,
-        warrantyGraceDateTime: null,
-        gracePeriodInMonths: null,
-        warrantyAmount: null,
-        warrantyRenewalAmount: null,
-        comments: null,
-        buildings: null,
-        equipments: null,
-        vehicles: null,
-        assetTypeOthers: null,
-        existingBuildings: null,
-        existingEquipments: null,
-        existingVehicles: null,
-        existingAssetTypeOthers: null
-    };
+    warranty: any ;
     @Input() asset: any;
     editMode: boolean = false;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService
-    ) {}
+    ) {
+        this.initWarranty();
+    }
 
     ngOnInit() {}
+    initWarranty(){
+        this.warranty = {
+            id: null,
+            statusFlag: null,
+            warrantyNumber: null,
+            warrantyName: null,
+            warrantyDescription: null,
+            warrantyProvidedBy: null,
+            warrantyProviderDescription: null,
+            warrantyProviderPhone: null,
+            warrantyProviderEmail: null,
+            warrantyProviderContactPerson: null,
+            warrantyProvidedDate: null,
+            warrantyStartDateTime: null,
+            warrantyEndDateTime: null,
+            warrantyRenewalDate: null,
+            warrantyGraceDateTime: null,
+            gracePeriodInMonths: null,
+            warrantyAmount: null,
+            warrantyRenewalAmount: null,
+            comments: null,
+            buildings: null,
+            equipments: null,
+            vehicles: null,
+            assetTypeOthers: null,
+            existingBuildings: null,
+            existingEquipments: null,
+            existingVehicles: null,
+            existingAssetTypeOthers: null
+        };
+    }
     save() {
         if(this.editMode){
             this.updateWarranty();
             return;
         }
-        let url = "/s/building/add-inspection-to-building/buildingId/";
+        let url = "/s/building/add-warranty-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = "/s/vehicle/add-inspection-to-vehicle/vehicleId/";
+            url = "/s/vehicle/add-warranty-to-vehicle/vehicleId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = "/s/equipment/add-inspection-to-equipment/equipmentId/";
+            url = "/s/equipment/add-warranty-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/s/asset-type-other/add-inspection-to-asset-type-other/assetTypeOtherId/";
+            url = "/s/asset-type-other/add-warranty-to-asset-type-other/assetTypeOtherId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.warranty).subscribe(
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Service successfully added to " +
+                    "Warranty successfully added to " +
                         this.asset.assetCategory.description
                 );
+                this.initWarranty();
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(
@@ -87,6 +95,8 @@ export class WarrantyComponent implements OnInit {
                 this._alertsService.success(
                     "Warranty successfully updated."
                 );
+                this.initWarranty();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(
@@ -112,6 +122,7 @@ export class WarrantyComponent implements OnInit {
                 this._alertsService.success(
                     "Warranty successfully removed from " +this.asset.assetCategory.description
                 );
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(

@@ -1,5 +1,5 @@
 import { AlertsLoaderService } from "./../../services/alerts-loader.service";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { ApiService } from "../../services/api.services";
 
 @Component({
@@ -8,40 +8,47 @@ import { ApiService } from "../../services/api.services";
     styleUrls: ["./license.component.scss"]
 })
 export class LicenseComponent implements OnInit {
-    license: any = {
-        id: null,
-        statusFlag: null,
-        licenseNumber: null,
-        licenseHolderName: null,
-        licenseHoldingCompany: null,
-        licenseHolderDescription: null,
-        licenseHolderPhone: null,
-        licenseHolderEmail: null,
-        licenseProvidedBy: null,
-        licenseProvidingAuthority: null,
-        licenseProviderDescription: null,
-        licenseProviderPhone: null,
-        licenseProviderEmail: null,
-        placeIssued: null,
-        issuedDate: null,
-        startDateTime: null,
-        endDateTime: null,
-        graceDateTime: null,
-        renewalDate: null,
-        gracePeriodInMonths: null,
-        licenseAmount: null,
-        renewalAmount: null,
-        comments: null
-    };
+    license: any;
     @Input() asset: any;
     editMode: boolean = false;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
-    ) {}
+    ) {
+        this.initLicense();
+    }
 
-    ngOnInit() {}
+    ngOnInit() {
 
+    }
+    initLicense() {
+        this.license = {
+            id: null,
+            statusFlag: null,
+            licenseNumber: null,
+            licenseHolderName: null,
+            licenseHoldingCompany: null,
+            licenseHolderDescription: null,
+            licenseHolderPhone: null,
+            licenseHolderEmail: null,
+            licenseProvidedBy: null,
+            licenseProvidingAuthority: null,
+            licenseProviderDescription: null,
+            licenseProviderPhone: null,
+            licenseProviderEmail: null,
+            placeIssued: null,
+            issuedDate: null,
+            startDateTime: null,
+            endDateTime: null,
+            graceDateTime: null,
+            renewalDate: null,
+            gracePeriodInMonths: null,
+            licenseAmount: null,
+            renewalAmount: null,
+            comments: null
+        };
+    }
     save() {
         if (this.editMode) {
             this.updateLicense();
@@ -63,9 +70,11 @@ export class LicenseComponent implements OnInit {
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Service successfully added to " +
-                        this.asset.assetCategory.description
+                    "License successfully added to " +
+                    this.asset.assetCategory.description
                 );
+                this.initLicense();
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(
@@ -83,45 +92,48 @@ export class LicenseComponent implements OnInit {
         this._apiService
             .put("/s/license/update-license", this.license)
             .subscribe(
-                data => {
-                    this.license = data;
-                    this._alertsService.success(
-                        "License successfully updated."
-                    );
-                },
-                error => {
-                    this._alertsService.error(
-                        "Some error occured. Please try again."
-                    );
-                }
+            data => {
+                this.license = data;
+                this._alertsService.success(
+                    "License successfully updated."
+                );
+                this.initLicense();
+                this.editMode = false;
+            },
+            error => {
+                this._alertsService.error(
+                    "Some error occured. Please try again."
+                );
+            }
             );
     }
     removeLicenseFromAsset(license: any) {
         let url = `/s/building/remove-license-from-building/buildingId/${
             this.asset.id
-        }/licenseId/${license.id}`;
+            }/licenseId/${license.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = `/s/vehicle/remove-license-from-vehicle/vehicleId/${
                 this.asset.id
-            }/licenseId/${license.id}`;
+                }/licenseId/${license.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
             url = `/s/equipment/remove-license-from-equipment/equipmentId/${
                 this.asset.id
-            }/licenseId/${license.id}`;
+                }/licenseId/${license.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
             url = `/s/asset-type-other/remove-license-from-asset-type-other/assetTypeOtherId/${
                 this.asset.id
-            }/licenseId/${license.id}`;
+                }/licenseId/${license.id}`;
         }
         this._apiService.delete(url).subscribe(
             data => {
                 this.asset = data;
                 this._alertsService.success(
                     "License successfully removed from " +
-                        this.asset.assetCategory.description
+                    this.asset.assetCategory.description
                 );
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(

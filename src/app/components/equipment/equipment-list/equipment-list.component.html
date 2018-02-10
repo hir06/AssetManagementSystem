@@ -22,25 +22,97 @@
 <table class="table table-bordered">
   <thead>
     <th>
-      Asset ID
+      Equipment ID
     </th>
     <th>
-      Asset type
+      Equipment Name
     </th>
     <th>
-      Address
+      Make
+    </th>
+    <th>
+      Model
+    </th>
+    <th>
+      Serial #
+    </th>
+    <th>
+      Organization
+    </th>
+    <th>
+      Department
+    </th>
+    <th>
+      AMC
+    </th>
+    <th>
+      Inspection
+    </th>
+    <th>
+      License
+    </th>
+    <th>
+      Loan
+    </th>
+    <th>
+      Policy
+    </th>
+    <th>
+      Rental/Lease
+    </th>
+    <th>
+      Service
+    </th>
+    <th>
+      Warranty
     </th>
   </thead>
   <tbody>
     <tr *ngFor="let equipment of equipmentList">
       <td>
-        <a [routerLink]="['edit-equipment', equipment.id]">{{equipment.id}}</a>
+        <a [routerLink]="['edit-equipment', equipment.id]">{{equipment.equipmentId}}</a>
       </td>
       <td>
-        {{equipment.assetType?.description}}
+        {{equipment.equipmentName}}
       </td>
       <td>
-        Some Address
+        {{equipment.make}}
+      </td>
+      <td>
+        {{equipment.model}}
+      </td>
+      <td>
+        {{equipment.serialNumber}}
+      </td>
+      <td>
+        {{equipment.organization?.description}}
+      </td>
+      <td>
+        {{equipment.department?.description}}
+      </td>
+      <td>
+        {{equipment.amcPresent}}
+      </td>
+      <td>
+        {{equipment.inspectionPresent}}
+      </td>
+      <td>
+        {{equipment.licensePresent}}
+      </td>
+      <td>
+        {{equipment.loanPresent}}
+      </td>
+      <td>
+        {{equipment.insurancePresent}}
+      </td>
+      <td>
+        {{equipment.rentOrLeasePresent}}
+      </td>
+      <td>
+        {{equipment.servicePresent}}
+      </td>
+      <td>
+        {{equipment.warrantyPresent}}
       </td>
     </tr>
   </tbody>

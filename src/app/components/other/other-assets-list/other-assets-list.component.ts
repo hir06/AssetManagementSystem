@@ -27,24 +27,14 @@ export class OtherAssetsListComponent implements OnInit {
     ngOnInit() {}
 
     getPageData($event: any) {
-        this.searchParams.paging.currentPage = $event.currentPage;
+        this.searchParams.paging.currentPage = $event.pageNo - 1;
         this.searchParams.paging.pageSize = $event.pageSize;
         this.getOtherAssetList();
     }
 
     getOtherAssetList() {
-        let params = {
-            paging: { currentPage: 0, pageSize: 10 },
-            sorts: [
-                {
-                    field: "eqiupmentName",
-                    order: "ASC"
-                }
-            ],
-            filters: []
-        };
         this._apiService
-            .get("/s/asset-type-other/search-asset-type-others", { Search: params })
+            .get("/s/asset-type-other/search-asset-type-others", { Search: JSON.stringify(this.searchParams) })
             .subscribe(data => {
                 this.itemsCount = data.totalRecords;
                 this.otherAssetList = data.assetTypeOthers;

@@ -29,12 +29,13 @@ export class BuildingListComponent implements OnInit {
     }
 
     getPageData($event: any) {
-        this.searchParams.paging.currentPage = $event.currentPage;
+        this.searchParams.paging.currentPage = $event.pageNo -1;
         this.searchParams.paging.pageSize = $event.pageSize;
         this.getBuildingsList();
     }
 
     getBuildingsList() {
+<<<<<<< HEAD
         let params = {
             paging: {currentPage: 0, pageSize: 10},
             sorts: [
@@ -47,6 +48,10 @@ export class BuildingListComponent implements OnInit {
         };
         this._apiService
             .get("/s/building/search-buildings", {Search: params})
+=======
+        this._apiService
+            .get("/s/building/search-buildings", { Search: JSON.stringify(this.searchParams )})
+>>>>>>> d2338f8381641f1571b07e0ef3e24bb348e2faea
             .subscribe(data => {
                 this.itemsCount = data.totalRecords;
                 this.buildingList = data.buildings;

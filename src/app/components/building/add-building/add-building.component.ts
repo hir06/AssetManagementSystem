@@ -10,64 +10,10 @@ import { ActivatedRoute, Params } from "@angular/router";
     styleUrls: ["./add-building.component.scss"]
 })
 export class AddBuildingComponent implements OnInit {
-    public building: any = {
-        id: null,
-        assets: null,
-        statusFlag: null,
-        buildingId: "",
-        buildingDescription: null,
-        buildingName: null,
-        assetCategory: {
-            id: "BUILDING"
-        },
-        addresses: [],
-        organization: null,
-        department: null,
-        numberOfFloors: null,
-        regulatoryCompliance: null,
-        regulatoryAuthorityName: null,
-        regCompObtainedDate: null,
-        fireExits: null,
-        fireExitsLoc: null,
-        fireExtinguishers: null,
-        fireExtinguisherLoc: null,
-        fireExtinguisherTypes: [],
-        amcPresent: "N",
-        insurancePresent: "N",
-        loanPresent: "N",
-        licensePresent: "N",
-        warrantyPresent: "N",
-        inspectionPresent: "N",
-        servicePresent: "N",
-        rentOrLeasePresent:"N",
-        assetCondition: null,
-        assetStatus: null,
-        assetType: null,
-        notes: null,
-        buildingSize: null,
-        assetConditionOther: null,
-        assetStatusOther: null,
-        assetTypeOther: null,
-        assignees: [],
-        insurancePolicies: null,
-        rentalOrLeaseAgreements: null,
-        loanAgreements: null,
-        annualMaintenanceContracts: null,
-        licenses: null,
-        warrantyAgreements: null,
-        inspections: null,
-        services: null,
-        existingInsurancePolicies: null,
-        existingRentalOrLeaseAgreements: null,
-        existingLoanAgreements: null,
-        existingAnnualMaintenanceContracts: null,
-        existingLicenses: null,
-        existingWarrantyAgreements: null,
-        existingInspections: null,
-        existingServices: null
-    };;
+    public building: any;
     public currentTab: any;
     public tabs: any;
+    public editMode: boolean;
     public dropDownsData: any;
     public multiselectConfig: any = {
         search: false,
@@ -79,12 +25,14 @@ export class AddBuildingComponent implements OnInit {
         private _alertsService: AlertsLoaderService,
         private route: ActivatedRoute
     ) {
+        this.initBuilding();
         this.tabs = this._sharedService.getTabstoShow(this.building);
         this.currentTab = this.tabs[0];
         this.dropDownsData = this._sharedService.dropDownsData;
         this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });
+        
     }
     ngOnInit() {
         this.dropDownsData = this._sharedService.dropDownsData;
@@ -92,8 +40,74 @@ export class AddBuildingComponent implements OnInit {
             let Id = params["id"];
             if (Id) {
                 this.getBuildingById(Id);
+                this.editMode = true;
             }
         });
+    }
+
+    selectCompareFunction(item1:any,item2:any) {
+        if(item1 == null || item2 ==null){
+            return false;
+        }
+        return item1.id == item2.id;
+    }
+    initBuilding(){
+        this.building = {
+            id: null,
+            assets: null,
+            statusFlag: null,
+            buildingId: "",
+            buildingDescription: null,
+            buildingName: null,
+            assetCategory: {
+                id: "BUILDING"
+            },
+            addresses: [],
+            organization: null,
+            department: null,
+            numberOfFloors: null,
+            regulatoryCompliance: null,
+            regulatoryAuthorityName: null,
+            regCompObtainedDate: null,
+            fireExits: null,
+            fireExitsLoc: null,
+            fireExtinguishers: null,
+            fireExtinguisherLoc: null,
+            fireExtinguisherTypes: [],
+            amcPresent: "N",
+            insurancePresent: "N",
+            loanPresent: "N",
+            licensePresent: "N",
+            warrantyPresent: "N",
+            inspectionPresent: "N",
+            servicePresent: "N",
+            rentOrLeasePresent:"N",
+            assetCondition: null,
+            assetStatus: null,
+            assetType: null,
+            notes: null,
+            buildingSize: null,
+            assetConditionOther: null,
+            assetStatusOther: null,
+            assetTypeOther: null,
+            assignees: [],
+            insurancePolicies: null,
+            rentalOrLeaseAgreements: null,
+            loanAgreements: null,
+            annualMaintenanceContracts: null,
+            licenses: null,
+            warrantyAgreements: null,
+            inspections: null,
+            services: null,
+            existingInsurancePolicies: null,
+            existingRentalOrLeaseAgreements: null,
+            existingLoanAgreements: null,
+            existingAnnualMaintenanceContracts: null,
+            existingLicenses: null,
+            existingWarrantyAgreements: null,
+            existingInspections: null,
+            existingServices: null
+        };
     }
 
     getBuildingById(buidingId: number) {
@@ -108,6 +122,10 @@ export class AddBuildingComponent implements OnInit {
                 );
             }
         );
+    }
+
+    addedToAsset($event:any){
+        this.building = $event;
     }
 
     changeTab(tab: string) {
@@ -131,9 +149,10 @@ export class AddBuildingComponent implements OnInit {
                 data => {
                     this.building = data;
                     this._alertsService.success("Building successfully saved");
+                    //this.initBuilding();
                 },
                 error => {
-                    this._alertsService.error(error.erroMessage);
+                    this._alertsService.error("Some error ocured. Try again");
                 }
             );
     }

@@ -1,5 +1,5 @@
 import { ApiService } from "./../../services/api.services";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { AlertsLoaderService } from "../../services/alerts-loader.service";
 
 @Component({
@@ -8,41 +8,46 @@ import { AlertsLoaderService } from "../../services/alerts-loader.service";
     styleUrls: ["./maintenance.component.scss"]
 })
 export class MaintenanceComponent implements OnInit {
-    maintenance: any = {
-        id: null,
-        statusFlag: null,
-        agreementId: null,
-        agreementName: null,
-        agreementDescription: null,
-        companyName: null,
-        companyDescription: null,
-        companyPhone: null,
-        companyEmail: null,
-        companyContactPerson: null,
-        startDateTime: null,
-        endDateTime: null,
-        graceDateTime: null,
-        amcAmount: null,
-        gracePeriodInMonths: null,
-        comments: null,
-        buildings: null,
-        equipments: null,
-        vehicles: null,
-        assetTypeOthers: null,
-        existingBuildings: null,
-        existingEquipments: null,
-        existingVehicles: null,
-        existingAssetTypeOthers: null
-    };
+    maintenance: any ;
     @Input() asset: any;
     editMode: boolean = false;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService
-    ) {}
+    ) {
+        this.initMaintenance();
+    }
 
     ngOnInit() {}
-
+    initMaintenance(){
+        this.maintenance = {
+            id: null,
+            statusFlag: null,
+            agreementId: null,
+            agreementName: null,
+            agreementDescription: null,
+            companyName: null,
+            companyDescription: null,
+            companyPhone: null,
+            companyEmail: null,
+            companyContactPerson: null,
+            startDateTime: null,
+            endDateTime: null,
+            graceDateTime: null,
+            amcAmount: null,
+            gracePeriodInMonths: null,
+            comments: null,
+            buildings: null,
+            equipments: null,
+            vehicles: null,
+            assetTypeOthers: null,
+            existingBuildings: null,
+            existingEquipments: null,
+            existingVehicles: null,
+            existingAssetTypeOthers: null
+        };
+    }
     save() {
         if (this.editMode) {
             this.updateAMC();
@@ -67,6 +72,8 @@ export class MaintenanceComponent implements OnInit {
                     "Asset Management Contract successfully added to " +
                         this.asset.assetCategory.description
                 );
+                this.initMaintenance();
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(
@@ -84,7 +91,9 @@ export class MaintenanceComponent implements OnInit {
         this._apiService.put("/s/amc/update-amc", this.maintenance).subscribe(
             data => {
                 this.maintenance = data;
-                this._alertsService.success("Policy successfully updated.");
+                this._alertsService.success("Annual maintenace contract successfully updated.");
+                this.initMaintenance();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(
@@ -119,6 +128,7 @@ export class MaintenanceComponent implements OnInit {
                     "Annual maintenanace contract successfully removed from " +
                         this.asset.assetCategory.description
                 );
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(

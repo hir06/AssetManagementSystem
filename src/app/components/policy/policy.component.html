@@ -55,7 +55,7 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Policy Type Other</label>
-      <input class="form-control" [(ngModel)]="policy.policyTypeOther" name="policyTypeOther" />
+      <input class="form-control" [disabled]="!policy.policyType || policy.policyType.id != 'OTHER'" [(ngModel)]="policy.policyTypeOther" name="policyTypeOther" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Renewal Type</label>
@@ -65,7 +65,7 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Policy Renewal Type Other</label>
-      <input class="form-control" [(ngModel)]="policy.policyRenewalTypeOther" name="policyRenewalTypeOther" />
+      <input class="form-control" [disabled]="!policy.policyRenewalType || policy.policyRenewalType.id != 'OTHER'" [(ngModel)]="policy.policyRenewalTypeOther" name="policyRenewalTypeOther" />
     </div>
   </div>
 
@@ -101,7 +101,7 @@
 
   <div class="row pb-2">
     <div class="col-sm-6">
-      <button class="btn btn-primary" (click)="save()">Save</button>
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
     </div>
     <div class="col-sm-6">
       <button class="btn btn-success float-right">Lookup</button>

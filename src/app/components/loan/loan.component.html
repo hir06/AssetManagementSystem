@@ -83,7 +83,7 @@
   </div>
   <div class="row pb-2">
     <div class="col-sm-6">
-      <button class="btn btn-primary" (click)="save()">Save</button>
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
     </div>
     <div class="col-sm-6">
       <button class="btn btn-success float-right">Lookup</button>
@@ -118,7 +118,8 @@
             {{loan.loanAmount}}
         </td>
         <td>
-            <span class="fa fa-trash btn btn-sm btn-outline-danger"(click)="editLoan(loan)"></span><span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeLoanFromAsset(loan)"></span>
+            <span class="fa fa-pencil btn btn-sm btn-outline-primary"(click)="editLoan(loan)">
+            </span><span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeLoanFromAsset(loan)"></span>
         </td>
       </tr>
     </tbody>

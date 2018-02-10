@@ -1,5 +1,5 @@
 import { AlertsLoaderService } from "./../../services/alerts-loader.service";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ApiService } from "../../services/api.services";
 import { SharedService } from "../../services/shared.service";
 
@@ -9,39 +9,10 @@ import { SharedService } from "../../services/shared.service";
     styleUrls: ["./rent-or-lease.component.scss"]
 })
 export class RentOrLeaseComponent implements OnInit {
-    rent: any = {
-        id: null,
-        statusFlag: null,
-        agreementId: "ASSET_TYPE_OTHER1",
-        agreementName: "AGREEMENT FOR ASSET TYPE OTHER NAME 1",
-        agreementDescription: "AGREEMENT FOR ASSET TYPE OTHER DESCRIPTION 1",
-        companyName: "CHRIS RENTAL",
-        companyDescription: "CHRIS RENTAL OR LEASING COMPANY LIMITED",
-        companyPhone: "258-369-1478",
-        companyEmail: "chrisrental@cr.com",
-        companyContactPerson: "Mr. Christopher Julian",
-        startDateTime: "01/01/2017 00:00:01",
-        endDateTime: "31/12/2017 23:59:59",
-        graceDateTime: "31/01/2018 23:59:59",
-        gracePeriodInMonths: 1,
-        agreementAmount: 26581.98,
-        renewalAmount: 2568.25,
-        rentalOrLeaseType: {
-            id: "RENTAL"
-        },
-        rentalOrLeaseTypeOther: null,
-        comments: "Worlds No. 1 Rental and Leasing Company.",
-        buildings: null,
-        equipments: null,
-        vehicles: null,
-        assetTypeOthers: null,
-        existingBuildings: null,
-        existingEquipments: null,
-        existingVehicles: null,
-        existingAssetTypeOthers: null
-    };
+    rent: any;
     dropDownsData: any;
     @Input() asset: any;
+    @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     editMode: boolean = false;
     constructor(
         private _apiService: ApiService,
@@ -52,9 +23,43 @@ export class RentOrLeaseComponent implements OnInit {
         this._sharedService.dropDownsService.subscribe((data) => {
             this.dropDownsData = data;//rentOrLeaseTypeList
         });
+        this.initRentOrLease();
     }
 
     ngOnInit() { }
+    initRentOrLease(){
+        this.rent = {
+            id: null,
+            statusFlag: null,
+            agreementId: null,
+            agreementName: null,
+            agreementDescription: null,
+            companyName: null,
+            companyDescription: null,
+            companyPhone: null,
+            companyEmail: null,
+            companyContactPerson: null,
+            startDateTime: null,
+            endDateTime: null,
+            graceDateTime: null,
+            gracePeriodInMonths: null,
+            agreementAmount: null,
+            renewalAmount: null,
+            rentalOrLeaseType: {
+                id: null
+            },
+            rentalOrLeaseTypeOther: null,
+            comments: null,
+            buildings: null,
+            equipments: null,
+            vehicles: null,
+            assetTypeOthers: null,
+            existingBuildings: null,
+            existingEquipments: null,
+            existingVehicles: null,
+            existingAssetTypeOthers: null
+        };
+    }
     save() {
         if (this.editMode) {
             this.updateRentOrLease();
@@ -76,9 +81,11 @@ export class RentOrLeaseComponent implements OnInit {
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Service successfully added to " +
+                    "rental or lease agreement successfully added to " +
                     this.asset.assetCategory.description
                 );
+                this.initRentOrLease();
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(
@@ -97,8 +104,10 @@ export class RentOrLeaseComponent implements OnInit {
             data => {
                 this.rent = data;
                 this._alertsService.success(
-                    "retal or lease agreement successfully updated."
+                    "Rental or lease agreement successfully updated."
                 );
+                this.initRentOrLease();
+                this.editMode = false;
             },
             error => {
                 this._alertsService.error(
@@ -124,6 +133,7 @@ export class RentOrLeaseComponent implements OnInit {
                 this._alertsService.success(
                     "Rental or Lease successfully removed from " + this.asset.assetCategory.description
                 );
+                this.addedToAsset.emit(data);
             },
             error => {
                 this._alertsService.error(
