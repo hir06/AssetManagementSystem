@@ -126,6 +126,7 @@ export class AddOtherAssetsComponent implements OnInit {
             warrantyPresent: "N",
             inspectionPresent: "N",
             servicePresent: "N",
+            rentOrLeasePresent:"N",
             fireExtinguishers: null,
             fireExits: null,
             fireExitsLoc: null,

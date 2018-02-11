@@ -132,6 +132,7 @@ export class AddVehicleComponent implements OnInit {
             warrantyPresent: "N",
             inspectionPresent: "N",
             servicePresent: "N",
+            rentOrLeasePresent:"N",
             fireExtinguisherTypes: []
         };
     }
