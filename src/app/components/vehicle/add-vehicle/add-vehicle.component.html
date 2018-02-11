@@ -102,11 +102,15 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax Start Date Time</label>
-      <input class="form-control" [(ngModel)]="vehicle.taxStartDateTime" name="taxStartDateTime" />
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
+      [(ngModel)]="vehicle.taxStartDateTime" name="taxStartDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time> 
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax End Date Time</label>
-      <input class="form-control" [(ngModel)]="vehicle.taxEndDateTime" name="taxEndDateTime" />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+      [(ngModel)]="vehicle.taxEndDateTime" name="taxEndDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
   </div>
 
@@ -132,15 +136,21 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>MOT Start Date Time</label>
-      <input class="form-control" [(ngModel)]="vehicle.motStartDateTime" name="motStartDateTime" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+      [(ngModel)]="vehicle.motStartDateTime" name="motStartDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>MOT End Date Time</label>
-      <input class="form-control" [(ngModel)]="vehicle.motEndDateTime" name="motEndDateTime" />
+      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4"
+      [(ngModel)]="vehicle.motEndDateTime" name="motEndDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt4></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>MOT Obtained Date</label>
-      <input class="form-control" [(ngModel)]="vehicle.motObtainedDate" name="motObtainedDate" />
+      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5"
+      [(ngModel)]="vehicle.motObtainedDate" name="motObtainedDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt5></owl-date-time>
     </div>
   </div>
 

@@ -14,7 +14,7 @@ export class EquipmentListComponent implements OnInit {
         paging: { currentPage: 0, pageSize: 10 },
         sorts: [
             {
-                field: "buildingName",
+                field: "equipmentName",
                 order: "ASC"
             }
         ],

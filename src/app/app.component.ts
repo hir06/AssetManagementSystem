@@ -2,6 +2,7 @@ import { AlertsLoaderService } from './services/alerts-loader.service';
 import { SharedService } from './services/shared.service';
 import { HttpActionDirective } from './directive/http-action.directive';
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import * as moment from 'moment';
 
 
 @Component({

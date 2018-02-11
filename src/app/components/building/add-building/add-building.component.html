@@ -78,7 +78,9 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Compliance Obtained Date</label>
-      <input class="form-control" [disabled]="building.regulatoryCompliance != 'Y'" [(ngModel)]="building.regCompObtainedDate" name="regCompObtainedDate" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [disabled]="building.regulatoryCompliance != 'Y'"
+       [(ngModel)]="building.regCompObtainedDate" name="regCompObtainedDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>

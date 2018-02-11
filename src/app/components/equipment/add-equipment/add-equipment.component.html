@@ -99,7 +99,9 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Purchased Date</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentPurchasedDate" name="equipmentPurchasedDate" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentPurchasedDate" 
+      name="equipmentPurchasedDate" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" />
+     <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Purchased From</label>
@@ -147,7 +149,9 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Return Date</label>
-      <input class="form-control" [disabled]="equipment.equipmentReturned !='Y'" [(ngModel)]="equipment.equipmentReturnedDate" name="equipmentReturnedDate" />
+      <input class="form-control" [disabled]="equipment.equipmentReturned !='Y'" 
+      [(ngModel)]="equipment.equipmentReturnedDate" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" name="equipmentReturnedDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Refund Amount</label>

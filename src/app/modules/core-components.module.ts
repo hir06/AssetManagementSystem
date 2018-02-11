@@ -35,6 +35,17 @@ import { AjaxLoaderComponent } from "../components/ajax-loader/ajax-loader.compo
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { ErrorMessageComponent } from "../components/error-message/error-message.component";
 import { SuccessMessageComponent } from "../components/success-message/success-message.component";
+import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
+import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
+export const MY_MOMENT_FORMATS = {
+    parseInput: 'DD/MM/YYYY HH:mm:ss',
+    fullPickerInput: 'DD/MM/YYYY HH:mm:ss',
+    datePickerInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+};
+
 
 
 
@@ -70,9 +81,14 @@ import { SuccessMessageComponent } from "../components/success-message/success-m
         ErrorMessageComponent,
         SuccessMessageComponent
     ],
-    imports: [FormsModule, CommonModule, RouterModule, PaginationModule, SelectDropDownModule],
-    providers: [AlertsLoaderService],
+    imports: [FormsModule, CommonModule, RouterModule,
+        PaginationModule, SelectDropDownModule, 
+        OwlDateTimeModule,
+        OwlMomentDateTimeModule,],
+    providers: [AlertsLoaderService,
+        { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },
+    ],
     exports: [FormsModule, CommonModule],
     entryComponents: [DashboardComponent, AjaxLoaderComponent, ErrorMessageComponent, SuccessMessageComponent]
 })
-export class CoreModule {}
+export class CoreModule { }

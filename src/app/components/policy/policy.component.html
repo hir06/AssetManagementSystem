@@ -29,15 +29,21 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Policy Start Date Time</label>
-      <input class="form-control" [(ngModel)]="policy.policyStartDateTime" name="policyStartDateTime" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+      [(ngModel)]="policy.policyStartDateTime" name="policyStartDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Policy End Date Time</label>
-      <input class="form-control" [(ngModel)]="policy.policyEndDateTime" name="policyEndDateTime" />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+      [(ngModel)]="policy.policyEndDateTime" name="policyEndDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Date Time</label>
-      <input class="form-control" [(ngModel)]="policy.graceDateTime" name="graceDateTime" />
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
+      [(ngModel)]="policy.graceDateTime" name="graceDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Period In Months</label>

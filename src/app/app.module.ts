@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CoreModule } from './modules/core-components.module';
 import { SharedService } from './services/shared.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,7 +24,8 @@ import { HttpActionDirective } from './directive/http-action.directive';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [
     SharedService,
