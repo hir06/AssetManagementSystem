@@ -1,6 +1,7 @@
 import { AlertsLoaderService } from "./../../services/alerts-loader.service";
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { ApiService } from "../../services/api.services";
+import * as moment from 'moment';
 
 @Component({
     selector: "app-license",
@@ -22,6 +23,7 @@ export class LicenseComponent implements OnInit {
     ngOnInit() {
 
     }
+
     initLicense() {
         this.license = {
             id: null,

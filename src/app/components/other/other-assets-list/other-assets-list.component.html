@@ -22,37 +22,14 @@
       Asset Name
     </th>
     <th>
-      Asset Tag
-    </th>
-    <th>
       Organization
     </th>
     <th>
       Department
     </th>
+    
     <th>
-      AMC
-    </th>
-    <th>
-      Inspection
-    </th>
-    <th>
-      License
-    </th>
-    <th>
-      Loan
-    </th>
-    <th>
-      Policy
-    </th>
-    <th>
-      Rental/Lease
-    </th>
-    <th>
-      Service
-    </th>
-    <th>
-      Warranty
+      Reg. Authority
     </th>
   </thead>
   <tbody>
@@ -64,40 +41,13 @@
         {{other.assetTypeOtherName}}
       </td>
       <td>
-        {{other.assetTag}}
-      </td>
-      <td>
         {{other.organization?.description}}
       </td>
       <td>
         {{other.department?.description}}
       </td>
       <td>
-        {{other.regulatoryCompliance}}
-      </td>
-      <td>
-        {{other.amcPresent}}
-      </td>
-      <td>
-        {{other.inspectionPresent}}
-      </td>
-      <td>
-        {{other.licensePresent}}
-      </td>
-      <td>
-        {{other.loanPresent}}
-      </td>
-      <td>
-        {{other.insurancePresent}}
-      </td>
-      <td>
-        {{other.rentOrLeasePresent}}
-      </td>
-      <td>
-        {{other.servicePresent}}
-      </td>
-      <td>
-        {{other.warrantyPresent}}
+        {{other.{{equipment.regulatoryAuthorityName}}}}
       </td>
     </tr>
   </tbody>
