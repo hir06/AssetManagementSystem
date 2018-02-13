@@ -33,7 +33,7 @@ export class AddBuildingComponent implements OnInit {
         this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });
-        
+
     }
     ngOnInit() {
         this.dropDownsData = this._sharedService.dropDownsData;
@@ -48,7 +48,7 @@ export class AddBuildingComponent implements OnInit {
 
     dateChanged($event){
         console.log($event);
-        //alert(moment($event.value).format('DD/MM/YYYY')); 
+        //alert(moment($event.value).format('DD/MM/YYYY'));
     }
     selectCompareFunction(item1:any,item2:any) {
         if(item1 == null || item2 ==null){
@@ -86,7 +86,7 @@ export class AddBuildingComponent implements OnInit {
             warrantyPresent: "N",
             inspectionPresent: "N",
             servicePresent: "N",
-            rentOrLeasePresent:"N",
+            rentalOrLeasePresent:"N",
             assetCondition: null,
             assetStatus: null,
             assetType: null,

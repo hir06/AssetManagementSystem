@@ -11,7 +11,7 @@ export class BuildingListComponent implements OnInit {
     itemsCount: number = 0;
     buildingList: any = [];
     searchParams: any = {
-        paging: {currentPage: 0, pageSize: 10},
+        paging: { currentPage: 0, pageSize: 10 },
         sorts: [
             {
                 field: "buildingName",
@@ -20,14 +20,11 @@ export class BuildingListComponent implements OnInit {
         ],
         filters: []
     };
-
     constructor(private _apiService: ApiService) {
         this.getBuildingsList();
     }
 
-    ngOnInit() {
-    }
-
+    ngOnInit() {}
     getPageData($event: any) {
         this.searchParams.paging.currentPage = $event.pageNo -1;
         this.searchParams.paging.pageSize = $event.pageSize;
@@ -35,27 +32,11 @@ export class BuildingListComponent implements OnInit {
     }
 
     getBuildingsList() {
-<<<<<<< HEAD
-        let params = {
-            paging: {currentPage: 0, pageSize: 10},
-            sorts: [
-                {
-                    field: "buildingName",
-                    order: "ASC"
-                }
-            ],
-            filters: []
-        };
-        this._apiService
-            .get("/s/building/search-buildings", {Search: params})
-=======
         this._apiService
             .get("/s/building/search-buildings", { Search: JSON.stringify(this.searchParams )})
->>>>>>> d2338f8381641f1571b07e0ef3e24bb348e2faea
             .subscribe(data => {
                 this.itemsCount = data.totalRecords;
                 this.buildingList = data.buildings;
             });
     }
-
 }
