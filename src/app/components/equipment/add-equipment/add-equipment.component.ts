@@ -128,6 +128,7 @@ export class AddEquipmentComponent implements OnInit {
             licensePresent: "N",
             warrantyPresent: "N",
             inspectionPresent: "N",
+            rentOrLeasePresent:"N",
             servicePresent: "N",
             fireExitsLoc: null,
             fireExtinguisherLoc: null,

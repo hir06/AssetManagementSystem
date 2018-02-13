@@ -31,7 +31,9 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service Due Date</label>
-      <input class="form-control" [(ngModel)]="service.serviceDueDate" name="serviceDueDate" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+      [(ngModel)]="service.serviceDueDate" name="serviceDueDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>   
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service Done By</label>
@@ -39,7 +41,9 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service Done Date Time</label>
-      <input class="form-control" [(ngModel)]="service.serviceDoneDateTime" name="serviceDoneDateTime" />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+      [(ngModel)]="service.serviceDoneDateTime" name="serviceDoneDateTime" />
+      <owl-date-time [pickerType]="'calendar'" [showSecondsTimer]="true" #dt2></owl-date-time>   
     </div>
   </div>
 
@@ -58,7 +62,9 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Next Service Date</label>
-      <input class="form-control" [(ngModel)]="service.nextServiceDueDate" name="nextServiceDueDate" />
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
+      [(ngModel)]="service.nextServiceDueDate" name="nextServiceDueDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>   
     </div>
   </div>
 

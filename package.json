@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prod":"ng build --prod --aot --output-hashing none"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,9 @@
     "font-awesome": "^4.7.0",
     "g": "^2.0.1",
     "jquery": "^3.2.1",
+    "moment": "^2.20.1",
+    "ng-pick-datetime": "^5.1.5",
+    "ng-pick-datetime-moment": "^1.0.4",
     "ngx-pagination-bootstrap": "^1.3.2",
     "ngx-select-dropdown": "0.0.5",
     "rxjs": "^5.5.2",

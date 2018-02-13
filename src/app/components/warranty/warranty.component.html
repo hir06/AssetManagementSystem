@@ -41,21 +41,29 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Provided Date</label>
-      <input class="form-control" [(ngModel)]="warranty.warrantyProvidedDate" name="warrantyProvidedDate" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+      [(ngModel)]="warranty.warrantyProvidedDate" name="warrantyProvidedDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Start Date Time</label>
-      <input class="form-control" [(ngModel)]="warranty.warrantyStartDateTime" name="warrantyStartDateTime" />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+      [(ngModel)]="warranty.warrantyStartDateTime" name="warrantyStartDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>End Date Time</label>
-      <input class="form-control" [(ngModel)]="warranty.warrantyEndDateTime" name="warrantyEndDateTime" />
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
+      [(ngModel)]="warranty.warrantyEndDateTime" name="warrantyEndDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Date Time</label>
-      <input class="form-control" [(ngModel)]="warranty.warrantyGraceDateTime" name="warrantyGraceDateTime" />
+      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4"
+      [(ngModel)]="warranty.warrantyGraceDateTime" name="warrantyGraceDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt4></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Period In Months</label>
@@ -71,7 +79,9 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Renewal Date</label>
-      <input class="form-control" [(ngModel)]="warranty.warrantyRenewalDate" name="warrantyRenewalDate" />
+      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5"
+      [(ngModel)]="warranty.warrantyRenewalDate" name="warrantyRenewalDate" />
+      <owl-date-time [pickerType]="'both'" #dt5></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Renewal Amount</label>

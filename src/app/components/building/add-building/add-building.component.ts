@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { SharedService } from "../../../services/shared.service";
 import { AlertsLoaderService } from "../../../services/alerts-loader.service";
 import { ActivatedRoute, Params } from "@angular/router";
+import * as moment from 'moment';
 
 @Component({
     selector: "app-add-building",
@@ -45,6 +46,10 @@ export class AddBuildingComponent implements OnInit {
         });
     }
 
+    dateChanged($event){
+        console.log($event);
+        //alert(moment($event.value).format('DD/MM/YYYY')); 
+    }
     selectCompareFunction(item1:any,item2:any) {
         if(item1 == null || item2 ==null){
             return false;

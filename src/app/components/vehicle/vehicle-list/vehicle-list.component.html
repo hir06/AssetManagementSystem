@@ -30,30 +30,6 @@
     <th>
       Chasis #
     </th>
-    <th>
-      AMC
-    </th>
-    <th>
-      Inspection
-    </th>
-    <th>
-      License
-    </th>
-    <th>
-      Loan
-    </th>
-    <th>
-      Policy
-    </th>
-    <th>
-      Rental/Lease
-    </th>
-    <th>
-      Service
-    </th>
-    <th>
-      Warranty
-    </th>
   </thead>
   <tbody>
     <tr *ngFor="let vehicle of vehicleList;">
@@ -71,30 +47,6 @@
       </td>
       <td>
         {{vehicle.assettype?.chasisNumber}}
-      </td>
-      <td>
-        {{vehicle.amcPresent}}
-      </td>
-      <td>
-        {{vehicle.inspectionPresent}}
-      </td>
-      <td>
-        {{vehicle.licensePresent}}
-      </td>
-      <td>
-        {{vehicle.loanPresent}}
-      </td>
-      <td>
-        {{vehicle.insurancePresent}}
-      </td>
-      <td>
-        {{vehicle.rentOrLeasePresent}}
-      </td>
-      <td>
-        {{vehicle.servicePresent}}
-      </td>
-      <td>
-        {{vehicle.warrantyPresent}}
       </td>
     </tr>
   </tbody>

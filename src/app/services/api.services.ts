@@ -10,6 +10,7 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
 import { UserService } from "./userService";
+import * as moment from 'moment';
 
 @Injectable()
 export class ApiService {
@@ -25,9 +26,11 @@ export class ApiService {
             headers = {};
         }
         headers["X-AUTH-TOKEN"] = this._userService.authToken;
+        data = this.parseDateToApiFormat(data);
         return this._http
             .post(this.apiUrl + url, data, { headers: headers })
             .map((res: any) => {
+                res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
                 return res;
             })
@@ -51,6 +54,7 @@ export class ApiService {
         return this._http
             .get(this.apiUrl + url, {headers: headers})
             .map((res: any) => {
+                res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
                 return res;
             })
@@ -66,9 +70,11 @@ export class ApiService {
             headers = {};
         }
         headers["X-AUTH-TOKEN"] = this._userService.authToken;
+        data = this.parseDateToApiFormat(data);
         return this._http
             .put(this.apiUrl + url, data, { headers: headers })
             .map((res: any) => {
+                res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
                 return res;
             })
@@ -87,6 +93,7 @@ export class ApiService {
         return this._http
             .delete(this.apiUrl + url, { headers: headers })
             .map((res: any) => {
+                res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
                 return res;
             })
@@ -106,6 +113,28 @@ export class ApiService {
     //     // headers['responseType']='arraybuffer';
     //     return this._http.get(this.apiUrl + url,{headers:options});
     // }
+    parseDateToApiFormat(payload: any){
+        for(let key in payload){
+            if(key.indexOf("Time") > -1 && payload[key]){
+                payload[key] = moment(payload[key]).format("DD/MM/YYYY HH:mm:ss").toString();
+                continue;
+            }
+            if(key.indexOf("Date") > -1 && payload[key]){
+                payload[key] = moment(payload[key]).format("DD/MM/YYYY").toString();
+                continue;
+            }
+        }
+        return payload;
+    }
+    parseDate(response: any){
+        for(let key in response){
+
+            if(key.indexOf("Date") > -1 && response[key]){
+                response[key] = moment(response[key],"DD/MM/YYYY HH:mm:ss").toDate();
+            }
+        }
+        return response;
+    }
     login(url, data) {
         return this.post(url, data);
     }

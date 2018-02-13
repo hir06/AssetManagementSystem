@@ -33,7 +33,9 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Inspection Due Date</label>
-      <input class="form-control" [(ngModel)]="inspection.inspectionDueDate" name="inspectionDueDate" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" 
+      [(ngModel)]="inspection.inspectionDueDate" name="inspectionDueDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>      
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Inspection Done By</label>
@@ -41,7 +43,9 @@
     </div>
     <div class="col-sm-12 col-md-3">
         <label>Inspection Done Date Time</label>
-        <input class="form-control" [(ngModel)]="inspection.inspectionDoneDateTime" name="inspectionDoneDateTime" />
+        <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" 
+        [(ngModel)]="inspection.inspectionDoneDateTime" name="inspectionDoneDateTime" />
+        <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>  
       </div>
   </div>
 
@@ -57,7 +61,9 @@
     </div>
     <div class="col-sm-12 col-md-4">
         <label>Next Inspection Date</label>
-        <input class="form-control" [(ngModel)]="inspection.nextInspectionDueDate" name="nextInspectionDueDate" />
+        <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
+        [(ngModel)]="inspection.nextInspectionDueDate" name="nextInspectionDueDate" />
+        <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>  
       </div>
   </div>
   <div class="row pb-2">

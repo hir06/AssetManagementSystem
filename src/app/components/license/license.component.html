@@ -55,7 +55,10 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Issued Date</label>
-      <input class="form-control" [(ngModel)]="license.issuedDate" name="issuedDate" />
+      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4"
+      [(ngModel)]="license.issuedDate" name="issuedDate" />
+      <owl-date-time [pickerType]="'calendar'"  #dt4></owl-date-time>
+      
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Place Of Issue</label>
@@ -63,7 +66,9 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Renewal Date</label>
-      <input class="form-control" [(ngModel)]="license.renewalDate" name="renewalDate" />
+      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5"
+      [(ngModel)]="license.renewalDate" name="renewalDate" />
+      <owl-date-time [pickerType]="'calendar'"  #dt5></owl-date-time>
     </div>
   </div>
 
@@ -71,15 +76,21 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Start Date Time</label>
-      <input class="form-control" [(ngModel)]="license.startDateTime" name="startDateTime" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" 
+      [(ngModel)]="license.startDateTime" name="startDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>End Date Time</label>
-      <input class="form-control" [(ngModel)]="license.endDateTime" name="endDateTime" />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"  
+      [(ngModel)]="license.endDateTime" name="endDateTime" />
+      <owl-date-time [pickerType]="'both'"  [showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Grace Date Time</label>
-      <input class="form-control" [(ngModel)]="license.graceDateTime" name="graceDateTime" />
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" 
+      [(ngModel)]="license.graceDateTime" name="graceDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>      
     </div>
   </div>
 

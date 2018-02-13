@@ -34,22 +34,23 @@
     <div class="col-sm-12 col-md-3">
       <label>Asset Category</label>
       <select class="form-control" disabled [(ngModel)]="asset.assetCategory.id">
-          <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category.id">{{category.description}}</option>
-        </select>
+        <option value="null"></option>
+        <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category.id">{{category.description}}</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Organization</label>
       <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="asset.organization">
-          <option value="null"></option>
-          <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
-        </select>
+        <option value="null"></option>
+        <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Department</label>
       <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="asset.department">
-          <option value="null"></option>
-          <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
-        </select>
+        <option value="null"></option>
+        <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Asset Cost</label>
@@ -98,7 +99,9 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Purchase Date</label>
-      <input class="form-control" [(ngModel)]="asset.purchasedDate" name="purchasedDate" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+      [(ngModel)]="asset.purchasedDate" name="purchasedDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Company Name</label>
@@ -140,20 +143,23 @@
     <div class="col-sm-12 col-md-4">
       <label>Asset Returned</label>
       <select class="form-control" [(ngModel)]="asset.assetReturned">
-          <option value="Y">Yes</option>
-          <option value="N">No</option>
-        </select>
+        <option value="null"></option>
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Return Date</label>
-      <input class="form-control" [(ngModel)]="asset.assetReturnedDate" name="assetReturnedDate" />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+      [(ngModel)]="asset.assetReturnedDate" name="assetReturnedDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Refund Amount</label>
       <input class="form-control" [(ngModel)]="asset.refundAmount" name="refundAmount" />
     </div>
   </div>
-  
+
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Return Reason</label>
@@ -169,23 +175,25 @@
     <div class="col-sm-12 col-md-">
       <label>Regulatory Compliance</label>
       <select class="form-control" [(ngModel)]="asset.regulatoryCompliance">
+        <option value="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Regulatory Authority</label>
-      <input class="form-control" [(ngModel)]="asset.regulatoryAuthorityName" name="regulatoryAuthorityName" />
+      <input class="form-control" [disabled]="asset.regulatoryCompliance != 'Y'" [(ngModel)]="asset.regulatoryAuthorityName" name="regulatoryAuthorityName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Compliance Obtained Date</label>
-      <input class="form-control" [(ngModel)]="asset.regCompObtainedDate" name="regCompObtainedDate" />
+      <input class="form-control" [disabled]="asset.regulatoryCompliance != 'Y'" [(ngModel)]="asset.regCompObtainedDate" name="regCompObtainedDate" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>
       <select class="form-control" [(ngModel)]="asset.fireExits">
-          <option value="N">No</option>
-          <option value="Y">Yes</option>
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
       </select>
     </div>
   </div>
@@ -199,19 +207,21 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Exitinguishers Present</label>
-      <select class="form-control" [(ngModel)]="asset.fireExtinguishers" >
+      <select class="form-control" [(ngModel)]="asset.fireExtinguishers">
+        <option value="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher</label>
-      <ngx-select-dropdown [ngClass]="{'disabled': asset.fireExtinguishers != 'Y'}" *ngIf="dropDownsData.fireExtinguisherTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="asset.fireExtinguisherTypes"
-        [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
+      <ngx-select-dropdown [ngClass]="{'disabled': asset.fireExtinguishers != 'Y'}" *ngIf="dropDownsData.fireExtinguisherTypeList"
+        [multiple]="true" [config]="multiselectConfig" [(value)]="asset.fireExtinguisherTypes" [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher Location</label>
-      <input class="form-control" [disabled]="asset.fireExtinguishers !='Y'" [(ngModel)]="asset.fireExtinguisherLoc" name="fireExtinguisherLoc" />
+      <input class="form-control" [disabled]="asset.fireExtinguishers !='Y'" [(ngModel)]="asset.fireExtinguisherLoc" name="fireExtinguisherLoc"
+      />
     </div>
   </div>
 
@@ -219,6 +229,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Annual Maintenance Contract</label>
       <select class="form-control" [(ngModel)]="asset.amcPresent" (change)="updateTabs()">
+        <option value="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -226,22 +237,25 @@
     <div class="col-sm-12 col-md-3">
       <label>Inspection</label>
       <select class="form-control" [(ngModel)]="asset.inspectionPresent" (change)="updateTabs()">
-          <option value="N">No</option>
-          <option value="Y">Yes</option>
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>License</label>
       <select class="form-control" [(ngModel)]="asset.licensePresent" (change)="updateTabs()">
-          <option value="N">No</option>
-          <option value="Y">Yes</option>
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Loan</label>
       <select class="form-control" [(ngModel)]="asset.loanPresent" (change)="updateTabs()">
-          <option value="N">No</option>
-          <option value="Y">Yes</option>
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
       </select>
     </div>
   </div>
@@ -250,29 +264,33 @@
     <div class="col-sm-12 col-md-3">
       <label>Policy</label>
       <select class="form-control" [(ngModel)]="asset.insurancePresent" (change)="updateTabs()">
-          <option value="N">No</option>
-          <option value="Y">Yes</option>
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Rental/Lease</label>
       <select class="form-control" [(ngModel)]="asset.rentOrLeasePresent" (change)="updateTabs()">
-          <option value="N">No</option>
-          <option value="Y">Yes</option>
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Service</label>
       <select class="form-control" [(ngModel)]="asset.servicePresent" (change)="updateTabs()">
-          <option value="N">No</option>
-          <option value="Y">Yes</option>
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Warranty</label>
       <select class="form-control" [(ngModel)]="asset.warrantyPresent" (change)="updateTabs()">
-          <option value="N">No</option>
-          <option value="Y">Yes</option>
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
       </select>
     </div>
   </div>
@@ -281,12 +299,14 @@
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="asset.assetCondition">
-          <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
-        </select>
+        <option value="null"></option>
+        <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [disabled]="!asset.assetCondition || asset.assetCondition.id != 'OTHER'" [(ngModel)]="asset.assetConditionOther" name="assetConditionOther" />
+      <input class="form-control" [disabled]="!asset.assetCondition || asset.assetCondition.id != 'OTHER'" [(ngModel)]="asset.assetConditionOther"
+        name="assetConditionOther" />
     </div>
   </div>
 
@@ -294,26 +314,28 @@
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="asset.assetStatus">
-          <option value="null"></option>
-          <option  *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
-        </select>
+        <option value="null"></option>
+        <option *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [disabled]="!asset.assetStatus || asset.assetStatus.id != 'OTHER'" [(ngModel)]="asset.assetStatusOther" name="assetStatusOther" />
+      <input class="form-control" [disabled]="!asset.assetStatus || asset.assetStatus.id != 'OTHER'" [(ngModel)]="asset.assetStatusOther"
+        name="assetStatusOther" />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="asset.assetType">
-          <option value="null"></option>
-          <option  *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
-        </select>
+        <option value="null"></option>
+        <option *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
+      </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [disabled]="!asset.assetType || asset.assetType.id != 'OTHER'" [(ngModel)]="asset.assetTypeOther" name="assetTypeOther" />
+      <input class="form-control" [disabled]="!asset.assetType || asset.assetType.id != 'OTHER'" [(ngModel)]="asset.assetTypeOther"
+        name="assetTypeOther" />
     </div>
   </div>
   <div class="row pb-2">

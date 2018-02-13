@@ -28,43 +28,13 @@
       Equipment Name
     </th>
     <th>
-      Make
-    </th>
-    <th>
-      Model
-    </th>
-    <th>
-      Serial #
-    </th>
-    <th>
       Organization
     </th>
     <th>
       Department
     </th>
     <th>
-      AMC
-    </th>
-    <th>
-      Inspection
-    </th>
-    <th>
-      License
-    </th>
-    <th>
-      Loan
-    </th>
-    <th>
-      Policy
-    </th>
-    <th>
-      Rental/Lease
-    </th>
-    <th>
-      Service
-    </th>
-    <th>
-      Warranty
+      Reg. Authority
     </th>
   </thead>
   <tbody>
@@ -76,44 +46,15 @@
         {{equipment.equipmentName}}
       </td>
       <td>
-        {{equipment.make}}
-      </td>
-      <td>
-        {{equipment.model}}
-      </td>
-      <td>
-        {{equipment.serialNumber}}
-      </td>
-      <td>
         {{equipment.organization?.description}}
       </td>
       <td>
         {{equipment.department?.description}}
       </td>
       <td>
-        {{equipment.amcPresent}}
+        {{equipment.regulatoryAuthorityName}}
       </td>
-      <td>
-        {{equipment.inspectionPresent}}
-      </td>
-      <td>
-        {{equipment.licensePresent}}
-      </td>
-      <td>
-        {{equipment.loanPresent}}
-      </td>
-      <td>
-        {{equipment.insurancePresent}}
-      </td>
-      <td>
-        {{equipment.rentOrLeasePresent}}
-      </td>
-      <td>
-        {{equipment.servicePresent}}
-      </td>
-      <td>
-        {{equipment.warrantyPresent}}
-      </td>
+    
     </tr>
   </tbody>
 </table>

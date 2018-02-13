@@ -41,11 +41,15 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Start Date Time</label>
-      <input class="form-control" [(ngModel)]="loan.startDateTime" name="startDateTime" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+       [(ngModel)]="loan.startDateTime" name="startDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>  
     </div>
     <div class="col-sm-12 col-md-3">
       <label>End Date Time</label>
-      <input class="form-control" [(ngModel)]="loan.endDateTime" name="endDateTime" />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+       [(ngModel)]="loan.endDateTime" name="endDateTime" />
+      <owl-date-time [pickerType]="'both'"[showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
   </div>
 
@@ -67,7 +71,9 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Grace Date Time</label>
-      <input class="form-control" [(ngModel)]="loan.graceDateTime" name="graceDateTime" />
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
+      [(ngModel)]="loan.graceDateTime" name="graceDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>Grace Period In Months</label>

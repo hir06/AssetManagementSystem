@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 @import "./_common";
 html,
 body {
@@ -109,6 +110,22 @@ label{
 .disabled{
     cursor: not-allowed;
     pointer-events: none !important;
+    
+}
+
+thead.owl-dt-calendar-header{
+    background-color: #fff;
+}
+ngx-select-dropdown{
+    &.disabled{
+        /deep/.ngx-dorpdown-container{
+            /deep/button.ngx-dropdown-button{
+                cursor: not-allowed !important;
+                background-color: #eceeef !important;
+            }
+        }
+    }
+    
 }
 
 .ngx-dorpdown-container{
