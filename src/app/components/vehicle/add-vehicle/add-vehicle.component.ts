@@ -137,7 +137,7 @@ export class AddVehicleComponent implements OnInit {
         };
     }
     getVehicleById(id: number) {
-        this._apiService.get("/s/vehicle/vehicleId/" + id).subscribe(
+        this._apiService.get("/vehicle/vehicleId/" + id).subscribe(
             data => {
                 this.vehicle = data;
                 this.updateTabs();
@@ -166,7 +166,7 @@ export class AddVehicleComponent implements OnInit {
     save() {
         this._apiService
             .createOrUpdateVehicle(
-                "/s/vehicle/create-or-update-vehicle",
+                "/vehicle/create-or-update-vehicle",
                 this.vehicle
             )
             .subscribe(

@@ -19,7 +19,7 @@
     </div>
   </div>
 </div>
-<table class="table table-bordered" *ngIf="equipmentList.length">
+<table class="table table-bordered" >
   <thead>
     <th>
       Equipment ID
@@ -36,8 +36,9 @@
     <th>
       Reg. Authority
     </th>
+    <th></th>
   </thead>
-  <tbody>
+  <tbody *ngIf="equipmentList.length">
     <tr *ngFor="let equipment of equipmentList">
       <td>
         <a [routerLink]="['edit-equipment', equipment.id]">{{equipment.equipmentId}}</a>
@@ -54,7 +55,9 @@
       <td>
         {{equipment.regulatoryAuthorityName}}
       </td>
-    
+      <td>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteEquipment(equipment)"></span>
+      </td>
     </tr>
   </tbody>
 </table>

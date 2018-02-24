@@ -52,6 +52,19 @@ a:hover {
 }
 
 .input-group.search {
+    .input-group-addon{
+        padding: 0.2rem .75rem;
+        margin-bottom: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.25;
+        color: #464a4c;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 0 20px 20px 0;
+        border-left: none;
+    }
     input {
         border-right: 0;
         border-radius: 20px 0 0 20px;

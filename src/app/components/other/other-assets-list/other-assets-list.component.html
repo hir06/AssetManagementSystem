@@ -13,7 +13,7 @@
       </div>
   </div>
 </div>
-<table class="table table-bordered" *ngIf="otherAssetList.length">
+<table class="table table-bordered" >
   <thead>
     <th>
       Asset ID
@@ -31,8 +31,9 @@
     <th>
       Reg. Authority
     </th>
+    <th></th>
   </thead>
-  <tbody>
+  <tbody *ngIf="otherAssetList.length">
     <tr *ngFor="let other of otherAssetList;">
       <td>
         <a [routerLink]="['edit-other-asset', other.id]">{{other.assetTypeOtherId}}</a>
@@ -47,6 +48,10 @@
         {{other.department?.description}}
       </td>
       <td>
+          {{other.regulatoryAuthorityName}}
+      </td>
+      <td>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteAsset(other)"></span>
       </td>
     </tr>
   </tbody>

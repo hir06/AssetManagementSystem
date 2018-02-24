@@ -56,16 +56,16 @@ export class LoanComponent implements OnInit {
             this.updateLoan();
             return;
         }
-        let url = "/s/building/add-loan-to-building/buildingId/";
+        let url = "/building/add-loan-to-building/buildingId/";
         if (this.asset.assetCategory.id == "OTHER") {
             url =
-                "/s/asset-type-other/add-loan-to-asset-type-other/assetTypeOtherId/";
+                "/asset-type-other/add-loan-to-asset-type-other/assetTypeOtherId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = "/s/equipment/add-loan-to-equipment/equipmentId/";
+            url = "/equipment/add-loan-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = "/s/vehicle/add-loan-to-vehicle/vehicleId/";
+            url = "/vehicle/add-loan-to-vehicle/vehicleId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.loan).subscribe(
@@ -91,7 +91,7 @@ export class LoanComponent implements OnInit {
         this.editMode = true;
     }
     updateLoan(){
-        this._apiService.put("/s/loan/update-loan",this.loan).subscribe(
+        this._apiService.put("/loan/update-loan",this.loan).subscribe(
             data => {
                 this.loan = data;
                 this._alertsService.success(
@@ -108,15 +108,15 @@ export class LoanComponent implements OnInit {
         );
     }
     removeLoanFromAsset(loan: any){
-        let url = `/s/building/remove-loan-from-building/buildingId/${this.asset.id}/loanId/${loan.id}`;
+        let url = `/building/remove-loan-from-building/buildingId/${this.asset.id}/loanId/${loan.id}`;
     if (this.asset.assetCategory.id == "VEHICLE") {
-        url = `/s/vehicle/remove-loan-from-vehicle/vehicleId/${this.asset.id}/loanId/${loan.id}`;
+        url = `/vehicle/remove-loan-from-vehicle/vehicleId/${this.asset.id}/loanId/${loan.id}`;
     }
     if (this.asset.assetCategory.id == "EQUIPMENT") {
-        url = `/s/equipment/remove-loan-from-equipment/equipmentId/${this.asset.id}/loanId/${loan.id}`;
+        url = `/equipment/remove-loan-from-equipment/equipmentId/${this.asset.id}/loanId/${loan.id}`;
     }
     if (this.asset.assetCategory.id == "OTHER") {
-        url =  `/s/asset-type-other/remove-loan-from-asset-type-other/assetTypeOtherId/${this.asset.id}/loanId/${loan.id}`;;
+        url =  `/asset-type-other/remove-loan-from-asset-type-other/assetTypeOtherId/${this.asset.id}/loanId/${loan.id}`;;
     }
     this._apiService.delete(url).subscribe(
         data => {

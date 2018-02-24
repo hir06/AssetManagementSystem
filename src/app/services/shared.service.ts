@@ -76,7 +76,7 @@ export class SharedService {
     // }
     getAssetType() {
         this._apiService
-            .get("/s/table-maintenance/asset-type/asset-types")
+            .get("/table-maintenance/asset-type/asset-types")
             .subscribe(
                 data => {
                     this.dropDownsData.assetTypeList = data;
@@ -106,7 +106,7 @@ export class SharedService {
 
     getOrganizationsList() {
         this._apiService
-            .get("/s/table-maintenance/organization/organizations")
+            .get("/table-maintenance/organization/organizations")
             .subscribe(
                 data => {
                     this.dropDownsData.organizationList = data;
@@ -120,7 +120,7 @@ export class SharedService {
 
     getDepartmentList() {
         this._apiService
-            .get("/s/table-maintenance/department/departments")
+            .get("/table-maintenance/department/departments")
             .subscribe(
                 data => {
                     this.dropDownsData.departmentList = data;
@@ -134,7 +134,7 @@ export class SharedService {
 
     getPolicyTypeList() {
         this._apiService
-            .get("/s/table-maintenance/policy-type/policy-types")
+            .get("/table-maintenance/policy-type/policy-types")
             .subscribe(
                 data => {
                     this.dropDownsData.policyTypeList = data;
@@ -149,7 +149,7 @@ export class SharedService {
     getVehicleDamageTypeList() {
         this._apiService
             .get(
-                "/s/table-maintenance/vehicle-damage-type/vehicle-damage-types"
+                "/table-maintenance/vehicle-damage-type/vehicle-damage-types"
             )
             .subscribe(
                 data => {
@@ -165,7 +165,7 @@ export class SharedService {
     getFireExtinguisherTypeList() {
         this._apiService
             .get(
-                "/s/table-maintenance/fire-extinguisher-type/fire-extinguisher-types"
+                "/table-maintenance/fire-extinguisher-type/fire-extinguisher-types"
             )
             .subscribe(
                 data => {
@@ -180,7 +180,7 @@ export class SharedService {
 
     getAssetCategoriesList() {
         this._apiService
-            .get("/s/table-maintenance/asset-category/asset-categories")
+            .get("/table-maintenance/asset-category/asset-categories")
             .subscribe(
                 data => {
                     this.dropDownsData.assetCategoriesList = data;
@@ -194,7 +194,7 @@ export class SharedService {
     getRentOrLeaseType() {
         this._apiService
             .get(
-                "/s/table-maintenance/rental-or-lease-type/rental-or-lease-types"
+                "/table-maintenance/rental-or-lease-type/rental-or-lease-types"
             )
             .subscribe(
                 data => {
@@ -209,7 +209,7 @@ export class SharedService {
 
     getAssetConditionList() {
         this._apiService
-            .get("/s/table-maintenance/asset-condition/asset-conditions")
+            .get("/table-maintenance/asset-condition/asset-conditions")
             .subscribe(
                 data => {
                     this.dropDownsData.assetConditionList = data;
@@ -223,7 +223,7 @@ export class SharedService {
 
     getAssetStatusList() {
         this._apiService
-            .get("/s/table-maintenance/asset-status/asset-statuses")
+            .get("/table-maintenance/asset-status/asset-statuses")
             .subscribe(
                 data => {
                     this.dropDownsData.assetStatusList = data;
@@ -237,7 +237,7 @@ export class SharedService {
 
     getRenewalTypeList() {
         this._apiService
-            .get("/s/table-maintenance/renewal-type/renewal-types")
+            .get("/table-maintenance/renewal-type/renewal-types")
             .subscribe(
                 data => {
                     this.dropDownsData.renewalTypeList = data;
@@ -251,7 +251,7 @@ export class SharedService {
 
     getVehicleTypeList() {
         this._apiService
-            .get("/s/table-maintenance/vehicle-type/vehicle-types")
+            .get("/table-maintenance/vehicle-type/vehicle-types")
             .subscribe(
                 data => {
                     this.dropDownsData.vehicleTypeList = data;
@@ -264,7 +264,7 @@ export class SharedService {
     }
     getMonthTypeList() {
         this._apiService
-            .get("/s/table-maintenance/month-type/month-types")
+            .get("/table-maintenance/month-type/month-types")
             .subscribe(
                 data => {
                     this.dropDownsData.monthTypeList = data;

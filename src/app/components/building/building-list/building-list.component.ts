@@ -1,5 +1,6 @@
 import { ApiService } from "./../../../services/api.services";
 import { Component, OnInit } from "@angular/core";
+import { AlertsLoaderService } from "../../../services/alerts-loader.service";
 
 @Component({
     selector: "app-building-list",
@@ -20,7 +21,7 @@ export class BuildingListComponent implements OnInit {
         ],
         filters: []
     };
-    constructor(private _apiService: ApiService) {
+    constructor(private _apiService: ApiService,private _alertService: AlertsLoaderService) {
         this.getBuildingsList();
     }
 
@@ -33,10 +34,22 @@ export class BuildingListComponent implements OnInit {
 
     getBuildingsList() {
         this._apiService
-            .get("/s/building/search-buildings", { Search: JSON.stringify(this.searchParams )})
+            .get("/building/search-buildings", { Search: JSON.stringify(this.searchParams )})
             .subscribe(data => {
                 this.itemsCount = data.totalRecords;
                 this.buildingList = data.buildings;
             });
+    }
+
+    deleteBuilding(building:any){
+        this._apiService.delete(`/building/delete-building/buildingId/${building.id}`).subscribe(
+            (data)=>{
+                this._alertService.success("Building deleteed successfully.");
+            },
+            (error)=>{
+                this._alertService.error("Building cannot be deleted because it is associated to an incident.");
+            }
+        )
+
     }
 }

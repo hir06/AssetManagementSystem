@@ -116,7 +116,7 @@ export class AddBuildingComponent implements OnInit {
     }
 
     getBuildingById(buidingId: number) {
-        this._apiService.get("/s/building/buildingId/" + buidingId).subscribe(
+        this._apiService.get("/building/buildingId/" + buidingId).subscribe(
             data => {
                 this.building = data;
                 this.updateTabs();
@@ -147,7 +147,7 @@ export class AddBuildingComponent implements OnInit {
     save() {
         this._apiService
             .createOrUpdateBuilding(
-                "/s/building/create-or-update-building",
+                "/building/create-or-update-building",
                 this.building
             )
             .subscribe(

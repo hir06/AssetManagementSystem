@@ -20,7 +20,7 @@
 
   </div>
 </div>
-<table class="table table-bordered" *ngIf="buildingList.length">
+<table class="table table-bordered" >
   <thead>
     <th>
       Building ID
@@ -37,8 +37,9 @@
     <th>
       Reg. Authority
     </th>
+    <th></th>
   </thead>
-  <tbody>
+  <tbody *ngIf="buildingList.length">
     <tr *ngFor="let building of buildingList;">
       <td>
         <a [routerLink]="['edit-building', building.id]">{{building.buildingId}}</a>
@@ -54,6 +55,9 @@
       </td>
       <td>
         {{building.regulatoryAuthorityName}}
+      </td>
+      <td>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteBuilding(building)"></span>
       </td>
     </tr>
   </tbody>

@@ -56,16 +56,16 @@ export class LicenseComponent implements OnInit {
             this.updateLicense();
             return;
         }
-        let url = "/s/building/add-license-to-building/buildingId/";
+        let url = "/building/add-license-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url =
-                "/s/asset-type-other/add-license-to-asset-type-other/assetTypeOtherId/";
+                "/asset-type-other/add-license-to-asset-type-other/assetTypeOtherId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = "/s/equipment/add-license-to-equipment/equipmentId/";
+            url = "/equipment/add-license-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/s/vehicle/add-license-to-vehicle/vehicleId/";
+            url = "/vehicle/add-license-to-vehicle/vehicleId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.license).subscribe(
@@ -92,7 +92,7 @@ export class LicenseComponent implements OnInit {
     }
     updateLicense() {
         this._apiService
-            .put("/s/license/update-license", this.license)
+            .put("/license/update-license", this.license)
             .subscribe(
             data => {
                 this.license = data;
@@ -110,21 +110,21 @@ export class LicenseComponent implements OnInit {
             );
     }
     removeLicenseFromAsset(license: any) {
-        let url = `/s/building/remove-license-from-building/buildingId/${
+        let url = `/building/remove-license-from-building/buildingId/${
             this.asset.id
             }/licenseId/${license.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = `/s/vehicle/remove-license-from-vehicle/vehicleId/${
+            url = `/vehicle/remove-license-from-vehicle/vehicleId/${
                 this.asset.id
                 }/licenseId/${license.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = `/s/equipment/remove-license-from-equipment/equipmentId/${
+            url = `/equipment/remove-license-from-equipment/equipmentId/${
                 this.asset.id
                 }/licenseId/${license.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = `/s/asset-type-other/remove-license-from-asset-type-other/assetTypeOtherId/${
+            url = `/asset-type-other/remove-license-from-asset-type-other/assetTypeOtherId/${
                 this.asset.id
                 }/licenseId/${license.id}`;
         }

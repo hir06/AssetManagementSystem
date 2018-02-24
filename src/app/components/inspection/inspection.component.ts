@@ -49,16 +49,16 @@ export class InspectionComponent implements OnInit {
             this.updateInspection();
             return;
         }
-        let url = "/s/building/add-inspection-to-building/buildingId/";
+        let url = "/building/add-inspection-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url =
-                "/s/asset-type-other/add-inspection-to-asset-type-other/assetTypeOtherId/";
+                "/asset-type-other/add-inspection-to-asset-type-other/assetTypeOtherId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = "/s/equipment/add-inspection-to-equipment/equipmentId/";
+            url = "/equipment/add-inspection-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/s/vehicle/add-inspection-to-vehicle/vehicleId/";
+            url = "/vehicle/add-inspection-to-vehicle/vehicleId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.inspection).subscribe(
@@ -85,7 +85,7 @@ export class InspectionComponent implements OnInit {
 
     updateInspection() {
         this._apiService
-            .put("/s/inspection/update-inspection", this.inspection)
+            .put("/inspection/update-inspection", this.inspection)
             .subscribe(
             data => {
                 this.inspection = data;
@@ -103,15 +103,15 @@ export class InspectionComponent implements OnInit {
             );
     }
     removeInspectionFromAsset(inspection: any) {
-        let url = `/s/building/remove-inspection-from-building/buildingId/${this.asset.id}/inspectionId/${inspection.id}`;
+        let url = `/building/remove-inspection-from-building/buildingId/${this.asset.id}/inspectionId/${inspection.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = `/s/vehicle/remove-inspection-from-vehicle/vehicleId/${this.asset.id}/inspectionId/${inspection.id}`;
+            url = `/vehicle/remove-inspection-from-vehicle/vehicleId/${this.asset.id}/inspectionId/${inspection.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = `/s/equipment/remove-inspection-from-equipment/equipmentId/${this.asset.id}/inspectionId/${inspection.id}`;
+            url = `/equipment/remove-inspection-from-equipment/equipmentId/${this.asset.id}/inspectionId/${inspection.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = `/s/asset-type-other/remove-inspection-from-asset-type-other/assetTypeOtherId/${this.asset.id}/inspectionId/${inspection.id}`;;
+            url = `/asset-type-other/remove-inspection-from-asset-type-other/assetTypeOtherId/${this.asset.id}/inspectionId/${inspection.id}`;;
         }
         this._apiService.delete(url).subscribe(
             data => {

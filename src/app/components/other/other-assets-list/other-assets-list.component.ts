@@ -1,5 +1,6 @@
 import { ApiService } from "./../../../services/api.services";
 import { Component, OnInit } from "@angular/core";
+import { AlertsLoaderService } from "../../../services/alerts-loader.service";
 
 @Component({
     selector: "app-other-assets-list",
@@ -20,7 +21,7 @@ export class OtherAssetsListComponent implements OnInit {
         ],
         filters: []
     };
-    constructor(private _apiService: ApiService) {
+    constructor(private _apiService: ApiService, private _alertService: AlertsLoaderService) {
         this.getOtherAssetList();
     }
 
@@ -34,10 +35,21 @@ export class OtherAssetsListComponent implements OnInit {
 
     getOtherAssetList() {
         this._apiService
-            .get("/s/asset-type-other/search-asset-type-others", { Search: JSON.stringify(this.searchParams) })
+            .get("/asset-type-other/search-asset-type-others", { Search: JSON.stringify(this.searchParams) })
             .subscribe(data => {
                 this.itemsCount = data.totalRecords;
                 this.otherAssetList = data.assetTypeOthers;
             });
+    }
+    deleteAsset(asset:any){
+        this._apiService.delete(`/asset-type-other/delete-asset-type-other/assetTypeOtherId/${asset.id}`).subscribe(
+            (data)=>{
+                this._alertService.success("Asset deleteed successfully.");
+            },
+            (error)=>{
+                this._alertService.error("Asset type other cannot be deleted because it is associated to an incident.");
+            }
+        )
+
     }
 }

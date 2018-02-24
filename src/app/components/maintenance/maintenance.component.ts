@@ -53,16 +53,16 @@ export class MaintenanceComponent implements OnInit {
             this.updateAMC();
             return;
         }
-        let url = "/s/building/add-amc-to-building/buildingId/";
+        let url = "/building/add-amc-to-building/buildingId/";
         if (this.asset.assetCategory.id == "OTHER") {
             url =
-                "/s/asset-type-other/add-amc-to-asset-type-other/assetTypeOtherId/";
+                "/asset-type-other/add-amc-to-asset-type-other/assetTypeOtherId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = "/s/equipment/add-amc-to-equipment/equipmentId/";
+            url = "/equipment/add-amc-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = "/s/vehicle/add-amc-to-vehicle/vehicleId/";
+            url = "/vehicle/add-amc-to-vehicle/vehicleId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.maintenance).subscribe(
@@ -88,7 +88,7 @@ export class MaintenanceComponent implements OnInit {
         this.editMode = true;
     }
     updateAMC() {
-        this._apiService.put("/s/amc/update-amc", this.maintenance).subscribe(
+        this._apiService.put("/amc/update-amc", this.maintenance).subscribe(
             data => {
                 this.maintenance = data;
                 this._alertsService.success("Annual maintenace contract successfully updated.");
@@ -103,21 +103,21 @@ export class MaintenanceComponent implements OnInit {
         );
     }
     removeMaintenanceFromAsset(amc: any) {
-        let url = `/s/building/remove-amc-from-building/buildingId/${
+        let url = `/building/remove-amc-from-building/buildingId/${
             this.asset.id
         }/amcId/${amc.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = `/s/vehicle/remove-amc-from-vehicle/vehicleId/${
+            url = `/vehicle/remove-amc-from-vehicle/vehicleId/${
                 this.asset.id
             }/amcId/${amc.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = `/s/equipment/remove-amc-from-equipment/equipmentId/${
+            url = `/equipment/remove-amc-from-equipment/equipmentId/${
                 this.asset.id
             }/amcId/${amc.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = `/s/asset-type-other/remove-amc-from-asset-type-other/assetTypeOtherId/${
+            url = `/asset-type-other/remove-amc-from-asset-type-other/assetTypeOtherId/${
                 this.asset.id
             }/amcId/${amc.id}`;
         }

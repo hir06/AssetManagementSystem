@@ -143,7 +143,7 @@ export class AddEquipmentComponent implements OnInit {
         this.currentTab = tab;
     }
     getEquipmentById(id: number) {
-        this._apiService.get("/s/equipment/equipmentId/" + id).subscribe(
+        this._apiService.get("/equipment/equipmentId/" + id).subscribe(
             data => {
                 this.equipment = data;
                 this.updateTabs();
@@ -165,7 +165,7 @@ export class AddEquipmentComponent implements OnInit {
     save() {
         this._apiService
             .createOrUpdateEquipment(
-                "/s/equipment/create-or-update-equipment",
+                "/equipment/create-or-update-equipment",
                 this.equipment
             )
             .subscribe(

@@ -24,7 +24,7 @@ export class SupportingDocumentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.uploadUrl = `/s/document/save-documents-for-${this.addTo}`;
+    this.uploadUrl = `/document/save-documents-for-${this.addTo}`;
   }
 
   clearSelectedFile(){
@@ -64,7 +64,7 @@ export class SupportingDocumentsComponent implements OnInit {
   }
 
   deleteDocument(doc: any, index: number) {
-    this._apiService.delete(`/s/document/delete-document/${doc.id}`).subscribe(
+    this._apiService.delete(`/document/delete-document/${doc.id}`).subscribe(
       data => {
         this._alertsService.success("Document deleted successfully");
         this.docsObject.documents.splice(index, 1);
@@ -77,7 +77,7 @@ export class SupportingDocumentsComponent implements OnInit {
   }
 
   downloadDocument(doc: any) {
-    this._apiService.get(`/s/document/download-document/${doc.id}`,{},true,true).subscribe(
+    this._apiService.get(`/document/download-document/${doc.id}`,{},true,true).subscribe(
       data => {
         this.saveFile(data, doc.originalFileName);
       },

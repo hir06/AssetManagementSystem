@@ -1,5 +1,6 @@
 import { ApiService } from "./../../../services/api.services";
 import { Component, OnInit } from "@angular/core";
+import { AlertsLoaderService } from "../../../services/alerts-loader.service";
 
 @Component({
     selector: "app-vehicle-list",
@@ -20,7 +21,7 @@ export class VehicleListComponent implements OnInit {
         ],
         filters: []
     };
-    constructor(private _apiService: ApiService) {
+    constructor(private _apiService: ApiService,private _alertService: AlertsLoaderService) {
         this.getVehicleList();
     }
 
@@ -34,10 +35,21 @@ export class VehicleListComponent implements OnInit {
 
     getVehicleList() {
         this._apiService
-            .get("/s/vehicle/search-vehicles", { Search: JSON.stringify(this.searchParams) })
+            .get("/vehicle/search-vehicles", { Search: JSON.stringify(this.searchParams) })
             .subscribe(data => {
                 this.itemsCount = data.totalRecords;
                 this.vehicleList = data.vehicles;
             });
+    }
+    deleteVehicle (vehicle:any){
+        this._apiService.delete(`/vehicle/delete-vehicle/vehicleId/${vehicle.id}`).subscribe(
+            (data)=>{
+                this._alertService.success("Vehicle deleteed successfully.");
+            },
+            (error)=>{
+                this._alertService.error("Vehicle cannot be deleted because it is associated to an incident.");
+            }
+        )
+
     }
 }

@@ -71,16 +71,16 @@ export class PolicyComponent implements OnInit {
             this.updatePolicy();
             return;
         }
-        let url = "/s/building/add-policy-to-building/buildingId/";
+        let url = "/building/add-policy-to-building/buildingId/";
         if (this.asset.assetCategory.id == "OTHER") {
             url =
-                "/s/asset-type-other/add-policy-to-asset-type-other/assetTypeOtherId/";
+                "/asset-type-other/add-policy-to-asset-type-other/assetTypeOtherId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = "/s/equipment/add-policy-to-equipment/equipmentId/";
+            url = "/equipment/add-policy-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = "/s/vehicle/add-policy-to-vehicle/vehicleId/";
+            url = "/vehicle/add-policy-to-vehicle/vehicleId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.policy).subscribe(
@@ -106,7 +106,7 @@ export class PolicyComponent implements OnInit {
     }
 
     updatePolicy(){
-        this._apiService.put("/s/policy/update-policy",this.policy).subscribe(
+        this._apiService.put("/policy/update-policy",this.policy).subscribe(
             data => {
                 this.policy = data;
                 this._alertsService.success(
@@ -123,15 +123,15 @@ export class PolicyComponent implements OnInit {
         );
     }
     removePolicyFromAsset(policy: any){
-        let url = `/s/building/remove-policy-from-building/buildingId/${this.asset.id}/policyId/${policy.id}`;
+        let url = `/building/remove-policy-from-building/buildingId/${this.asset.id}/policyId/${policy.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = `/s/vehicle/remove-policy-from-vehicle/vehicleId/${this.asset.id}/policyId/${policy.id}`;
+            url = `/vehicle/remove-policy-from-vehicle/vehicleId/${this.asset.id}/policyId/${policy.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = `/s/equipment/remove-policy-from-equipment/equipmentId/${this.asset.id}/policyId/${policy.id}`;
+            url = `/equipment/remove-policy-from-equipment/equipmentId/${this.asset.id}/policyId/${policy.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url =  `/s/asset-type-other/remove-policy-from-asset-type-other/assetTypeOtherId/${this.asset.id}/policyId/${policy.id}`;;
+            url =  `/asset-type-other/remove-policy-from-asset-type-other/assetTypeOtherId/${this.asset.id}/policyId/${policy.id}`;;
         }
         this._apiService.delete(url).subscribe(
             data => {

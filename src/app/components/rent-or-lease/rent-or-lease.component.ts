@@ -65,16 +65,16 @@ export class RentOrLeaseComponent implements OnInit {
             this.updateRentOrLease();
             return;
         }
-        let url = "/s/building/add-rental-or-lease-to-building/buildingId/";
+        let url = "/building/add-rental-or-lease-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url =
-                "/s/asset-type-other/add-rental-or-lease-to-asset-type-other/assetTypeOtherId/";
+                "/asset-type-other/add-rental-or-lease-to-asset-type-other/assetTypeOtherId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = "/s/equipment/add-rental-or-lease-to-equipment/equipmentId/";
+            url = "/equipment/add-rental-or-lease-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/s/vehicle/add-rental-or-lease-to-vehicle/vehicleId/";
+            url = "/vehicle/add-rental-or-lease-to-vehicle/vehicleId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.rent).subscribe(
@@ -100,7 +100,7 @@ export class RentOrLeaseComponent implements OnInit {
     }
 
     updateRentOrLease() {
-        this._apiService.put("/s/rental-or-lease/update-rental-or-lease-agreement", this.rent).subscribe(
+        this._apiService.put("/rental-or-lease/update-rental-or-lease-agreement", this.rent).subscribe(
             data => {
                 this.rent = data;
                 this._alertsService.success(
@@ -117,15 +117,15 @@ export class RentOrLeaseComponent implements OnInit {
         );
     }
     removeRentOrLeaseFromAsset(rol: any) {
-        let url = `/s/building/remove-rental-or-lease-from-building/buildingId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+        let url = `/building/remove-rental-or-lease-from-building/buildingId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = `/s/vehicle/remove-rental-or-lease-from-vehicle/vehicleId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+            url = `/vehicle/remove-rental-or-lease-from-vehicle/vehicleId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = `/s/equipment/remove-rental-or-lease-from-equipment/equipmentId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+            url = `/equipment/remove-rental-or-lease-from-equipment/equipmentId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = `/s/asset-type-other/remove-rental-or-lease-from-asset-type-other/assetTypeOtherId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;;
+            url = `/asset-type-other/remove-rental-or-lease-from-asset-type-other/assetTypeOtherId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;;
         }
         this._apiService.delete(url).subscribe(
             data => {

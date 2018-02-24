@@ -13,7 +13,7 @@ import * as moment from 'moment';
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = "https://0ba0e9e1.ngrok.io/rmsrest";
+    apiUrl: string = "https://0ba0e9e1.ngrok.io/rmsrest/s";
     constructor(
         private _http: HttpClient,
         private _ajaxLoader: AlertsLoaderService,

@@ -13,7 +13,7 @@
       </div>
   </div>
 </div>
-<table class="table table-bordered" *ngIf="vehicleList.length">
+<table class="table table-bordered" >
   <thead>
     <th>
       Vehicle Reg #
@@ -30,8 +30,9 @@
     <th>
       Chasis #
     </th>
+    <th></th>
   </thead>
-  <tbody>
+  <tbody *ngIf="vehicleList.length">
     <tr *ngFor="let vehicle of vehicleList;">
       <td>
         <a [routerLink]="['edit-vehicle', vehicle.id]">{{vehicle.vehicleRegistrationId}}</a>
@@ -48,6 +49,9 @@
       <td>
         {{vehicle.assettype?.chasisNumber}}
       </td>
+      <td>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteVehicle(vehicle)"></span>
+        </td>
     </tr>
   </tbody>
 </table>

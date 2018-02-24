@@ -56,15 +56,15 @@ export class WarrantyComponent implements OnInit {
             this.updateWarranty();
             return;
         }
-        let url = "/s/building/add-warranty-to-building/buildingId/";
+        let url = "/building/add-warranty-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = "/s/vehicle/add-warranty-to-vehicle/vehicleId/";
+            url = "/vehicle/add-warranty-to-vehicle/vehicleId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = "/s/equipment/add-warranty-to-equipment/equipmentId/";
+            url = "/equipment/add-warranty-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/s/asset-type-other/add-warranty-to-asset-type-other/assetTypeOtherId/";
+            url = "/asset-type-other/add-warranty-to-asset-type-other/assetTypeOtherId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.warranty).subscribe(
@@ -89,7 +89,7 @@ export class WarrantyComponent implements OnInit {
         this.editMode = true;
     }
     updateWarranty(){
-        this._apiService.put("/s/warranty/create-or-update-warranty",this.warranty).subscribe(
+        this._apiService.put("/warranty/create-or-update-warranty",this.warranty).subscribe(
             data => {
                 this.warranty = data;
                 this._alertsService.success(
@@ -106,15 +106,15 @@ export class WarrantyComponent implements OnInit {
         );
     }
     removeWarrantyFromAsset(warranty: any){
-        let url = `/s/building/remove-warranty-from-building/buildingId/${this.asset.id}/warrantyId/${warranty.id}`;
+        let url = `/building/remove-warranty-from-building/buildingId/${this.asset.id}/warrantyId/${warranty.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url = `/s/vehicle/remove-warranty-from-vehicle/vehicleId/${this.asset.id}/warrantyId/${warranty.id}`;
+            url = `/vehicle/remove-warranty-from-vehicle/vehicleId/${this.asset.id}/warrantyId/${warranty.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = `/s/equipment/remove-warranty-from-equipment/equipmentId/${this.asset.id}/warrantyId/${warranty.id}`;
+            url = `/equipment/remove-warranty-from-equipment/equipmentId/${this.asset.id}/warrantyId/${warranty.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url =  `/s/asset-type-other/remove-warranty-from-asset-type-other/assetTypeOtherId/${this.asset.id}/warrantyId/${warranty.id}`;;
+            url =  `/asset-type-other/remove-warranty-from-asset-type-other/assetTypeOtherId/${this.asset.id}/warrantyId/${warranty.id}`;;
         }
         this._apiService.delete(url).subscribe(
             data => {

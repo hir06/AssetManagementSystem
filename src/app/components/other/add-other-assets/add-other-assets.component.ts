@@ -146,7 +146,7 @@ export class AddOtherAssetsComponent implements OnInit {
     }
     getAssetById(id: number) {
         this._apiService
-            .get("/s/asset-type-other/assetTypeOtherId/" + id)
+            .get("/asset-type-other/assetTypeOtherId/" + id)
             .subscribe(
                 data => {
                     this.asset = data;
@@ -165,7 +165,7 @@ export class AddOtherAssetsComponent implements OnInit {
     save() {
         this._apiService
             .createOrUpdateOtherAsset(
-                "/s/asset-type-other/create-or-update-asset-type-other",
+                "/asset-type-other/create-or-update-asset-type-other",
                 this.asset
             )
             .subscribe(
