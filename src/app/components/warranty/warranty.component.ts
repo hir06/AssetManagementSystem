@@ -247,4 +247,25 @@ export class WarrantyComponent implements OnInit {
         )
 
     }
+
+    addExistingWarrantyToAsset(warranty: any){
+        let url = `/building/add-existing-warranty-to-building/buildingId/${this.asset.id}/warrantyId/${warranty.id}`;
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =`/asset-type-other/add-existing-warranty-to-asset-type-other/assetTypeOtherId/${this.asset.id}/warrantyId/${warranty.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/equipment/add-existing-warranty-to-equipment/equipmentId/${this.asset.id}/warrantyId/${warranty.id}`;
+        }
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = url = `/vehicle/add-existing-warranty-to-vehicle/vehicleId/${this.asset.id}/warrantyId/${warranty.id}`;
+        }
+        this._apiService.put(url,null).subscribe(
+            data=>{
+                this._alertsService.success("Warranty successfully added to " + this.asset.assetCategory.description);
+            },
+            error=>{
+                this._alertsService.error("some error occured. Please try again.");
+            }
+        );
+    }
 }

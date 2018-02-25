@@ -263,4 +263,24 @@ export class PolicyComponent implements OnInit {
         )
 
     }
+    addExistingPolicyToAsset(policy: any){
+        let url = `/building/add-existing-policy-to-building/buildingId/${this.asset.id}/policyId/${policy.id}`;
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =`/asset-type-other/add-existing-policy-to-asset-type-other/assetTypeOtherId/${this.asset.id}/policyId/${policy.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/equipment/add-existing-policy-to-equipment/equipmentId/${this.asset.id}/policyId/${policy.id}`;
+        }
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = url = `/vehicle/add-existing-policy-to-vehicle/vehicleId/${this.asset.id}/policyId/${policy.id}`;
+        }
+        this._apiService.put(url,null).subscribe(
+            data=>{
+                this._alertsService.success("Policy successfully added to " + this.asset.assetCategory.description);
+            },
+            error=>{
+                this._alertsService.error("some error occured. Please try again.");
+            }
+        );
+    }
 }

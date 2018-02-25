@@ -258,4 +258,24 @@ export class RentOrLeaseComponent implements OnInit {
         )
 
     }
+    addExistingRentalOrLeaseToAsset(rol: any){
+        let url = `/building/add-existing-rental-or-lease-agreement-to-building/buildingId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =`/asset-type-other/add-existing-rental-or-lease-agreement-to-asset-type-other/assetTypeOtherId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/equipment/add-existing-rental-or-lease-agreement-to-equipment/equipmentId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+        }
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = url = `/vehicle/add-existing-rental-or-lease-agreement-to-vehicle/vehicleId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+        }
+        this._apiService.put(url,null).subscribe(
+            data=>{
+                this._alertsService.success("Rental or lease agreement successfully added to " + this.asset.assetCategory.description);
+            },
+            error=>{
+                this._alertsService.error("some error occured. Please try again.");
+            }
+        );
+    }
 }

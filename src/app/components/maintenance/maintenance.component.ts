@@ -247,4 +247,25 @@ export class MaintenanceComponent implements OnInit {
         )
 
     }
+
+    addExistingAmcToAsset(amc: any){
+        let url = `/building/add-existing-amc-to-building/buildingId/${this.asset.id}/amcId/${amc.id}`;
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =`/asset-type-other/add-existing-amc-to-asset-type-other/assetTypeOtherId/${this.asset.id}/amcId/${amc.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/equipment/add-existing-amc-to-equipment/equipmentId/${this.asset.id}/amcId/${amc.id}`;
+        }
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = url = `/vehicle/add-existing-amc-to-vehicle/vehicleId/${this.asset.id}/amcId/${amc.id}`;
+        }
+        this._apiService.put(url,null).subscribe(
+            data=>{
+                this._alertsService.success("amc successfully added to " + this.asset.assetCategory.description);
+            },
+            error=>{
+                this._alertsService.error("some error occured. Please try again.");
+            }
+        );
+    }
 }

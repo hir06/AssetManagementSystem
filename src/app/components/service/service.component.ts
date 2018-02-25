@@ -246,4 +246,25 @@ export class ServiceComponent implements OnInit {
         )
 
     }
+
+    addExistingServiceToAsset(service: any){
+        let url = `/building/add-existing-service-to-building/buildingId/${this.asset.id}/serviceId/${service.id}`;
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =`/asset-type-other/add-existing-service-to-asset-type-other/assetTypeOtherId/${this.asset.id}/serviceId/${service.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/equipment/add-existing-service-to-equipment/equipmentId/${this.asset.id}/serviceId/${service.id}`;
+        }
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = url = `/vehicle/add-existing-service-to-vehicle/vehicleId/${this.asset.id}/serviceId/${service.id}`;
+        }
+        this._apiService.put(url,null).subscribe(
+            data=>{
+                this._alertsService.success("Service successfully added to " + this.asset.assetCategory.description);
+            },
+            error=>{
+                this._alertsService.error("some error occured. Please try again.");
+            }
+        );
+    }
 }

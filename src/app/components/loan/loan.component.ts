@@ -248,4 +248,25 @@ export class LoanComponent implements OnInit {
         )
 
     }
+
+    addExistingLoanToAsset(loan: any){
+        let url = `/building/add-existing-loan-to-building/buildingId/${this.asset.id}/loanId/${loan.id}`;
+        if (this.asset.assetCategory.id == "OTHER") {
+            url =`/asset-type-other/add-existing-loan-to-asset-type-other/assetTypeOtherId/${this.asset.id}/loanId/${loan.id}`;
+        }
+        if (this.asset.assetCategory.id == "EQUIPMENT") {
+            url = `/equipment/add-existing-loan-to-equipment/equipmentId/${this.asset.id}/loanId/${loan.id}`;
+        }
+        if (this.asset.assetCategory.id == "VEHICLE") {
+            url = url = `/vehicle/add-existing-loan-to-vehicle/vehicleId/${this.asset.id}/loanId/${loan.id}`;
+        }
+        this._apiService.put(url,null).subscribe(
+            data=>{
+                this._alertsService.success("Loan successfully added to " + this.asset.assetCategory.description);
+            },
+            error=>{
+                this._alertsService.error("some error occured. Please try again.");
+            }
+        );
+    }
 }

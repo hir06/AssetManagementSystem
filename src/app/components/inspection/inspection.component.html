@@ -364,11 +364,11 @@
             <tbody *ngIf="lookupItems">
               <tr *ngFor="let insp of lookupItems.inspections">
                 <td>{{insp.inspectionNumber}}</td>
-                <td>{{insp.inspectionDueDate}}</td>
+                <td>{{insp.inspectionDueDate | date:'dd/MM/yyyy'}}</td>
                 <td>{{insp.inspectionDoneBy}}</td>
-                <td>{{insp.inspectionDoneDateTime}}</td>
+                <td>{{insp.inspectionDoneDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
                 <td>{{insp.inspectionAmount}}</td>
-                <td>{{insp.nextInspectionDueDate}}</td>
+                <td>{{insp.nextInspectionDueDate | date:'dd/MM/yyyy'}}</td>
               </tr>
             </tbody>
           </table>
