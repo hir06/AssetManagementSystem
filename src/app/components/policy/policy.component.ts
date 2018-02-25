@@ -14,6 +14,10 @@ export class PolicyComponent implements OnInit {
     @Input() asset: any;
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     editMode: boolean =false;
+    lookupParams: any;
+    lookupItems:any;
+    lookupOptions : any;
+   
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService,
@@ -26,7 +30,69 @@ export class PolicyComponent implements OnInit {
         this.initPolicy();
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.initLookupParams();
+    }
+    initLookupParams() {
+        this.lookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
+        this.lookupOptions = {
+            policyNumber: {
+                field: 'policyNumber',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            policyName: {
+                field: 'policyName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            policyDescription: {
+                field: 'policyDescription',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            providerName: {
+                field: 'providerName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            providerDescription: {
+                field: 'providerDescription',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            policyStartDateTime: {
+                field: 'policyStartDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            policyEndDateTime: {
+                field: 'policyEndDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },policyType: {
+                field: 'policyType',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            }
+        }
+    }
     initPolicy(){
         this.policy = {
             id: null,
@@ -147,5 +213,54 @@ export class PolicyComponent implements OnInit {
                 );
             }
         );
+    }
+    lookupFieldChange({field,operator,value}){
+        let fil = {
+            field,
+            operator,
+            value
+        }
+        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        const obj = {};
+        obj[field] = value;
+        fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+        if(!exists.length){
+            this.lookupParams.filters.push(fil);
+        }else{
+            exists[0].value = value;
+            exists[0].operator = operator;
+        }
+    }
+
+    lookupSortChange({field,sort,order}){
+        let sor={
+            field,
+            order
+        }
+        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
+        if(!exists.length && sort){
+            this.lookupParams.sorts.push(sor);
+        }else if(exists.length && sort){
+            exists[0].order = order;
+        }else{
+            const ind = this.lookupParams.sorts.indexOf(exists[0]);
+            this.lookupParams.sorts.splice(ind,1);
+        }
+       
+    }
+    lookupPolicy($event: any) {
+        if($event){
+            this.lookupParams.paging.currentPage = $event.pageNo -1;
+            this.lookupParams.paging.pageSize = $event.pageSize;
+        }
+        this._apiService.get('/policy/search-policies', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
+            (data) => {
+                this.lookupItems = data;
+            },
+            (error) => {
+
+            }
+        )
+
     }
 }

@@ -13,6 +13,10 @@ export class ServiceComponent implements OnInit {
     @Input() asset: any;
     editMode: boolean = false;
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
+    lookupParams: any;
+    lookupItems:any;
+    lookupOptions :any;
+   
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
@@ -20,7 +24,70 @@ export class ServiceComponent implements OnInit {
         this.initService();
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.initLookupParams();
+    }
+    initLookupParams() {
+        this.lookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
+        this.lookupOptions = {
+            serviceNumber: {
+                field: 'serviceNumber',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            serviceCompanyName: {
+                field: 'serviceCompanyName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            serviceCompanyDescription: {
+                field: 'serviceCompanyDescription',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            serviceCompanyContactPerson: {
+                field: 'serviceCompanyContactPerson',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            serviceDoneBy: {
+                field: 'serviceDoneBy',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            serviceDoneDateTime: {
+                field: 'serviceDoneDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            serviceDueDate: {
+                field: 'serviceDueDate',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            nextServiceDueDate: {
+                field: 'nextServiceDueDate',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            }
+        }
+    }
     initService(){
         this.service= {
             id: null,
@@ -129,5 +196,54 @@ export class ServiceComponent implements OnInit {
                 );
             }
         );
+    }
+    lookupFieldChange({field,operator,value}){
+        let fil = {
+            field,
+            operator,
+            value
+        }
+        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        const obj = {};
+        obj[field] = value;
+        fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+        if(!exists.length){
+            this.lookupParams.filters.push(fil);
+        }else{
+            exists[0].value = value;
+            exists[0].operator = operator;
+        }
+    }
+
+    lookupSortChange({field,sort,order}){
+        let sor={
+            field,
+            order
+        }
+        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
+        if(!exists.length && sort){
+            this.lookupParams.sorts.push(sor);
+        }else if(exists.length && sort){
+            exists[0].order = order;
+        }else{
+            const ind = this.lookupParams.sorts.indexOf(exists[0]);
+            this.lookupParams.sorts.splice(ind,1);
+        }
+       
+    }
+    lookupService($event: any) {
+        if($event){
+            this.lookupParams.paging.currentPage = $event.pageNo -1;
+            this.lookupParams.paging.pageSize = $event.pageSize;
+        }
+        this._apiService.get('/service/search-services', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
+            (data) => {
+                this.lookupItems = data;
+            },
+            (error) => {
+
+            }
+        )
+
     }
 }

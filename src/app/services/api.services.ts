@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { AlertsLoaderService } from "./alerts-loader.service";
 import { Injectable } from "@angular/core";
 import {
@@ -127,7 +128,11 @@ export class ApiService {
     }
     parseDate(response: any){
         for(let key in response){
-
+            if(Array.isArray(response[key])){
+                response[key].forEach(element => {
+                    this.parseDate(element);
+                });
+            }
             if(key.indexOf("Date") > -1 && response[key]){
                 response[key] = moment(response[key],"DD/MM/YYYY HH:mm:ss").toDate();
             }

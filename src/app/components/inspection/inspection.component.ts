@@ -11,12 +11,18 @@ export class InspectionComponent implements OnInit {
     inspection: any;
     @Input() asset: any;
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
+    lookupParams: any;
     editMode: boolean = false;
+    lookupItems: any;
+    lookupOptions :any;
     constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService) {
         this.initInspection();
+
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.initLookupParams();
+    }
     initInspection() {
         this.inspection = {
             id: null,
@@ -43,6 +49,61 @@ export class InspectionComponent implements OnInit {
             existingVehicles: null,
             existingAssetTypeOthers: null
         };
+    }
+
+    initLookupParams() {
+        this.lookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
+        this.lookupOptions = {
+            inspectionNumber: {
+                field: 'inspectionNumber',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            inspectionCompanyName: {
+                field: 'inspectionCompanyName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            inspectionCompanyContactPerson: {
+                field: 'inspectionCompanyContactPerson',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            inspectionDoneBy: {
+                field: 'inspectionDoneBy',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            inspectionDoneDateTime: {
+                field: 'inspectionDoneDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            inspectionDueDate: {
+                field: 'inspectionDueDate',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            nextInspectionDueDate: {
+                field: 'nextInspectionDueDate',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            }
+        }
     }
     save() {
         if (this.editMode) {
@@ -127,5 +188,55 @@ export class InspectionComponent implements OnInit {
                 );
             }
         );
+    }
+
+    lookupFieldChange({field,operator,value}){
+        let fil = {
+            field,
+            operator,
+            value
+        }
+        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        const obj = {};
+        obj[field] = value;
+        fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+        if(!exists.length){
+            this.lookupParams.filters.push(fil);
+        }else{
+            exists[0].value = value;
+            exists[0].operator = operator;
+        }
+    }
+
+    lookupSortChange({field,sort,order}){
+        let sor={
+            field,
+            order
+        }
+        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
+        if(!exists.length && sort){
+            this.lookupParams.sorts.push(sor);
+        }else if(exists.length && sort){
+            exists[0].order = order;
+        }else{
+            const ind = this.lookupParams.sorts.indexOf(exists[0]);
+            this.lookupParams.sorts.splice(ind,1);
+        }
+       
+    }
+    lookupInspection($event: any) {
+        if($event){
+            this.lookupParams.paging.currentPage = $event.pageNo -1;
+            this.lookupParams.paging.pageSize = $event.pageSize;
+        }
+        this._apiService.get('/inspection/search-inspections', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
+            (data) => {
+                this.lookupItems = data;
+            },
+            (error) => {
+
+            }
+        )
+
     }
 }

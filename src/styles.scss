@@ -125,6 +125,22 @@ label{
     pointer-events: none !important;
     
 }
+.modal{
+    z-index:100;
+}
+.modal-backdrop {
+    z-index: 99;
+}
+
+.table td, .table th {
+    padding: .5rem;
+}
+
+@media (min-width: 992px){
+    .modal-lg {
+        max-width: 1200px;
+    }
+}
 
 thead.owl-dt-calendar-header{
     background-color: #fff;

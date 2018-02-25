@@ -13,6 +13,10 @@ export class LicenseComponent implements OnInit {
     @Input() asset: any;
     editMode: boolean = false;
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
+    lookupParams: any;
+    lookupItems:any;
+    lookupOptions : any;
+    
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
@@ -21,9 +25,69 @@ export class LicenseComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        this.initLookupParams();
     }
-
+    initLookupParams() {
+        this.lookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
+        this.lookupOptions = {
+            licenseNumber: {
+                field: 'licenseNumber',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            licenseHolderName: {
+                field: 'licenseHolderName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            licenseHoldingCompany: {
+                field: 'licenseHoldingCompany',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            licenseProvidedBy: {
+                field: 'licenseProvidedBy',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            licenseProvidingAuthority: {
+                field: 'licenseProvidingAuthority',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            placeIssued: {
+                field: 'placeIssued',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            startDateTime: {
+                field: 'startDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            endDateTime: {
+                field: 'endDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            }
+        }
+    }
     initLicense() {
         this.license = {
             id: null,
@@ -143,5 +207,55 @@ export class LicenseComponent implements OnInit {
                 );
             }
         );
+    }
+    
+    lookupFieldChange({field,operator,value}){
+        let fil = {
+            field,
+            operator,
+            value
+        }
+        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        const obj = {};
+        obj[field] = value;
+        fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+        if(!exists.length){
+            this.lookupParams.filters.push(fil);
+        }else{
+            exists[0].value = value;
+            exists[0].operator = operator;
+        }
+    }
+
+    lookupSortChange({field,sort,order}){
+        let sor={
+            field,
+            order
+        }
+        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
+        if(!exists.length && sort){
+            this.lookupParams.sorts.push(sor);
+        }else if(exists.length && sort){
+            exists[0].order = order;
+        }else{
+            const ind = this.lookupParams.sorts.indexOf(exists[0]);
+            this.lookupParams.sorts.splice(ind,1);
+        }
+       
+    }
+    lookupLicense($event: any) {
+        if($event){
+            this.lookupParams.paging.currentPage = $event.pageNo -1;
+            this.lookupParams.paging.pageSize = $event.pageSize;
+        }
+        this._apiService.get('/license/search-licenses', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
+            (data) => {
+                this.lookupItems = data;
+            },
+            (error) => {
+
+            }
+        )
+
     }
 }

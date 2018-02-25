@@ -12,6 +12,10 @@ export class WarrantyComponent implements OnInit {
     @Input() asset: any;
     editMode: boolean = false;
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
+    lookupParams: any;
+    lookupItems:any;
+    lookupOptions :any;
+
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService
@@ -19,7 +23,70 @@ export class WarrantyComponent implements OnInit {
         this.initWarranty();
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.initLookupParams();
+    }
+    initLookupParams() {
+        this.lookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
+        this.lookupOptions = {
+            warrantyNumber: {
+                field: 'warrantyNumber',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            warrantyName: {
+                field: 'warrantyName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            warrantyDescription: {
+                field: 'warrantyDescription',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            warrantyProvidedBy: {
+                field: 'warrantyProvidedBy',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            warrantyProviderDescription: {
+                field: 'warrantyProviderDescription',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            warrantyProviderContactPerson: {
+                field: 'warrantyProviderContactPerson',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            warrantyStartDateTime: {
+                field: 'warrantyStartDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            warrantyEndDateTime: {
+                field: 'warrantyEndDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            }
+        }
+    }
     initWarranty(){
         this.warranty = {
             id: null,
@@ -130,5 +197,54 @@ export class WarrantyComponent implements OnInit {
                 );
             }
         );
+    }
+    lookupFieldChange({field,operator,value}){
+        let fil = {
+            field,
+            operator,
+            value
+        }
+        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        const obj = {};
+        obj[field] = value;
+        fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+        if(!exists.length){
+            this.lookupParams.filters.push(fil);
+        }else{
+            exists[0].value = value;
+            exists[0].operator = operator;
+        }
+    }
+
+    lookupSortChange({field,sort,order}){
+        let sor={
+            field,
+            order
+        }
+        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
+        if(!exists.length && sort){
+            this.lookupParams.sorts.push(sor);
+        }else if(exists.length && sort){
+            exists[0].order = order;
+        }else{
+            const ind = this.lookupParams.sorts.indexOf(exists[0]);
+            this.lookupParams.sorts.splice(ind,1);
+        }
+       
+    }
+    lookupWarranty($event: any) {
+        if($event){
+            this.lookupParams.paging.currentPage = $event.pageNo -1;
+            this.lookupParams.paging.pageSize = $event.pageSize;
+        }
+        this._apiService.get('/warranty/search-warranties', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
+            (data) => {
+                this.lookupItems = data;
+            },
+            (error) => {
+
+            }
+        )
+
     }
 }

@@ -12,6 +12,10 @@ export class MaintenanceComponent implements OnInit {
     @Input() asset: any;
     editMode: boolean = false;
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
+    lookupParams: any;
+    lookupItems:any;
+    lookupOpions: any;
+
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService
@@ -19,7 +23,63 @@ export class MaintenanceComponent implements OnInit {
         this.initMaintenance();
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.initLookupParams();
+    }
+    initLookupParams() {
+        this.lookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
+        this.lookupOpions = {
+            agreementId: {
+                field: 'agreementId',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            agreementName: {
+                field: 'agreementName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            agreementDescription: {
+                field: 'agreementDescription',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            companyName: {
+                field: 'companyName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            companyDescription: {
+                field: 'companyDescription',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            startDateTime: {
+                field: 'startDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            endDateTime: {
+                field: 'endDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            }
+        }
+    }
     initMaintenance(){
         this.maintenance = {
             id: null,
@@ -136,5 +196,55 @@ export class MaintenanceComponent implements OnInit {
                 );
             }
         );
+    }
+
+    lookupFieldChange({field,operator,value}){
+        let fil = {
+            field,
+            operator,
+            value
+        }
+        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        const obj = {};
+        obj[field] = value;
+        fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+        if(!exists.length){
+            this.lookupParams.filters.push(fil);
+        }else{
+            exists[0].value = value;
+            exists[0].operator = operator;
+        }
+    }
+
+    lookupSortChange({field,sort,order}){
+        let sor={
+            field,
+            order
+        }
+        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
+        if(!exists.length && sort){
+            this.lookupParams.sorts.push(sor);
+        }else if(exists.length && sort){
+            exists[0].order = order;
+        }else{
+            const ind = this.lookupParams.sorts.indexOf(exists[0]);
+            this.lookupParams.sorts.splice(ind,1);
+        }
+       
+    }
+    lookupAmc($event: any) {
+        if($event){
+            this.lookupParams.paging.currentPage = $event.pageNo -1;
+            this.lookupParams.paging.pageSize = $event.pageSize;
+        }
+        this._apiService.get('/amc/search-amc', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
+            (data) => {
+                this.lookupItems = data;
+            },
+            (error) => {
+
+            }
+        )
+
     }
 }

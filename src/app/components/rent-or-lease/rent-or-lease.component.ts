@@ -14,6 +14,10 @@ export class RentOrLeaseComponent implements OnInit {
     @Input() asset: any;
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     editMode: boolean = false;
+    lookupParams: any;
+    lookupItems:any;
+    lookupOptions :any;
+    
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService,
@@ -26,7 +30,70 @@ export class RentOrLeaseComponent implements OnInit {
         this.initRentOrLease();
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.initLookupParams();
+     }
+    initLookupParams() {
+        this.lookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
+        this.lookupOptions = {
+            agreementId: {
+                field: 'agreementId',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            agreementName: {
+                field: 'agreementName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            agreementDescription: {
+                field: 'agreementDescription',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            companyName: {
+                field: 'companyName',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            companyContactPerson: {
+                field: 'companyContactPerson',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            startDateTime: {
+                field: 'startDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            endDateTime: {
+                field: 'endDateTime',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            },
+            rentalOrLeaseType: {
+                field: 'rentalOrLeaseType',
+                operator: "EQ",
+                value: null,
+                order:"ASC",
+                sort:false
+            }
+        }
+    }
     initRentOrLease(){
         this.rent = {
             id: null,
@@ -141,5 +208,54 @@ export class RentOrLeaseComponent implements OnInit {
                 );
             }
         );
+    }
+    lookupFieldChange({field,operator,value}){
+        let fil = {
+            field,
+            operator,
+            value
+        }
+        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        const obj = {};
+        obj[field] = value;
+        fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+        if(!exists.length){
+            this.lookupParams.filters.push(fil);
+        }else{
+            exists[0].value = value;
+            exists[0].operator = operator;
+        }
+    }
+
+    lookupSortChange({field,sort,order}){
+        let sor={
+            field,
+            order
+        }
+        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
+        if(!exists.length && sort){
+            this.lookupParams.sorts.push(sor);
+        }else if(exists.length && sort){
+            exists[0].order = order;
+        }else{
+            const ind = this.lookupParams.sorts.indexOf(exists[0]);
+            this.lookupParams.sorts.splice(ind,1);
+        }
+       
+    }
+    lookupRentOrLease($event: any) {
+        if($event){
+            this.lookupParams.paging.currentPage = $event.pageNo -1;
+            this.lookupParams.paging.pageSize = $event.pageSize;
+        }
+        this._apiService.get('/rental-or-lease/search-rental-or-lease-agreements', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
+            (data) => {
+                this.lookupItems = data;
+            },
+            (error) => {
+
+            }
+        )
+
     }
 }
