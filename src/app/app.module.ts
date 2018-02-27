@@ -10,11 +10,6 @@ import { AppComponent } from './app.component';
 import { ApiService } from './services/api.services';
 import { HttpActionDirective } from './directive/http-action.directive';
 
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

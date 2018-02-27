@@ -1,6 +1,13 @@
 import { ApiService } from "./../../../services/api.services";
-import { Component, OnInit } from "@angular/core";
+import { Component,  ViewChild, 
+    ComponentFactoryResolver,
+    EmbeddedViewRef,
+    ApplicationRef,
+    ViewContainerRef } from '@angular/core';
 import { AlertsLoaderService } from "../../../services/alerts-loader.service";
+import { HttpActionDirective } from "../../../directive/http-action.directive";
+import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
+import { SearchComponent } from '../../search/search.component'
 
 @Component({
     selector: "app-building-list",
@@ -8,6 +15,11 @@ import { AlertsLoaderService } from "../../../services/alerts-loader.service";
     styleUrls: ["./building-list.component.scss"]
 })
 export class BuildingListComponent implements OnInit {
+    public httpActionIndicator: HttpActionDirective;
+    public componentRef: any;
+   // @ViewChild('parent', { read: ViewContainerRef }) container: ViewContainerRef;
+  
+  
     pageSize: number = 10;
     itemsCount: number = 0;
     buildingList: any = [];
@@ -21,16 +33,20 @@ export class BuildingListComponent implements OnInit {
         ],
         filters: []
     };
-    constructor(private _apiService: ApiService,private _alertService: AlertsLoaderService) {
+    constructor(private _apiService: ApiService,
+        private _alertService: AlertsLoaderService,  
+        private componentFactoryResolver: ComponentFactoryResolver) {
         this.getBuildingsList();
     }
 
     ngOnInit() {}
+
     getPageData($event: any) {
         this.searchParams.paging.currentPage = $event.pageNo -1;
         this.searchParams.paging.pageSize = $event.pageSize;
         this.getBuildingsList();
     }
+
 
     getBuildingsList() {
         this._apiService
@@ -51,5 +67,17 @@ export class BuildingListComponent implements OnInit {
             }
         )
 
+    }
+
+    advancedSearch(){
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+            SearchComponent
+        );
+        let viewContainerRef = this.httpActionIndicator.viewContainerRef;
+        viewContainerRef.clear();
+        this.componentRef = viewContainerRef.createComponent(componentFactory);
+        // var comp = this.componentFactoryResolver.resolveComponentFactory(SearchComponent);
+        // var SearchComponent = this.container.createComponent(comp);
+        //SearchComponent.instance.asset = 'Building';
     }
 }
