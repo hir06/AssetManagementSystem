@@ -15,12 +15,14 @@ import * as moment from 'moment';
 @Injectable()
 export class ApiService {
     apiUrl: string = "https://0ba0e9e1.ngrok.io/rmsrest/s";
+    loginApi: string = "https://0ba0e9e1.ngrok.io/rmsrest/p"
     constructor(
         private _http: HttpClient,
         private _ajaxLoader: AlertsLoaderService,
         private _userService: UserService
     ) { }
     post(url: string, data: any, headers?: any, showLoader: boolean = true) {
+        this.apiUrl = url.indexOf('login') != -1 ? this.loginApi : this.apiUrl;
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};

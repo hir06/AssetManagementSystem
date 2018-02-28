@@ -32,6 +32,7 @@ import { PolicyComponent } from "../components/policy/policy.component";
 import { ServiceComponent } from "../components/service/service.component";
 import { SupportingDocumentsComponent } from "../components/supporting-documents/supporting-documents.component";
 import { AjaxLoaderComponent } from "../components/ajax-loader/ajax-loader.component";
+import { SearchComponent } from "../components/search/search.component";
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { ErrorMessageComponent } from "../components/error-message/error-message.component";
 import { SuccessMessageComponent } from "../components/success-message/success-message.component";
@@ -79,7 +80,8 @@ export const MY_MOMENT_FORMATS = {
         AddressComponent,
         AjaxLoaderComponent,
         ErrorMessageComponent,
-        SuccessMessageComponent
+        SuccessMessageComponent,
+        SearchComponent
     ],
     imports: [FormsModule, CommonModule, RouterModule,
         PaginationModule, SelectDropDownModule, 
@@ -89,6 +91,6 @@ export const MY_MOMENT_FORMATS = {
         { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },
     ],
     exports: [FormsModule, CommonModule],
-    entryComponents: [DashboardComponent, AjaxLoaderComponent, ErrorMessageComponent, SuccessMessageComponent]
+    entryComponents: [DashboardComponent, AjaxLoaderComponent, ErrorMessageComponent, SuccessMessageComponent, SearchComponent]
 })
 export class CoreModule { }
