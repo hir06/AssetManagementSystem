@@ -17,7 +17,7 @@ export class PolicyComponent implements OnInit {
     lookupParams: any;
     lookupItems:any;
     lookupOptions : any;
-   
+
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService,
@@ -246,9 +246,9 @@ export class PolicyComponent implements OnInit {
             const ind = this.lookupParams.sorts.indexOf(exists[0]);
             this.lookupParams.sorts.splice(ind,1);
         }
-       
+
     }
-    lookupPolicy($event: any) {
+    lookupPolicy($event ?: any) {
         if($event){
             this.lookupParams.paging.currentPage = $event.pageNo -1;
             this.lookupParams.paging.pageSize = $event.pageSize;

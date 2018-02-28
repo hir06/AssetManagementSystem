@@ -17,7 +17,7 @@ export class RentOrLeaseComponent implements OnInit {
     lookupParams: any;
     lookupItems:any;
     lookupOptions :any;
-    
+
     constructor(
         private _apiService: ApiService,
         private _alertsService: AlertsLoaderService,
@@ -241,9 +241,9 @@ export class RentOrLeaseComponent implements OnInit {
             const ind = this.lookupParams.sorts.indexOf(exists[0]);
             this.lookupParams.sorts.splice(ind,1);
         }
-       
+
     }
-    lookupRentOrLease($event: any) {
+    lookupRentOrLease($event ?: any) {
         if($event){
             this.lookupParams.paging.currentPage = $event.pageNo -1;
             this.lookupParams.paging.pageSize = $event.pageSize;

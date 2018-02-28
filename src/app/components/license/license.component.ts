@@ -16,7 +16,7 @@ export class LicenseComponent implements OnInit {
     lookupParams: any;
     lookupItems:any;
     lookupOptions : any;
-    
+
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
@@ -208,7 +208,7 @@ export class LicenseComponent implements OnInit {
             }
         );
     }
-    
+
     lookupFieldChange({field,operator,value}){
         let fil = {
             field,
@@ -241,9 +241,9 @@ export class LicenseComponent implements OnInit {
             const ind = this.lookupParams.sorts.indexOf(exists[0]);
             this.lookupParams.sorts.splice(ind,1);
         }
-       
+
     }
-    lookupLicense($event: any) {
+    lookupLicense($event ?: any) {
         if($event){
             this.lookupParams.paging.currentPage = $event.pageNo -1;
             this.lookupParams.paging.pageSize = $event.pageSize;

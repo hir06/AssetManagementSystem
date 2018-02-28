@@ -14,7 +14,7 @@ export class MaintenanceComponent implements OnInit {
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     lookupParams: any;
     lookupItems:any;
-    lookupOpions: any;
+    lookupOptions: any;
 
     constructor(
         private _apiService: ApiService,
@@ -28,7 +28,7 @@ export class MaintenanceComponent implements OnInit {
     }
     initLookupParams() {
         this.lookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
-        this.lookupOpions = {
+        this.lookupOptions = {
             agreementId: {
                 field: 'agreementId',
                 operator: "EQ",
@@ -230,9 +230,9 @@ export class MaintenanceComponent implements OnInit {
             const ind = this.lookupParams.sorts.indexOf(exists[0]);
             this.lookupParams.sorts.splice(ind,1);
         }
-       
+
     }
-    lookupAmc($event: any) {
+    lookupAmc($event ? : any) {
         if($event){
             this.lookupParams.paging.currentPage = $event.pageNo -1;
             this.lookupParams.paging.pageSize = $event.pageSize;

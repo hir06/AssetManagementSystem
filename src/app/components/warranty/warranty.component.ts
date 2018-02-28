@@ -230,9 +230,9 @@ export class WarrantyComponent implements OnInit {
             const ind = this.lookupParams.sorts.indexOf(exists[0]);
             this.lookupParams.sorts.splice(ind,1);
         }
-       
+
     }
-    lookupWarranty($event: any) {
+    lookupWarranty($event ?: any) {
         if($event){
             this.lookupParams.paging.currentPage = $event.pageNo -1;
             this.lookupParams.paging.pageSize = $event.pageSize;

@@ -16,7 +16,7 @@ export class ServiceComponent implements OnInit {
     lookupParams: any;
     lookupItems:any;
     lookupOptions :any;
-   
+
     constructor(
         private _alertsService: AlertsLoaderService,
         private _apiService: ApiService
@@ -229,9 +229,9 @@ export class ServiceComponent implements OnInit {
             const ind = this.lookupParams.sorts.indexOf(exists[0]);
             this.lookupParams.sorts.splice(ind,1);
         }
-       
+
     }
-    lookupService($event: any) {
+    lookupService($event ?: any) {
         if($event){
             this.lookupParams.paging.currentPage = $event.pageNo -1;
             this.lookupParams.paging.pageSize = $event.pageSize;
