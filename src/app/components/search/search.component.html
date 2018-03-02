@@ -1,4 +1,3 @@
-
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -9,788 +8,886 @@
             </div>
             <div class="modal-body">
 
-<div *ngIf="asset == 'Building'">
-    <div class="row">
-        <div class="col-md-4">Building ID</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input class="form-control" [(ngModel)]="buildingId" name="buildingid" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Building Name</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input class="form-control" [(ngModel)]="buildingName" name="buildingName" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Building Description</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <textarea class="form-control" [(ngModel)]="building.buildingDescription" name="buildingDescription"></textarea>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Department</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-</div>
-<div *ngIf="asset == 'Equipment'">
-    <div class="row">
-        <div class="col-md-4">Equipment ID</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Equipment Name</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Equipment Tag</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Make</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Model</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Order No.</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Invoice No.</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Serial No.</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Department</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-</div>
-<div *ngIf="asset == 'Vehicle'">
-    <div class="row">
-        <div class="col-md-4">Vehicle Reg ID</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Engine No</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Chassis No</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Make</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Model</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Month of Manufacturing.</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Year of Manufacturing</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">MOT Obtained Date</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Department</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-</div>
-<div *ngIf="asset == 'Other'">
-    <div class="row">
-        <div class="col-md-4">ID</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Name</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Description</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Asset Tag</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Make</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Model</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Serial No.</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">Purchased date</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">Department</div>
-
-        <div class="col-lg-4 col-sm-6 col-md-2">
-            <select class="form-control" ng-model="idOp">
-                <option value="EQ" selected>Equals</option>
-                <option value="NEQ">Not equals</option>
-                <option value="STARTS_WITH">Starts with</option>
-                <option value="ENDS_WITH">Ends with</option>
-                <option value="CONTAINS">Contains</option>
-                <option value="NOT_CONTAINS">Does not contain</option>
-
-            </select>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-md-6">
-            <input type="text" class="form-control" ng-model="IncidentId" />
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Asset Condition</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Asset Status</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Asset Type</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Regualtory</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">AMC</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Insurance Policy</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Loan</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">License</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Warranty</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Inspection</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Service</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">Rental or Lease</div>
-
-    <div class="col-lg-4 col-sm-6 col-md-2">
-        <select class="form-control" ng-model="idOp">
-            <option value="EQ" selected>Equals</option>
-            <option value="NEQ">Not equals</option>
-            <option value="STARTS_WITH">Starts with</option>
-            <option value="ENDS_WITH">Ends with</option>
-            <option value="CONTAINS">Contains</option>
-            <option value="NOT_CONTAINS">Does not contain</option>
-
-        </select>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-md-6">
-        <input type="text" class="form-control" ng-model="IncidentId" />
-    </div>
-</div>
+                <div *ngIf="asset == 'Building'">
+                    <div class="row">
+                        <div class="col-md-4">Building ID</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.buildingid)" [(ngModel)]="lookupOptions.buildingid.operator"> 
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="buildingId" name="buildingid" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.buildingId.sort" (change)="lookupSortChange(lookupOptions.buildingId)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.buildingId)" [(ngModel)]="lookupOptions.buildingId.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Building Name</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.buildingName)" [(ngModel)]="lookupOptions.buildingName.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="buildingName" name="buildingName" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.buildingName.sort" (change)="lookupSortChange(lookupOptions.buildingName)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.buildingName)" [(ngModel)]="lookupOptions.buildingName.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Building Description</div>
+
+                        <div class="col-sm-6 col-md-2" >
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.buildingDescription)" [(ngModel)]="lookupOptions.buildingDescription.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <textarea class="form-control" [(ngModel)]="buildingDescription" name="buildingDescription"></textarea>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.buildingDescription.sort" (change)="lookupSortChange(lookupOptions.buildingDescription)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.buildingDescription)" [(ngModel)]="lookupOptions.buildingDescription.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Department</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.department)" [(ngModel)]="lookupOptions.department.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="department">
+                                <option value="null"></option>
+                                <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.department.sort" (change)="lookupSortChange(lookupOptions.department)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.department)" [(ngModel)]="lookupOptions.department.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                </div>
+                <div *ngIf="asset == 'Equipment'">
+                    <div class="row">
+                        <div class="col-md-4">Equipment ID</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentId)" [(ngModel)]="lookupOptions.equipmentId.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="equipmentId" name="equipmentid" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.equipmentId.sort" (change)="lookupSortChange(lookupOptions.equipmentId)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentId)" [(ngModel)]="lookupOptions.equipmentId.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Equipment Name</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentname)" [(ngModel)]="lookupOptions.equipmentname.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="equipmentName" name="equipmentname" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.equipmentName.sort" (change)="lookupSortChange(lookupOptions.equipmentName)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentName)" [(ngModel)]="lookupOptions.equipmentName.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Equipment Tag</div>
+
+                        <div class="col-sm-6 col-md-2" (change)="lookupFieldChange(lookupOptions.equipmentTag)" [(ngModel)]="lookupOptions.equipmentTag.operator">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="equipmentTag" name="floor" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.equipmentTag.sort" (change)="lookupSortChange(lookupOptions.equipmentTag)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentTag)" [(ngModel)]="lookupOptions.equipmentTag.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Make</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentMake)" [(ngModel)]="lookupOptions.equipmentMake.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="equipmentMake" name="equipmentMake" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.equipmentMake.sort" (change)="lookupSortChange(lookupOptions.equipmentMake)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentMake)" [(ngModel)]="lookupOptions.equipmentMake.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Model</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.placeIssued)" [(ngModel)]="lookupOptions.placeIssued.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="equipmentModel" name="equipmentModel" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.equipmentModel.sort" (change)="lookupSortChange(lookupOptions.equipmentModel)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentModel)" [(ngModel)]="lookupOptions.equipmentModel.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Order No.</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.orderNumber)" [(ngModel)]="lookupOptions.orderNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="orderNumber" name="orderNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.orderNumber.sort" (change)="lookupSortChange(lookupOptions.orderNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.orderNumber)" [(ngModel)]="lookupOptions.orderNumber.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Invoice No.</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.invoiceNumber)" [(ngModel)]="lookupOptions.invoiceNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="invoiceNumber" name="invoiceNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.invoiceNumber.sort" (change)="lookupSortChange(lookupOptions.invoiceNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.invoiceNumber)" [(ngModel)]="lookupOptions.invoiceNumber.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Serial No.</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.serialNumber)" [(ngModel)]="lookupOptions.serialNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="serialNumber" name="serialNumber" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.serialNumber.sort" (change)="lookupSortChange(lookupOptions.serialNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.serialNumber)" [(ngModel)]="lookupOptions.serialNumber.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Department</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.department)" [(ngModel)]="lookupOptions.department.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="department">
+                                <option value="null"></option>
+                                <option *ngFor="let dep of dropDownsData.departmentList" [ngValue]="org">{{dep.description}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                              <input type="checkbox" [(ngModel)]="lookupOptions.department.sort" (change)="lookupSortChange(lookupOptions.department)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.department)" [(ngModel)]="lookupOptions.department.order">
+                              <option value="ASC">ASC</option>
+                              <option value="DESC">DESC</option>
+                            </select>
+                          </div>
+                    </div>
+                </div>
+                <div *ngIf="asset == 'Vehicle'">
+                    <div class="row">
+                        <div class="col-md-4">Vehicle Reg ID</div>
+
+                        <div class="col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <input class="form-control" [(ngModel)]="vehicleRegistrationId" name="vehicleRegistrationId" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Engine No</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="engineNumber" name="engineNumber" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Chassis No</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="chasisNumber" name="chasisNumber" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Make</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="make" name="make" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Model</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="model" name="model" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Month of Manufacturing.</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <select class="form-control" [(ngModel)]="monthOfManufacturing">
+                                <option value="null"></option>
+                                <option *ngFor="let month of dropDownsData.monthTypeList" [ngValue]="month">{{month.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Year of Manufacturing</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="yearOfManufacturing" name="yearOfManufacturing" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">MOT Obtained Date</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" [(ngModel)]="motObtainedDate" name="motObtainedDate"
+                            />
+                            <owl-date-time [pickerType]="'calendar'" #dt5></owl-date-time>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Department</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="vehicle.department">
+                                <option value="null"></option>
+                                <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="asset == 'Other'">
+                    <div class="row">
+                        <div class="col-md-4">ID</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="assetTypeOtherId" name="assetTypeOtherId" />
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Name</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="asset.assetTypeOtherName" name="assetTypeOtherName" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Description</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="assetTypeOtherDescription" name="assetTypeOtherDescription" />
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Asset Tag</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="asset.assetTag" name="assetTag" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Make</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="asset.assetMake" name="assetMake" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Model</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="assetModel" name="assetModel" />
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Serial No.</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [(ngModel)]="assetSerialNumber" name="assetSerialNumber" />
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Purchased date</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="purchasedDate" name="purchasedDate"
+                            />
+                            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Department</div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" ng-model="idOp">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="department">
+                                <option value="null"></option>
+                                <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Asset Condition</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" ng-model="idOp">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-md-6">
+                        <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="assetCondition">
+                            <option value="null"></option>
+                            <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Asset Status</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" ng-model="idOp">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-md-6">
+                        <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="assetStatus">
+                            <option value="null"></option>
+                            <option *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Asset Type</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" ng-model="idOp">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-md-6">
+                        <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="assetType">
+                            <option value="null"></option>
+                            <option *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Regulatory</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" ng-model="regulatoryCompliance">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">AMC</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" [(ngModel)]="amcPresent">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Insurance Policy</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" [(ngModel)]="insurancePresent">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Loan</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" [(ngModel)]="loanPresent">
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">License</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" [(ngModel)]="licensePresent">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Warranty</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" [(ngModel)]="warrantyPresent">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Inspection</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" [(ngModel)]="inspectionPresent">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Service</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" [(ngModel)]="servicePresent">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Rental or Lease</div>
+
+                    <div class="col-lg-4 col-sm-6 col-md-2">
+                        <select class="form-control" [(ngModel)]="rentOrLeasePresent">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
             </div>
-        </div></div></div>
+        </div>
+    </div>
+</div>
